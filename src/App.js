@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import SignUp from "./components/signup.js";
+import axios from "axios";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+      email: "",
+      password: "",
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.signupToDataBase = this.signupToDataBase.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  signupToDataBase() {
+    axios.post("http://localhost:3000/signup").then((response) => {
+      console.log(response);
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <SignUp
+          handleChange={this.handleChange}
+          signupToDataBase={this.signupToDataBase}
+        />
+      </div>
+    );
+  }
 }
-
-export default App;
