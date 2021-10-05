@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 const usersSchema = mongoose.Schema({
   email: { type: String, unique: true },
   username: { type: String, unique: true },
-  password: { type: String, unique: true },
+  password:String ,
   createdGroupsId: [String],
   joinedGroupsId: [String],
 });
