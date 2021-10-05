@@ -1,18 +1,28 @@
 import React from "react";
 
-function SignUp() {
+function SignUp(props) {
   return (
     <div>
       <label>Your name here :</label>
-      <input type="text" placeholder="Username..." />
+      <input
+        type="text"
+        placeholder="Username..."
+        name="name"
+        onChange={props.handleChange}
+      />
       <br />
       <label>Your Email here :</label>
-      <input type="text" placeholder="Email..." />
+      <input
+        type="text"
+        placeholder="Email..."
+        name="email"
+        onChange={props.handleChange}
+      />
       <br />
       <label>Your Password here:</label>
-      <input type="password" />
+      <input type="password" name="password" onChange={props.handleChange} />
       <br />
-      <button>Submit</button>
+      <button onClick={props.signupToDataBase}>Submit</button>
     </div>
   );
 }
