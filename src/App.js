@@ -1,43 +1,36 @@
 import React, { Component } from "react";
 import "./App.css";
 import SignUp from "./components/signup.js";
+import Login from "./components/Login.js";
 import axios from "axios";
+
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      email: "",
-      password: "",
+      view:'login'
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.signupToDataBase = this.signupToDataBase.bind(this);
   }
 
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+  renderView(){
+    const { view } = this.state;
+    if(view === 'signup'){
+      return <SignUp/>
+    }
+    else if(view === 'login'){
+      return <Login/>
+    }
+    else {
+      return <div>home page</div>
+    }
   }
 
-  signupToDataBase() {
-    axios
-      .post("http://localhost:3000/user", {
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password,
-      })
-      .then((response) => {
-        console.log(response);
-      });
-  }
 
   render() {
     return (
       <div>
-        <SignUp
-          handleChange={this.handleChange}
-          signupToDataBase={this.signupToDataBase}
-        />
+        {this.renderView()}
       </div>
     );
   }
