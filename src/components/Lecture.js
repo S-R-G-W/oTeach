@@ -1,11 +1,11 @@
 import React from "react";
-import NavProfil from "./Navprofil.js";
-var Lecture = () => {
+import Nav from "./Nav.js";
+var Lecture = (props) => {
     
 
   return (
     <div>
-        <NavProfil />
+        <Nav changepattoprofil={props.changepattoprofil}/>
       <h4 class="text-warning text-center pt-5">Create Lecture</h4>
     </div>
   );

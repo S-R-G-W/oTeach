@@ -4,7 +4,7 @@ import SignUp from "./components/signup.js";
 import Login from "./components/Login.js";
 import Profil from "./components/Profil.js";
 import axios from "axios";
-import NavProfil from "./components/Nav.js";
+import Nav from "./components/Nav.js";
 import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
 
@@ -13,7 +13,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view:'login'
+      view:'profil'
     };
   }
     changepattoupdate=()=>{
@@ -26,7 +26,7 @@ export default class App extends Component {
         view:'lecture'
       })
   }
-   changepattoprofil=()=>{
+  changepattoprofil=()=>{
     this.setState({
       view:'profil'
     })
@@ -44,25 +44,23 @@ export default class App extends Component {
     else if(view==="profil"){
       return (
         <div>
-          <div>
-          <NavProfil changepattoprofil={this.changepattoprofil.bind(this)} />
-          </div>
+         
        <div>
-       <Profil changepattolectur={changepattolectur} changepattoupdate={changepattoupdate} pathtoupdate={pathtoupdate} />
+       <Profil  changepattolectur={this.changepattolectur.bind(this)} changepattoupdate={this.changepattoupdate.bind(this)} pathtoupdate={this.state.view} />
        </div>
          
         </div>
       )
     
      }
-     else if (pathtoupdate==='update'){
+     else if (this.state.view==='update'){
       return(
-        <UpdateProfil />
+        <UpdateProfil  changepattoprofil={this.changepattoprofil.bind(this)}/>
       )
     }
-    else if (pathtoupdate==='lecture'){
+    else if (this.state.view==='lecture'){
       return(
-        <Lecture />
+        <Lecture  changepattoprofil={this.changepattoprofil.bind(this)}/>
       )
     }
     else {

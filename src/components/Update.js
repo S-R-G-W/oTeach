@@ -1,9 +1,9 @@
 import React from "react";
-import NavProfil from "./Navprofil.js";
-var UpdateProfil = () => {
+import Nav from "./Nav.js";
+var UpdateProfil = (props) => {
   return (
     <div>
-        <NavProfil />
+        <Nav changepattoprofil={props.changepattoprofil} />
       <h4 class="text-warning text-center pt-5">Update Your Profil</h4>
     </div>
   );
