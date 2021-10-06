@@ -3,8 +3,6 @@ import "./App.css";
 import SignUp from "./components/signup.js";
 import Login from "./components/Login.js";
 import Profil from "./components/Profil.js";
-import axios from "axios";
-import Nav from "./components/Nav.js";
 import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
 
