@@ -29,6 +29,15 @@ exports.create = function (req, res) {
     .catch((err) => res.status(400).send(err));
 };
 
-exports.update = function () {};
+exports.update = function (req,res) {
+  Users.findByIdAndUpdate(req.params.id,{name: req.body.name, email: req.body.email, password: req.body.password,})
+  .then((response)=>{res.status(202).send(response)})
+  .catch((err) => res.status(400).send(err));
+};
 
-exports.delete = function () {};
+exports.delete = function (req,res) {
+  Users.findByIdAndDelete(req.params.id)
+  .then((response)=>{res.status(202).send(response)})
+  .catch((err) => res.status(400).send(err));
+
+};

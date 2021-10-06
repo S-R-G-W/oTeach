@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-export default class login extends Component {
+export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -16,7 +16,7 @@ export default class login extends Component {
 
     hundleLogin() {
         if (this.state.email !== '' && this.state.password !== '') {
-            axios.post("http://localhost:8000/login").then((response) => { console.log(response); })
+            axios.post("http://localhost:8000/login",this.state).then((response) => { console.log(response); })
         }
     }
 
@@ -39,7 +39,7 @@ export default class login extends Component {
                     name="password"
                     onChange={this.handleChange} />
                 <br />
-                <button onClick={ }>Login</button>
+                <button onClick={this.hundleLogin}>Login</button>
             </div>
         )
     }
