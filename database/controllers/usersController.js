@@ -1,12 +1,43 @@
 const { response } = require("express");
 const Users = require("../models/usersModel");
 
-exports.retrieve = function () {};
+exports.retrieve = function (req, res) {
+  Users.find({})
+    .then((response) => {
+      res.status(200).send(response);
+    })
+    .catch((err) => res.status(400).send(err));
+};
 
-exports.retrieveOne = function () {};
+exports.retrieveOne = function (req, res) {
+  Users.findOne({ name: req.params.name })
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => res.status(500).send(err));
+};
 
-exports.create = function () {};
+exports.create = function (req, res) {
+  Users.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+  })
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((err) => res.status(400).send(err));
+};
 
-exports.update = function () {};
+exports.update = function (req,res) {
+  Users.findByIdAndUpdate(req.params.id,{name: req.body.name, email: req.body.email, password: req.body.password,})
+  .then((response)=>{res.status(202).send(response)})
+  .catch((err) => res.status(400).send(err));
+};
 
-exports.delete = function () {};
+exports.delete = function (req,res) {
+  Users.findByIdAndDelete(req.params.id)
+  .then((response)=>{res.status(202).send(response)})
+  .catch((err) => res.status(400).send(err));
+
+};
