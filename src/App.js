@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
 import SignUp from "./components/signup.js";
+import Login from "./components/Login.js";
+import Profil from "./components/Profil.js";
 import axios from "axios";
-import Home from "./components/Home";
+import NavProfil from "./components/Nav.js";
+import UpdateProfil from "./components/Update";
+import Lecture from "./components/Lecture";
 
 export default class App extends Component {
   constructor() {
@@ -18,15 +22,49 @@ export default class App extends Component {
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
   }
-
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  signupToDataBase() {
-    axios.post("http://localhost:3000/signup").then((response) => {
-      console.log(response);
+  changepattoupdate = () => {
+    this.setState({
+      view: "update",
     });
+  };
+  changepattolectur = () => {
+    this.setState({
+      view: "lecture",
+    });
+  };
+  changepattoprofil = () => {
+    this.setState({
+      view: "profil",
+    });
+  };
+  renderView() {
+    const { view } = this.state;
+    if (view === "signup") {
+      return <SignUp />;
+    } else if (view === "login") {
+      return <Login />;
+    } else if (view === "profil") {
+      return (
+        <div>
+          <div>
+            <NavProfil changepattoprofil={this.changepattoprofil.bind(this)} />
+          </div>
+          <div>
+            <Profil
+              changepattolectur={changepattolectur}
+              changepattoupdate={changepattoupdate}
+              pathtoupdate={pathtoupdate}
+            />
+          </div>
+        </div>
+      );
+    } else if (pathtoupdate === "update") {
+      return <UpdateProfil />;
+    } else if (pathtoupdate === "lecture") {
+      return <Lecture />;
+    } else {
+      return <div>home page</div>;
+    }
   }
 
   changeView(option) {
@@ -45,36 +83,6 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <div className="nav">
-          <span className="logo" onClick={() => this.changeView("home")}>
-            oTeach
-          </span>
-          <span
-            className={
-              this.state.view === "home" ? "nav-selected" : "nav-unselected"
-            }
-            onClick={() => this.changeView("home")}
-          ></span>
-          <span
-            className="nav-unselected"
-            onClick={() => this.changeView("signup")}
-          >
-            SignUp
-          </span>
-          <span
-      
-            onClick={() => {
-              this.changeView("login");
-            }}
-          >
-            Login
-          </span>
-        </div>
-
-        <div className="main">{this.renderView()}</div>
-      </div>
-    );
+    return <div>{this.renderView()}</div>;
   }
 }
