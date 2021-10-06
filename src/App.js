@@ -7,6 +7,7 @@ import axios from "axios";
 import Nav from "./components/Nav.js";
 import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
+import Home from "./components/Home"
 
 export default class App extends Component {
   constructor() {
@@ -14,8 +15,7 @@ export default class App extends Component {
     this.state = {
       view: 'login'
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.signupToDataBase = this.signupToDataBase.bind(this);
+
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
   }
@@ -54,18 +54,18 @@ export default class App extends Component {
           </div>
           <div>
             <Profil
-              changepattolectur={changepattolectur}
-              changepattoupdate={changepattoupdate}
-              pathtoupdate={pathtoupdate}
+              changepattolectur={this.changepattolectur}
+              changepattoupdate={this.changepattoupdate}
+              
             />
           </div>
         </div>
       );
     } 
-    else if (pathtoupdate === "update") {
+    else if (view === "update") {
       return <UpdateProfil />;
     } 
-    else if (pathtoupdate === "lecture") {
+    else if (view === "lecture") {
       return <Lecture />;
     } else {
       return <div>home page</div>;

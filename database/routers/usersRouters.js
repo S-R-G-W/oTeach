@@ -7,3 +7,7 @@ usersRouter.route("/user")
 
 usersRouter.route("/user/:name")
 .get(usersController.retrieveOne);
+
+
+
+module.exports = usersRouter;
