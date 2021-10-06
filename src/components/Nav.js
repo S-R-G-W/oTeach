@@ -1,17 +1,17 @@
 import React from "react";
 import './Nav.css'
-var NavProfil = (props) => {
+var Nav = (props) => {
   return (
     <div>
       <ul>
         <li>
-          <a>OTech</a>
+          <a onClick={props.changepattoprofil}>OTech</a>
         </li>
         <li>
-          <button onClick={props.changepattoprofil}>Profil </button>
+          <span onClick={props.changepattoprofil}>Profil </span>
         </li>
       </ul>
     </div>
   );
 };
-export default NavProfil;
+export default Nav

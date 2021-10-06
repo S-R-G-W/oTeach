@@ -1,10 +1,14 @@
 import React from 'react'
+import Nav from './Nav.js';
 import './Profil.css'
+
 var Profil = (props) => {
    
 
     return (
+        
       <div>
+          <Nav   />
             <button onClick={props.changepattoupdate} >Update Profil</button>
             <div className='bb' onClick={props.changepattolectur} >Crete lecture</div>
   

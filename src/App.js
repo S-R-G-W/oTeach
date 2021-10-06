@@ -26,7 +26,7 @@ export default class App extends Component {
         view:'lecture'
       })
   }
-   changepattoprofil=()=>{
+  changepattoprofil=()=>{
     this.setState({
       view:'profil'
     })
@@ -44,11 +44,9 @@ export default class App extends Component {
     else if(view==="profil"){
       return (
         <div>
-          <div>
-          <Nav changepattoprofil={this.changepattoprofil.bind(this)} />
-          </div>
+         
        <div>
-       <Profil changepattolectur={this.changepattolectur.bind(this)} changepattoupdate={this.changepattoupdate.bind(this)} pathtoupdate={this.state.view} />
+       <Profil  changepattolectur={this.changepattolectur.bind(this)} changepattoupdate={this.changepattoupdate.bind(this)} pathtoupdate={this.state.view} />
        </div>
          
         </div>
@@ -57,12 +55,12 @@ export default class App extends Component {
      }
      else if (this.state.view==='update'){
       return(
-        <UpdateProfil />
+        <UpdateProfil  changepattoprofil={this.changepattoprofil.bind(this)}/>
       )
     }
     else if (this.state.view==='lecture'){
       return(
-        <Lecture />
+        <Lecture  changepattoprofil={this.changepattoprofil.bind(this)}/>
       )
     }
     else {
