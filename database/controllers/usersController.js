@@ -15,7 +15,7 @@ exports.retrieveOne = function (req, res) {
       res.send(response);
     })
     .catch((err) => res.status(500).send(err));
-};
+}
 
 exports.create = function (req, res) {
   Users.create({
@@ -29,6 +29,10 @@ exports.create = function (req, res) {
     .catch((err) => res.status(400).send(err));
 };
 
-exports.update = function () {};
+exports.update = function () {
+  
+};
 
-exports.delete = function () {};
+exports.delete = function () {
+
+};

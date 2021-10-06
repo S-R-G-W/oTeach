@@ -20,9 +20,15 @@ export default class App extends Component {
   }
 
   signupToDataBase() {
-    axios.post("http://localhost:3000/signup").then((response) => {
-      console.log(response);
-    });
+    axios
+      .post("http://localhost:3000/user", {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   }
 
   render() {
