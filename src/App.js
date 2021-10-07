@@ -3,7 +3,7 @@ import "./App.css";
 import SignUp from "./components/signup.js";
 import Login from "./components/Login.js";
 import Profil from "./components/Profil.js";
-import axios from "axios";
+
 import Nav from "./components/Nav.js";
 import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
@@ -13,7 +13,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: 'login'
+      view: 'signup'
     };
 
     this.changeView = this.changeView.bind(this);
@@ -42,10 +42,10 @@ export default class App extends Component {
     }
     else if (view === "signup") {
       return <SignUp />;
-    } 
+    }
     else if (view === "login") {
       return <Login />;
-    } 
+    }
     else if (view === "profil") {
       return (
         <div>
@@ -56,15 +56,15 @@ export default class App extends Component {
             <Profil
               changepattolectur={this.changepattolectur}
               changepattoupdate={this.changepattoupdate}
-              
+
             />
           </div>
         </div>
       );
-    } 
+    }
     else if (view === "update") {
       return <UpdateProfil />;
-    } 
+    }
     else if (view === "lecture") {
       return <Lecture />;
     } else {
