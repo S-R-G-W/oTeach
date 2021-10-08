@@ -8,6 +8,8 @@ export default class Login extends Component {
             email: '',
             password: ''
         }
+        this.handleChange=this.handleChange.bind(this);
+        this.hundleLogin=this.hundleLogin.bind(this)
     }
 
     handleChange(e) {
@@ -16,7 +18,7 @@ export default class Login extends Component {
 
     hundleLogin() {
         if (this.state.email !== '' && this.state.password !== '') {
-            axios.post("http://localhost:8000/login",this.state).then((response) => { console.log(response); })
+            axios.post("http://localhost:8000/user/login",this.state).then((response) => { console.log(response); })
         }
     }
 

@@ -8,6 +8,7 @@ const usersSchema = mongoose.Schema({
   password:String ,
   createdGroupsId: [String],
   joinedGroupsId: [String],
+  salt:String,
 });
 
 const Users = mongoose.model("users", usersSchema);
