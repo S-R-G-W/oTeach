@@ -1,6 +1,6 @@
-import React from "react";
-import Nav from "./Nav.js";
-import "./Profil.css";
+import React from 'react'
+import Nav from '../Nav.js';
+import './Profil.css'
 
 var Profil = (props) => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
-import "./Home.css";
+import "./User.css";
 
-function Home(props) {
+function User() {
   return (
     <section class="text-center about">
       <h1>oTeach</h1>
@@ -54,4 +54,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default User;

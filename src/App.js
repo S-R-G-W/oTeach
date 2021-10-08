@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import SignUp from "./components/signup.js";
-import Login from "./components/Login.js";
-import Profil from "./components/Profil.js";
-import UpdateProfil from "./components/Update";
-import Lecture from "./components/Lecture";
-import Home from "./components/Home";
-import axios from "axios";
-import CreateGroups from "./components/CreateGroups";
-import Header from "./components/Header";
+import SignUp from "./components/mainComponent/signup/signup.js";
+import Login from "./components/mainComponent/login/Login.js";
+import User from "./components/mainComponent/User/User"
+import Header from "./components/Header.js";
+import Home from "./components/mainComponent/home/Home"
 
 export default class App extends Component {
   constructor() {
@@ -29,16 +25,16 @@ export default class App extends Component {
 
   signup(data) {
     this.setState({
-      view: "home",
-      user: data,
-    });
+      view: 'user',
+      user: data
+    })
   }
 
   login(data) {
     this.setState({
-      view: "home",
-      user: data,
-    });
+      view: 'user',
+      user: data
+    })
   }
 
   renderNavView() {
@@ -59,20 +55,12 @@ export default class App extends Component {
       return <CreateGroups adminId={this.state.user} />;
     } else if (view === "login") {
       return <Login login={this.login} />;
-    } else if (view === "profil") {
-      return (
-        <Profil
-          changepattolectur={this.changeView}
-          changepattoupdate={this.changeView}
-          pathtoupdate={this.state.view}
-        />
-      );
-    } else if (this.state.view === "update") {
-      return <UpdateProfil changepattoprofil={this.changeView} />;
-    } else if (this.state.view === "lecture") {
-      return <Lecture changepattoprofil={this.changeView} />;
-    } else {
-      return <Home test={this.changeView} />;
+    }
+    else if(view === 'user') {
+      return <User test={this.changeView} />;
+    }
+    else{
+      return <Home />
     }
   }
 
