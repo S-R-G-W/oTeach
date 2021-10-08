@@ -7,12 +7,13 @@ import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
 import Home from "./components/Home";
 import axios from "axios";
+import CreateGroups from "./components/createGroups";
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: "signup",
+      view: "profil",
     };
 
     this.changeView = this.changeView.bind(this);
@@ -20,11 +21,13 @@ export default class App extends Component {
   }
 
   renderView() {
-    const { view } = this.state;
+    const view = this.state.view;
     if (view === "signup") {
       return <SignUp />;
     } else if (view === "login") {
       return <Login />;
+    } else if (view === "createGroup") {
+      return <CreateGroups />;
     } else if (view === "profil") {
       return (
         <div>
