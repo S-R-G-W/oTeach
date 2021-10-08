@@ -21,8 +21,12 @@ export default class signup extends Component {
 
   signupToDataBase() {
     axios.post("http://localhost:8000/user/signup",this.state)
-    .then((response) => {console.log(response)})
-    .catch((err)=>{console.log(err)})
+    .then((data) => {
+      if(data.data){
+        this.props.signup(data.data)
+      }
+    })
+    .catch((err)=>{alert('username or email already exist')})
   }
 
   render() {

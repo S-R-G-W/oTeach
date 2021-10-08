@@ -48,14 +48,16 @@ exports.delete = function (req, res) {
     .catch((err) => res.status(400).send(err));
 };
 
-exports.authentication = function (req, res) {
-  Users.findOne({ email: req.params.email })
+exports.authentication = function(req,res){
+
+  Users.findOne({ email: req.body.email })
     .then((user) => {
-      if (crypt.compareHash(req.body.password, user.password, user.salt)) {
-        res.status(200).send(user, true);
-      } else {
-        res.status(401).send("wrong password");
-      }
+    if(crypt.compareHash(req.body.password,user.password,user.salt)){
+      res.status(200).send(user)
+    }
+    else{
+      res.status(401).send('wrong password')
+    } 
     })
     .catch((err) => res.status(500).send("no such user"));
 };
