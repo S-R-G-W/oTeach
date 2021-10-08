@@ -7,16 +7,16 @@ import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
 import Home from "./components/Home";
 import axios from "axios";
-import CreateGroups from "./components/createGroups";
+import CreateGroups from "./components/CreateGroups";
+import Header from "./components/Header";
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: 'login',
-      navView: '',
-      user: {}
-
+      view: "login",
+      navView: "",
+      user: {},
     };
 
     this.changeView = this.changeView.bind(this);
@@ -25,26 +25,25 @@ export default class App extends Component {
     this.changeNavView = this.changeNavView.bind(this);
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
-
   }
 
   signup(data) {
     this.setState({
-      view: 'home',
-      user: data
-    })
+      view: "home",
+      user: data,
+    });
   }
 
   login(data) {
     this.setState({
-      view: 'home',
-      user: data
-    })
+      view: "home",
+      user: data,
+    });
   }
 
   renderNavView() {
     // const { navView } = this.state;
-   return <Header />
+    return <Header />;
   }
   changeNavView(option) {
     this.setState({
@@ -56,27 +55,23 @@ export default class App extends Component {
     const view = this.state.view;
     if (view === "signup") {
       return <SignUp signup={this.signup} />;
-    }else if(view ==="createGroup"){
-      <CreateGroups/>
-    }
-    else if (view === "login") {
+    } else if (view === "createGroup") {
+      return <CreateGroups adminId={this.state.user} />;
+    } else if (view === "login") {
       return <Login login={this.login} />;
     } else if (view === "profil") {
       return (
-        <Profil changepattolectur={this.changeView} changepattoupdate={this.changeView} pathtoupdate={this.state.view} />
-      )
-    }
-    else if (this.state.view === 'update') {
-      return (
-        <UpdateProfil changepattoprofil={this.changeView} />
-      )
-    }
-    else if (this.state.view === 'lecture') {
-      return (
-        <Lecture changepattoprofil={this.changeView} />
-      )
-    }
-    else {
+        <Profil
+          changepattolectur={this.changeView}
+          changepattoupdate={this.changeView}
+          pathtoupdate={this.state.view}
+        />
+      );
+    } else if (this.state.view === "update") {
+      return <UpdateProfil changepattoprofil={this.changeView} />;
+    } else if (this.state.view === "lecture") {
+      return <Lecture changepattoprofil={this.changeView} />;
+    } else {
       return <Home test={this.changeView} />;
     }
   }
@@ -93,6 +88,6 @@ export default class App extends Component {
         <div>{this.renderNavView()}</div>
         <div>{this.renderView()}</div>
       </div>
-    )
+    );
   }
 }
