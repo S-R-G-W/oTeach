@@ -1,10 +1,11 @@
-
 const Users = require("../models/usersModel");
 const crypt = require("../../server/hash");
 
 exports.retrieve = function (req, res) {
-  Users.find()
-    .then((data) => {res.send(data)})
+  Users.find({})
+    .then((data) => {
+      res.send(data);
+    })
     .catch((err) => res.status(400).send(err));
 };
 
@@ -17,19 +18,22 @@ exports.retrieveOne = function (req, res) {
 };
 
 exports.create = function (req, res) {
-  
-  var salt = crypt.createRandom32String()
-  var hashed= crypt.createHash(req.body.password,salt)
-  console.log(req.body,hashed)
-  const us= new Users({
+  var salt = crypt.createRandom32String();
+  var hashed = crypt.createHash(req.body.password, salt);
+  console.log(req.body, hashed);
+  const us = new Users({
     username: req.body.username,
     email: req.body.email,
     password: hashed,
-    salt:salt,
-  })
+    salt: salt,
+  });
   us.save()
-    .then((data) => {res.status(201).send(data)})
-    .catch((err) => {res.status(404).send(err)});
+    .then((data) => {
+      res.status(201).send(data);
+    })
+    .catch((err) => {
+      res.status(404).send(err);
+    });
 };
 
 exports.update = function (req, res) {
@@ -48,16 +52,14 @@ exports.delete = function (req, res) {
     .catch((err) => res.status(400).send(err));
 };
 
-exports.authentication = function(req,res){
-
+exports.authentication = function (req, res) {
   Users.findOne({ email: req.body.email })
     .then((user) => {
-    if(crypt.compareHash(req.body.password,user.password,user.salt)){
-      res.status(200).send(user)
-    }
-    else{
-      res.status(401).send('wrong password')
-    } 
+      if (crypt.compareHash(req.body.password, user.password, user.salt)) {
+        res.status(200).send(user);
+      } else {
+        res.status(401).send("wrong password");
+      }
     })
     .catch((err) => res.status(500).send("no such user"));
 };

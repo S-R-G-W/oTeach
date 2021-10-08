@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import "./App.css";
 import SignUp from "./components/mainComponent/signup/signup.js";
 import Login from "./components/mainComponent/login/Login.js";
-import User from "./components/mainComponent/User/User"
+import User from "./components/mainComponent/User/User";
 import Header from "./components/Header.js";
-import Home from "./components/mainComponent/home/Home"
+// import Home from "./components/mainComponent/home/Home";
+import CreateGroups from "./components/mainComponent/User/userComponents/createGroup/createGroups";
 
 export default class App extends Component {
   constructor() {
@@ -25,16 +26,16 @@ export default class App extends Component {
 
   signup(data) {
     this.setState({
-      view: 'user',
-      user: data
-    })
+      view: "user",
+      user: data,
+    });
   }
 
   login(data) {
     this.setState({
-      view: 'user',
-      user: data
-    })
+      view: "user",
+      user: data,
+    });
   }
 
   renderNavView() {
@@ -51,16 +52,12 @@ export default class App extends Component {
     const view = this.state.view;
     if (view === "signup") {
       return <SignUp signup={this.signup} />;
-    } else if (view === "createGroup") {
-      return <CreateGroups adminId={this.state.user} />;
     } else if (view === "login") {
       return <Login login={this.login} />;
-    }
-    else if(view === 'user') {
-      return <User test={this.changeView} />;
-    }
-    else{
-      return <Home />
+    } else if (view === "user") {
+      return <User user={this.state.user} test={this.changeView} />;
+    } else {
+      return <CreateGroups user={this.state.user} />;
     }
   }
 
