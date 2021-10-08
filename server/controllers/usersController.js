@@ -2,19 +2,19 @@ const Users = require("../models/usersModel");
 const crypt = require("../../server/hash");
 
 exports.retrieve = function (req, res) {
-  Users.find({})
+  Users.find()
     .then((data) => {
-      res.send(data);
+      console.log(data);
     })
     .catch((err) => res.status(400).send(err));
 };
 
 exports.retrieveOne = function (req, res) {
-  Users.findOne({ email: req.params.email })
+  Users.findById({ _id: req.params.id })
     .then((response) => {
-      res.send(response);
+      res.status(201).send(response);
     })
-    .catch((err) => res.status(500).send(err));
+    .catch((err) => res.status(400).send(err));
 };
 
 exports.create = function (req, res) {

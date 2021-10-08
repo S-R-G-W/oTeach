@@ -11,9 +11,10 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: "login",
+      view: "signup",
       navView: "",
       user: {},
+      
     };
 
     this.changeView = this.changeView.bind(this);
@@ -23,7 +24,10 @@ export default class App extends Component {
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
   }
-
+ componentDidMount(){
+   axios.get('http://localhost:8000/user')
+   .then((data)=>console.log(data))
+ }
   signup(data) {
     this.setState({
       view: 'user',
