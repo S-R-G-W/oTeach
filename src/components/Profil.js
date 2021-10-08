@@ -9,8 +9,8 @@ var Profil = (props) => {
         
       <div>
           <Nav   />
-            <button onClick={props.changepattoupdate} >Update Profil</button>
-            <div className='bb' onClick={props.changepattolectur} >Crete lecture</div>
+            <button onClick={()=>props.changepattoupdate('update')} >Update Profil</button>
+            <div className='bb' onClick={()=>props.changepattolectur('lecture')} >Crete lecture</div>
   
             <label>Welcome Username</label>
             <div className='ss1'>Username</div>

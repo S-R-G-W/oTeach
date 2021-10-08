@@ -6,6 +6,7 @@ import Profil from "./components/Profil.js";
 import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
 import Home from "./components/Home";
+import axios from "axios";
 
 export default class App extends Component {
   constructor() {
@@ -17,32 +18,10 @@ export default class App extends Component {
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
   }
-  changepattoupdate = () => {
-    this.setState({
-      view: "update",
-    });
-  };
-  changepattolectur = () => {
-    this.setState({
-      view: "lecture",
-    });
-  };
-  changepattoprofil = () => {
-    this.setState({
-      view: "lecture",
-    });
-  };
-  changepattoprofil = () => {
-    this.setState({
-      view: "profil",
-    });
-  };
 
   renderView() {
     const { view } = this.state;
-    if (view === "home") {
-      return <Home test={this.changeView} />;
-    } else if (view === "signup") {
+    if (view === "signup") {
       return <SignUp />;
     } else if (view === "login") {
       return <Login />;
@@ -51,21 +30,19 @@ export default class App extends Component {
         <div>
           <div>
             <Profil
-              changepattolectur={this.changepattolectur.bind(this)}
-              changepattoupdate={this.changepattoupdate.bind(this)}
+              changepattolectur={this.changeView}
+              changepattoupdate={this.changeView}
               pathtoupdate={this.state.view}
             />
           </div>
         </div>
       );
     } else if (this.state.view === "update") {
-      return (
-        <UpdateProfil changepattoprofil={this.changepattoprofil.bind(this)} />
-      );
+      return <UpdateProfil changepattoprofil={this.changeView} />;
     } else if (this.state.view === "lecture") {
-      return <Lecture changepattoprofil={this.changepattoprofil.bind(this)} />;
+      return <Lecture changepattoprofil={this.changeView} />;
     } else {
-      return <div>home page</div>;
+      return <Home test={this.changeView} />;
     }
   }
 
