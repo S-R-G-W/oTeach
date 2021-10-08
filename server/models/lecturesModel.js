@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const client = require("../database");
+const client = require("../database/database");
 mongoose.Promise = global.Promise;
 
 const lecturesSchema = mongoose.Schema({

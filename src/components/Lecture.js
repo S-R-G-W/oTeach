@@ -1,8 +1,6 @@
 import React from "react";
 import Nav from "./Nav.js";
 var Lecture = () => {
-    
-
   return (
     <div>
         <Nav />
