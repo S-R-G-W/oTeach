@@ -6,57 +6,63 @@ import Profil from "./components/Profil.js";
 import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
 import Home from "./components/Home"
-import axios from 'axios'
+import Header from "./components/Header";
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
       view: 'login',
+      navView: '',
       user: {}
 
     };
 
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
-    this.signup=this.signup.bind(this);
-    this.login=this.login.bind(this)
+    this.renderNavView = this.renderNavView.bind(this);
+    this.changeNavView = this.changeNavView.bind(this);
+    this.signup = this.signup.bind(this);
+    this.login = this.login.bind(this);
+
   }
 
   signup(data) {
     this.setState({
-      view:'home',
+      view: 'home',
       user: data
     })
   }
 
   login(data) {
     this.setState({
-      view:'home',
+      view: 'home',
       user: data
     })
   }
 
+  renderNavView() {
+    // const { navView } = this.state;
+   return <Header />
+  }
+  changeNavView(option) {
+    this.setState({
+      navView: option,
+    });
+  }
 
   renderView() {
     const { view } = this.state;
     if (view === "signup") {
-      return <SignUp  signup={this.signup}/>;
+      return <SignUp signup={this.signup} />;
     }
     else if (view === "login") {
       return <Login login={this.login} />;
     }
     else if (view === "profil") {
       return (
-        <div>
-
-          <div>
-            <Profil changepattolectur={this.changeView} changepattoupdate={this.changeView} pathtoupdate={this.state.view} />
-          </div>
-
-        </div>
+        <Profil changepattolectur={this.changeView} changepattoupdate={this.changeView} pathtoupdate={this.state.view} />
       )
-
     }
     else if (this.state.view === 'update') {
       return (
@@ -81,6 +87,11 @@ export default class App extends Component {
 
 
   render() {
-    return <div>{this.renderView()}</div>;
+    return (
+      <div>
+        <div>{this.renderNavView()}</div>
+        <div>{this.renderView()}</div>
+      </div>
+    )
   }
 }
