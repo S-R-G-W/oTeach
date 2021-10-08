@@ -25,10 +25,11 @@
     "react-scripts": "4.0.3",
     "shards-ui": "^3.0.0",
     "styled-components": "^5.3.1",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "yarn": "^1.22.15"
   },
   "scripts": {
-    "server": "nodemon ./server/index.js",
+    "server": "nodemon index.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

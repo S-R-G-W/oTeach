@@ -5,8 +5,9 @@ import Login from "./components/Login.js";
 import Profil from "./components/Profil.js";
 import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
-import Home from "./components/Home"
-import Header from "./components/Header";
+import Home from "./components/Home";
+import axios from "axios";
+import CreateGroups from "./components/createGroups";
 
 export default class App extends Component {
   constructor() {
@@ -52,14 +53,15 @@ export default class App extends Component {
   }
 
   renderView() {
-    const { view } = this.state;
+    const view = this.state.view;
     if (view === "signup") {
       return <SignUp signup={this.signup} />;
+    }else if(view ==="createGroup"){
+      <CreateGroups/>
     }
     else if (view === "login") {
       return <Login login={this.login} />;
-    }
-    else if (view === "profil") {
+    } else if (view === "profil") {
       return (
         <Profil changepattolectur={this.changeView} changepattoupdate={this.changeView} pathtoupdate={this.state.view} />
       )
@@ -84,7 +86,6 @@ export default class App extends Component {
       view: option,
     });
   }
-
 
   render() {
     return (
