@@ -33,7 +33,8 @@ export default class signup extends Component {
   render() {
     return (
       <div className="App">
-        <label>Your name here :</label>
+        <div>SIGNUP</div>
+        
         <input
           type="text"
           placeholder="Username..."
@@ -41,7 +42,7 @@ export default class signup extends Component {
           onChange={this.handleChange}
         />
         <br />
-        <label>Your Email here :</label>
+        
         <input
           type="text"
           placeholder="Email..."
@@ -49,8 +50,8 @@ export default class signup extends Component {
           onChange={this.handleChange}
         />
         <br />
-        <label>Your Password here:</label>
-        <input type="password" name="password" onChange={this.handleChange} />
+        
+        <input type="password" placeholder="Password..." name="password" onChange={this.handleChange} />
         <br />
         <button onClick={this.signupToDataBase}>Submit</button>
       </div>

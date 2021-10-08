@@ -34,7 +34,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="App">
-        <label>Your Email :</label>
+        <div>LOGIN</div>
         <input
           type="text"
           placeholder="Email"
@@ -42,7 +42,7 @@ export default class Login extends Component {
           onChange={this.handleChange}
         />
         <br />
-        <label>Your Password :</label>
+        
         <input
           type="password"
           placeholder="Password"
