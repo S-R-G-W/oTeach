@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import "./User.css";
+import CreateGroups from "./userComponents/createGroup/createGroups";
 
 function User(props) {
   return (
@@ -96,5 +97,3 @@ function User(props) {
   
   );
 }
-
-export default User;

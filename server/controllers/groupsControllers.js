@@ -1,5 +1,6 @@
 const { response } = require("express");
 const Groups = require("../models/groupsModel");
+const user = require("../models/usersModel");
 
 exports.retrieve = function (req, res) {
   Groups.find({})
@@ -24,9 +25,22 @@ exports.create = function (req, res) {
     lecturesId: req.body.lecturesId,
     requestsId: req.body.requestsId,
   });
+  let groupData;
+  let userMembers;
   newGroup
     .save()
-    .then((data) => res.send(data))
+    .then((res) => (groupData = res))
+    .then(() => user.findOne({ _id: groupData.adminId }))
+    .then((res) => (userMembers = res.createdGroupsId))
+    .then(() => {
+      userMembers.push(groupData._id);
+    })
+    .then(() =>
+      user.findByIdAndUpdate(
+        { _id: groupData.adminId },
+        { createdGroupsId: userMembers }
+      )
+    )
     .catch((err) => res.send(err));
 };
 
