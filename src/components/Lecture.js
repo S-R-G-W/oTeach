@@ -1,9 +1,11 @@
 import React from "react";
 import Nav from "./Nav.js";
-var Lecture = () => {
+var Lecture = (props) => {
+    
+
   return (
     <div>
-        <Nav />
+        <Nav changepattoprofil={props.changepattoprofil}/>
       <h4 class="text-warning text-center pt-5">Create Lecture</h4>
     </div>
   );
