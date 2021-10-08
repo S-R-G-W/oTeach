@@ -1,12 +1,10 @@
-const { response } = require("express");
+
 const Users = require("../models/usersModel");
 const crypt= require("../../server/hash");
 
 exports.retrieve = function (req, res) {
-  Users.find({})
-    .then((response) => {
-      res.status(200).send(response);
-    })
+  Users.find()
+    .then((data) => {res.send(data)})
     .catch((err) => res.status(400).send(err));
 };
 
@@ -19,19 +17,19 @@ exports.retrieveOne = function (req, res) {
 }
 
 exports.create = function (req, res) {
+  
   var salt = crypt.createRandom32String()
   var hashed= crypt.createHash(req.body.password,salt)
-  Users.create({
-    name: req.body.name,
+  console.log(req.body,hashed)
+  const us= new Users({
+    username: req.body.username,
     email: req.body.email,
     password: hashed,
     salt:salt,
-
   })
-    .then((response) => {
-      res.json(response);
-    })
-    .catch((err) => res.status(400).send(err));
+  us.save()
+    .then((data) => {res.status(201).send(data)})
+    .catch((err) => {res.status(404).send(err)});
 };
 
 exports.update = function (req,res) {
