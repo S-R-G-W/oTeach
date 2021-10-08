@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import "./App.css";
 import SignUp from "./components/mainComponent/signup/signup.js";
 import Login from "./components/mainComponent/login/Login.js";
-import User from "./components/mainComponent/User/User"
+import User from "./components/mainComponent/User/User";
 import Header from "./components/Header.js";
-import Home from "./components/mainComponent/home/Home"
+import Home from "./components/mainComponent/home/Home";
+import axios from "axios";
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: "login",
+      view: "signup",
       navView: "",
       user: {},
+      
     };
 
     this.changeView = this.changeView.bind(this);
@@ -22,19 +24,22 @@ export default class App extends Component {
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
   }
-
+ componentDidMount(){
+   axios.get('http://localhost:8000/user')
+   .then((data)=>console.log(data))
+ }
   signup(data) {
     this.setState({
-      view: 'user',
-      user: data
-    })
+      view: "user",
+      user: data,
+    });
   }
 
   login(data) {
     this.setState({
-      view: 'user',
-      user: data
-    })
+      view: "user",
+      user: data,
+    });
   }
 
   renderNavView() {
@@ -51,16 +56,12 @@ export default class App extends Component {
     const view = this.state.view;
     if (view === "signup") {
       return <SignUp signup={this.signup} />;
-    } else if (view === "createGroup") {
-      return <CreateGroups adminId={this.state.user} />;
     } else if (view === "login") {
       return <Login login={this.login} />;
-    }
-    else if(view === 'user') {
+    } else if (view === "user") {
       return <User test={this.changeView} />;
-    }
-    else{
-      return <Home />
+    } else {
+      return <Home />;
     }
   }
 
