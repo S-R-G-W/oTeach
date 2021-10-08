@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 
-function Home() {
+function Home(props) {
   return (
     <section class="text-center about">
       <h1>oTeach</h1>
@@ -11,7 +11,10 @@ function Home() {
             class="col-lg-4 col-sm-6 col-ex-12 about-item wow lightSpeedIn"
             data-wow-offset="200"
           >
-            <span class="fa fa-group"></span>
+            <span
+              class="fa fa-group"
+              onClick={() => props.test("createGroup")}
+            ></span>
             <h2>Create a group</h2>
             <p class="lead">
               Lorem Ipsum is simply dummy text of the printing and typesetting

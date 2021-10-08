@@ -16,22 +16,24 @@ export default class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-    hundleLogin() {
-        if (this.state.email !== '' && this.state.password !== '') {
-            axios.post("http://localhost:8000/user/login",this.state)
-            .then((user) => { 
-                if(user.data){
-                    this.props.login(user.data)
-                }
-             })
-             .catch((err)=>{alert(err)})
-        }
+  hundleLogin() {
+    if (this.state.email !== "" && this.state.password !== "") {
+      axios
+        .post("http://localhost:8000/user/login", this.state)
+        .then((user) => {
+          if (user.data) {
+            this.props.login(user.data);
+          }
+        })
+        .catch((err) => {
+          alert(err);
+        });
     }
   }
 
   render() {
     return (
-      <div>
+      <div className="App">
         <label>Your Email :</label>
         <input
           type="text"
