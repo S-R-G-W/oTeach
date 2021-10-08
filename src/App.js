@@ -3,22 +3,19 @@ import "./App.css";
 import SignUp from "./components/signup.js";
 import Login from "./components/Login.js";
 import Profil from "./components/Profil.js";
-import axios from "axios";
-import NavProfil from "./components/Nav.js";
+
+import Nav from "./components/Nav.js";
 import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
+import Home from "./components/Home"
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: "home",
-      name: "",
-      email: "",
-      password: "",
+      view: 'signup'
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.signupToDataBase = this.signupToDataBase.bind(this);
+
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
   }
@@ -37,30 +34,38 @@ export default class App extends Component {
       view: "profil",
     });
   };
+
   renderView() {
     const { view } = this.state;
-    if (view === "signup") {
+    if (view === "home") {
+      return <Home test={this.changeView} />;
+    }
+    else if (view === "signup") {
       return <SignUp />;
-    } else if (view === "login") {
+    }
+    else if (view === "login") {
       return <Login />;
-    } else if (view === "profil") {
+    }
+    else if (view === "profil") {
       return (
         <div>
           <div>
-            <NavProfil changepattoprofil={this.changepattoprofil.bind(this)} />
+            <Nav changepattoprofil={this.changepattoprofil.bind(this)} />
           </div>
           <div>
             <Profil
-              changepattolectur={changepattolectur}
-              changepattoupdate={changepattoupdate}
-              pathtoupdate={pathtoupdate}
+              changepattolectur={this.changepattolectur}
+              changepattoupdate={this.changepattoupdate}
+
             />
           </div>
         </div>
       );
-    } else if (pathtoupdate === "update") {
+    }
+    else if (view === "update") {
       return <UpdateProfil />;
-    } else if (pathtoupdate === "lecture") {
+    }
+    else if (view === "lecture") {
       return <Lecture />;
     } else {
       return <div>home page</div>;
@@ -73,14 +78,6 @@ export default class App extends Component {
     });
   }
 
-  renderView() {
-    const view = this.state.view;
-    if (view === "home") {
-      return <Home test={this.changeView} />;
-    } else if (view === "signup") {
-      return <SignUp />;
-    }
-  }
 
   render() {
     return <div>{this.renderView()}</div>;

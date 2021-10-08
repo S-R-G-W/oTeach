@@ -1,9 +1,10 @@
 var usersController = require("../controllers/usersController");
 var usersRouter = require("express").Router();
 
-usersRouter.route("/user")
-  .get(usersController.retrieve)
+usersRouter.route("/signup")
   .post(usersController.create);
 
-usersRouter.route("/user/:name")
-.get(usersController.retrieveOne);
+usersRouter.route('/login')
+  .post(usersController.authentication)
+
+module.exports = usersRouter;

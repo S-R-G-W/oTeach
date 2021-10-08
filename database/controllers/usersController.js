@@ -1,5 +1,6 @@
 const { response } = require("express");
 const Users = require("../models/usersModel");
+const crypt= require("../../server/hash");
 
 exports.retrieve = function (req, res) {
   Users.find({})
@@ -10,7 +11,7 @@ exports.retrieve = function (req, res) {
 };
 
 exports.retrieveOne = function (req, res) {
-  Users.findOne({ name: req.params.name })
+  Users.findOne({ email: req.params.email })
     .then((response) => {
       res.send(response);
     })
@@ -18,10 +19,14 @@ exports.retrieveOne = function (req, res) {
 }
 
 exports.create = function (req, res) {
+  var salt = crypt.createRandom32String()
+  var hashed= crypt.createHash(req.body.password,salt)
   Users.create({
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
+    password: hashed,
+    salt:salt,
+
   })
     .then((response) => {
       res.json(response);
@@ -41,3 +46,16 @@ exports.delete = function (req,res) {
   .catch((err) => res.status(400).send(err));
 
 };
+
+exports.authentication = function(req,res){
+  Users.findOne({ email: req.params.email })
+    .then((user) => {
+    if(crypt.compareHash(req.body.password,user.password,user.salt)){
+      res.status(200).send(user,true)
+    }
+    else{
+      res.status(401).send('wrong password')
+    } 
+    })
+    .catch((err) => res.status(500).send('no such user'));
+}
