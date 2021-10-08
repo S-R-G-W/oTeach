@@ -1,6 +1,6 @@
 
 const Users = require("../models/usersModel");
-const crypt= require("../../server/hash");
+const crypt = require("../../server/hash");
 
 exports.retrieve = function (req, res) {
   Users.find()
@@ -14,7 +14,7 @@ exports.retrieveOne = function (req, res) {
       res.send(response);
     })
     .catch((err) => res.status(500).send(err));
-}
+};
 
 exports.create = function (req, res) {
   
@@ -32,17 +32,20 @@ exports.create = function (req, res) {
     .catch((err) => {res.status(404).send(err)});
 };
 
-exports.update = function (req,res) {
-  Users.findByIdAndUpdate(req.params.id,{name: req.body.name, email: req.body.email, password: req.body.password,})
-  .then((response)=>{res.status(202).send(response)})
-  .catch((err) => res.status(400).send(err));
+exports.update = function (req, res) {
+  Users.findByIdAndUpdate({ _id: req.params.id }, req.body)
+    .then((response) => {
+      res.status(202).send(response);
+    })
+    .catch((err) => res.status(400).send(err));
 };
 
-exports.delete = function (req,res) {
+exports.delete = function (req, res) {
   Users.findByIdAndDelete(req.params.id)
-  .then((response)=>{res.status(202).send(response)})
-  .catch((err) => res.status(400).send(err));
-
+    .then((response) => {
+      res.status(202).send(response);
+    })
+    .catch((err) => res.status(400).send(err));
 };
 
 exports.authentication = function(req,res){
@@ -56,5 +59,5 @@ exports.authentication = function(req,res){
       res.status(401).send('wrong password')
     } 
     })
-    .catch((err) => res.status(500).send('no such user'));
-}
+    .catch((err) => res.status(500).send("no such user"));
+};

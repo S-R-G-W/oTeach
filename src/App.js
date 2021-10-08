@@ -10,10 +10,9 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: 'login',
-      navView: '',
-      user: {}
-
+      view: "login",
+      navView: "",
+      user: {},
     };
 
     this.changeView = this.changeView.bind(this);
@@ -22,7 +21,6 @@ export default class App extends Component {
     this.changeNavView = this.changeNavView.bind(this);
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
-
   }
 
   signup(data) {
@@ -41,7 +39,7 @@ export default class App extends Component {
 
   renderNavView() {
     // const { navView } = this.state;
-   return <Header />
+    return <Header />;
   }
   changeNavView(option) {
     this.setState({
@@ -50,11 +48,12 @@ export default class App extends Component {
   }
 
   renderView() {
-    const { view } = this.state;
+    const view = this.state.view;
     if (view === "signup") {
       return <SignUp signup={this.signup} />;
-    }
-    else if (view === "login") {
+    } else if (view === "createGroup") {
+      return <CreateGroups adminId={this.state.user} />;
+    } else if (view === "login") {
       return <Login login={this.login} />;
     }
     else if(view === 'user') {
@@ -71,13 +70,12 @@ export default class App extends Component {
     });
   }
 
-
   render() {
     return (
       <div>
         <div>{this.renderNavView()}</div>
         <div>{this.renderView()}</div>
       </div>
-    )
+    );
   }
 }
