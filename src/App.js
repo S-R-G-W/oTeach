@@ -5,6 +5,7 @@ import Login from "./components/Login.js";
 import Profil from "./components/Profil.js";
 import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
+import Home from "./components/Home"
 
 export default class App extends Component {
   constructor() {
@@ -12,8 +13,7 @@ export default class App extends Component {
     this.state = {
       view:'profil'
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.signupToDataBase = this.signupToDataBase.bind(this);
+
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
   }
@@ -37,13 +37,19 @@ export default class App extends Component {
       view: "profil",
     });
   };
+
   renderView() {
     const { view } = this.state;
-    if (view === "signup") {
+    if (view === "home") {
+      return <Home test={this.changeView} />;
+    }
+    else if (view === "signup") {
       return <SignUp />;
-    } else if (view === "login") {
+    }
+    else if (view === "login") {
       return <Login />;
-    } else if (view === "profil") {
+    }
+    else if (view === "profil") {
       return (
         <div>
          
@@ -76,14 +82,6 @@ export default class App extends Component {
     });
   }
 
-  renderView() {
-    const view = this.state.view;
-    if (view === "home") {
-      return <Home test={this.changeView} />;
-    } else if (view === "signup") {
-      return <SignUp />;
-    }
-  }
 
   render() {
     return <div>{this.renderView()}</div>;
