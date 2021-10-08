@@ -18,10 +18,7 @@ dotenv.config();
 const uri = process.env.URI;
 
 // TODO: Connect Mongoose to our local MongoDB via URI specified above and export it below
-var client=mongoose.connect(uri,() => {
-    // perform actions on the collection object
-    console.log("database connected SRGW");
-  });
+var client=mongoose.connect(uri,() => {console.log("database connected SRGW");});
 
 
 

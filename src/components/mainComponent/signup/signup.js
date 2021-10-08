@@ -33,6 +33,7 @@ export default class signup extends Component {
   render() {
     return (
       <div className="App">
+        <div>SIGNUP</div>
         <label>Your name here :</label>
         <input
           type="text"

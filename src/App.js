@@ -21,6 +21,7 @@ export default class App extends Component {
     this.changeNavView = this.changeNavView.bind(this);
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
+    
   }
 
   signup(data) {
@@ -51,16 +52,14 @@ export default class App extends Component {
     const view = this.state.view;
     if (view === "signup") {
       return <SignUp signup={this.signup} />;
-    } else if (view === "createGroup") {
-      return <CreateGroups adminId={this.state.user} />;
     } else if (view === "login") {
       return <Login login={this.login} />;
     }
     else if(view === 'user') {
-      return <User test={this.changeView} />;
+      return <User changeView={this.changeView} user={this.state.user} />;
     }
     else{
-      return <Home />
+      return <Home user={this.state.user} />
     }
   }
 
