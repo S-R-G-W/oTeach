@@ -1,5 +1,5 @@
 const { response } = require("express");
-const Users = require("../models/usersModel");
+const Users = require("../database/models/usersModel");
 
 exports.retrieve = function (req, res) {
   Users.find({})
