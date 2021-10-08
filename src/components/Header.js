@@ -4,12 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function Header() {
   return (
     <div>
-      <nav class="navbar  navbar-blue bg-light">
-        <a class="navbar-brand" href="#">
+      <nav className="navbar  navbar-blue bg-light">
+        <a className="navbar-brand" >
           oTeach
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
@@ -17,16 +17,16 @@ function Header() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
         <div id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" >SignUp</a>
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item active">
+              <a className="nav-link" >SignUp</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link">Login</a>
+            <li className="nav-item">
+              <a className="nav-link">Login</a>
             </li>
           </ul>
         </div>
