@@ -12,22 +12,39 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: 'signup'
+      view: 'login',
+      user: {}
+
     };
 
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
+    this.signup=this.signup.bind(this);
+    this.login=this.login.bind(this)
   }
 
+  signup(data) {
+    this.setState({
+      view:'home',
+      user: data
+    })
+  }
+
+  login(data) {
+    this.setState({
+      view:'home',
+      user: data
+    })
+  }
 
 
   renderView() {
     const { view } = this.state;
     if (view === "signup") {
-      return <SignUp />;
+      return <SignUp  signup={this.signup}/>;
     }
     else if (view === "login") {
-      return <Login />;
+      return <Login login={this.login} />;
     }
     else if (view === "profil") {
       return (

@@ -18,7 +18,13 @@ export default class Login extends Component {
 
     hundleLogin() {
         if (this.state.email !== '' && this.state.password !== '') {
-            axios.post("http://localhost:8000/user/login",this.state).then((response) => { console.log(response); })
+            axios.post("http://localhost:8000/user/login",this.state)
+            .then((user) => { 
+                if(user.data){
+                    this.props.login(user.data)
+                }
+             })
+             .catch((err)=>{alert(err)})
         }
     }
 
