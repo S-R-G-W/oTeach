@@ -13,27 +13,42 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: "login",
-      user: {},
+      view: 'login',
+      navView: '',
+      user: {}
+
     };
 
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
+    this.renderNavView = this.renderNavView.bind(this);
+    this.changeNavView = this.changeNavView.bind(this);
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
+
   }
 
   signup(data) {
     this.setState({
-      view: "home",
-      user: data,
-    });
+      view: 'home',
+      user: data
+    })
   }
 
   login(data) {
     this.setState({
-      view: "home",
-      user: data,
+      view: 'home',
+      user: data
+    })
+  }
+
+  renderNavView() {
+    // const { navView } = this.state;
+   return <Header />
+  }
+  changeNavView(option) {
+    this.setState({
+      navView: option,
     });
   }
 
@@ -41,25 +56,27 @@ export default class App extends Component {
     const view = this.state.view;
     if (view === "signup") {
       return <SignUp signup={this.signup} />;
-    } else if (view === "login") {
+    }else if(view ==="createGroup"){
+      <CreateGroups/>
+    }
+    else if (view === "login") {
       return <Login login={this.login} />;
     } else if (view === "profil") {
       return (
-        <div>
-          <div>
-            <Profil
-              changepattolectur={this.changeView}
-              changepattoupdate={this.changeView}
-              pathtoupdate={this.state.view}
-            />
-          </div>
-        </div>
-      );
-    } else if (this.state.view === "update") {
-      return <UpdateProfil changepattoprofil={this.changeView} />;
-    } else if (this.state.view === "lecture") {
-      return <Lecture changepattoprofil={this.changeView} />;
-    } else {
+        <Profil changepattolectur={this.changeView} changepattoupdate={this.changeView} pathtoupdate={this.state.view} />
+      )
+    }
+    else if (this.state.view === 'update') {
+      return (
+        <UpdateProfil changepattoprofil={this.changeView} />
+      )
+    }
+    else if (this.state.view === 'lecture') {
+      return (
+        <Lecture changepattoprofil={this.changeView} />
+      )
+    }
+    else {
       return <Home test={this.changeView} />;
     }
   }
@@ -71,6 +88,11 @@ export default class App extends Component {
   }
 
   render() {
-    return <div>{this.renderView()}</div>;
+    return (
+      <div>
+        <div>{this.renderNavView()}</div>
+        <div>{this.renderView()}</div>
+      </div>
+    )
   }
 }

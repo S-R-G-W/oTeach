@@ -6,6 +6,7 @@ export default class CreateGroups extends Component {
     super(props);
     this.state = {
       name: "",
+      adminId: "",
     };
     this.createGroup = this.createGroup.bind(this);
   }
@@ -14,7 +15,7 @@ export default class CreateGroups extends Component {
       .post("http://localhost:8000/user/group", {
         name: this.state.name,
         // this adminId should be brought from the user that is logged in
-        // adminId: this.state.adminId,
+        adminId: this.state.adminId,
       })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
