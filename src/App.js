@@ -6,15 +6,18 @@ import Profil from "./components/Profil.js";
 import UpdateProfil from "./components/Update";
 import Lecture from "./components/Lecture";
 
-
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
       view:'profil'
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.signupToDataBase = this.signupToDataBase.bind(this);
+    this.changeView = this.changeView.bind(this);
+    this.renderView = this.renderView.bind(this);
   }
-    changepattoupdate=()=>{
+  changepattoupdate = () => {
     this.setState({
       view:'update'
     })
@@ -26,20 +29,21 @@ export default class App extends Component {
   }
   changepattoprofil=()=>{
     this.setState({
-      view:'profil'
-    })
-
-  }
-  renderView(){
+      view: "lecture",
+    });
+  };
+  changepattoprofil = () => {
+    this.setState({
+      view: "profil",
+    });
+  };
+  renderView() {
     const { view } = this.state;
-    if(view === 'signup'){
-      return <SignUp/>
-    }
-    else if(view === 'login'){
-      return <Login/>
-    }
-   
-    else if(view==="profil"){
+    if (view === "signup") {
+      return <SignUp />;
+    } else if (view === "login") {
+      return <Login />;
+    } else if (view === "profil") {
       return (
         <div>
          
@@ -64,15 +68,24 @@ export default class App extends Component {
     else {
       return <div>home page</div>
     }
-
   }
 
+  changeView(option) {
+    this.setState({
+      view: option,
+    });
+  }
+
+  renderView() {
+    const view = this.state.view;
+    if (view === "home") {
+      return <Home test={this.changeView} />;
+    } else if (view === "signup") {
+      return <SignUp />;
+    }
+  }
 
   render() {
-    return (
-      <div>
-        {this.renderView()}
-      </div>
-    );
+    return <div>{this.renderView()}</div>;
   }
 }

@@ -18,7 +18,7 @@ export default class signup extends Component {
 
 
   signupToDataBase() {
-    axios.post("http://localhost:3000/signup").then((response) => {
+    axios.post("http://localhost:8000/user").then((response) => {
       console.log(response);
     });
   }

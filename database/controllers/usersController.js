@@ -15,7 +15,7 @@ exports.retrieveOne = function (req, res) {
       res.send(response);
     })
     .catch((err) => res.status(500).send(err));
-};
+}
 
 exports.create = function (req, res) {
   Users.create({
