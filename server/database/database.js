@@ -1,4 +1,3 @@
-
 // const { MongoClient } = require("mongodb");
 // const dotenv = require("dotenv");
 // dotenv.config();
@@ -12,7 +11,7 @@
 //   console.log("database connected SRGW");
 // });
 
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 const uri = process.env.URI;

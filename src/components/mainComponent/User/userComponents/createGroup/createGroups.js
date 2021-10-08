@@ -6,7 +6,8 @@ export default class CreateGroups extends Component {
     super(props);
     this.state = {
       name: "",
-      adminId: this.props.adminId._id,
+      adminId: this.props.user._id,
+      // userMembers: this.props.adminId.createdGroupsId,
     };
     this.createGroup = this.createGroup.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -18,6 +19,10 @@ export default class CreateGroups extends Component {
       [e.target.name]: e.target.value,
     });
   }
+  // userIsAdmin() {
+  //   let array = this.state.userMembers;
+  //   array.push()
+  // }
   createGroup() {
     axios
       .post("http://localhost:8000/user/group", {

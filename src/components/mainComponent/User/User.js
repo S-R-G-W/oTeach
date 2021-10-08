@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import "./User.css";
 import CreateGroups from './userComponents/createGroup/createGroups';
+import UserGroups from './userComponents/groupComponents/userGroups/userGroups';
 import Profil from './userComponents/Profile/Profil'
 import UpdateProfile from './userComponents/Profile/update/UpdateProfile';
+
 
 
 
@@ -11,7 +13,7 @@ export default class User extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      view: 'profile',
+      view: 'user',
       user:this.props.user
     }
     this.changeView = this.changeView.bind(this)
@@ -36,56 +38,88 @@ export default class User extends Component {
     }
     else{
     return (
-      <div>
-        <section className="text-center about">
-          <h1>oTeach</h1>
-          <div className="container">
-            <div className="row">
-              <div
-                className="col-lg-4 col-sm-6 col-ex-12 about-item wow lightSpeedIn"
-                data-wow-offset="200"
-              >
-                <span
-                  className="fa fa-group"
-                  onClick={() => this.changeView("createGroup")}
-                ></span>
-                <h2>Create a group</h2>
-                <p className="lead">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry. Lorem Ipsum has been the industry's standard dummy text
-                  ever since the 1500s, when an unknown printer took a galley of
-                  type and scrambled
-                </p>
+      <div className="page-section">
+        
+      <div className="container wide">
+        
+        {/* <h2 className="section-title align-center">Be with US</h2> */}
+        
+        
+        <div className="entry-box flex-row item-col-3">
+          
+         
+          <div className="entry-col">
+  
+            <div className="entry">
+                  
+          
+              
+              <div className="entry-body">
+                    
+                <h5 className="entry-title"><a href="#">Join Group</a></h5>
+                <div className="entry-meta">
+                  
+                  
+                    
+                </div>
+                <p>Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget.</p>
+  
+               
+                    
               </div>
-              <div
-                className="col-lg-4 col-sm-6 col-ex-12 about-item wow lightSpeedIn"
-                data-wow-offset="200"
-              >
-                <span className="fa fa-info"></span>
-                <h2>Join a group </h2>
-                <p className="lead">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry. Lorem Ipsum{" "}
-                </p>
-              </div>
-              <div className="clearfix visible-md-block visible-sm-block"></div>
-              <div
-                className="col-lg-4 col-sm-6 col-ex-12 about-item wow lightSpeedIn"
-                data-wow-offset="200"
-              >
-                <span className="fa fa-file"></span>
-                <h2>Educate Yourself</h2>
-                <p className="lead">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry. Lorem Ipsum has been the industry's standard dummy text
-                  ever since the 1500s, when an unknown printer took a galley of
-                  type and scrambled
-                </p>
-              </div>
+                    
             </div>
+  
           </div>
-        </section>
+          
+  
+          <div className="entry-col">
+  
+            <div className="entry">
+                  
+              
+              <div className="entry-body">
+                    
+                <h5 className="entry-title"><a onClick={()=>this.changeView('createGroup')}>Create Group</a></h5>
+                <div className="entry-meta">
+                  
+                  
+                    
+                </div>
+                <p>Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget.</p>
+  
+               
+                    
+              </div>
+                    
+            </div>
+  
+          </div>
+  
+          <div className="entry-col">
+  
+            <div className="entry">
+                  
+          
+              
+              <div className="entry-body">
+                  <UserGroups user={this.state.user}/>  
+                
+               
+        
+              </div>
+                    
+            </div>
+  
+          </div>
+  
+        </div>
+  
+        
+       
       </div>
+  
+    </div>
     )
 
   }
@@ -99,5 +133,6 @@ export default class User extends Component {
     )
   }
 }
+
 
 
