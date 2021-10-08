@@ -46,10 +46,11 @@ exports.delete = function (req,res) {
 };
 
 exports.authentication = function(req,res){
-  Users.findOne({ email: req.params.email })
+
+  Users.findOne({ email: req.body.email })
     .then((user) => {
     if(crypt.compareHash(req.body.password,user.password,user.salt)){
-      res.status(200).send(user,true)
+      res.status(200).send(user)
     }
     else{
       res.status(401).send('wrong password')
