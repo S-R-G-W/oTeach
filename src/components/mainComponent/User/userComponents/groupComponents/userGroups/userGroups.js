@@ -1,40 +1,51 @@
 import React, { Component } from "react";
 import axios from "axios";
 export default class UserGroups extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      createdGroups: [],
-      joinedGroups: [],
+      user: this.props.user,
+      groups: [],
     };
-    this.getData = this.getData.bind(this);
   }
 
-  getData(id) {
-    axios.get(`http://localhost:8000/user/${id}`).then((response) => {
+  getGroup(id) {
+    axios.get(`http://localhost:8000/user/group/${id}`).then((response) => {
       console.log(response.data);
-
-    //   this.setState({
-    //     createdGroups: response.data.createdGroupsId,
-    //     joinedGroups: response.data.joinedGroupsId,
-    //   });
+      var copy = [...this.state.groups];
+      copy.push(response.data);
+      this.setState({
+        groups: copy,
+      });
+      console.log(this.state.groups);
     });
   }
+
   componentDidMount() {
-    this.getData();
+    this.state.user.createdGroupsId.map((el) => {
+      this.getGroup(el);
+    });
   }
 
   render() {
+    const us = this.state.user.createdGroupsId.map((val) => (
+      <li>
+        {this.state.groups.val}
+        {/* {console.log(this.state.groups.name)} */}
+      </li>
+    ));
+    const gr = this.state.groups.map((group) => <li>{group.name}</li>);
     return (
       <div>
         <ul>
-          <label>Created Groups :</label>
+          <div>Created Groups :</div>
           <br />
-          <li></li>
+
+          <li>{gr}</li>
         </ul>
         <br />
         <ul>
-          <label>Joined Groups :</label>
+          <div>Joined Groups :</div>
           <br />
           <li></li>
         </ul>
