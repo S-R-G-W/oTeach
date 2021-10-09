@@ -8,8 +8,8 @@ exports.retrieve = function (req, res) {
 };
 
 exports.retrieveOne = function (req, res) {
-  const id = req.params._id;
-  Lectures.findOne({ id: id })
+  const id = req.params.id;
+  Lectures.findById(id)
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 };
