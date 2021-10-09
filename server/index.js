@@ -4,13 +4,15 @@ const db = require("./database/database");
 const cors = require("cors");
 const usersRouter = require("./routers/usersRouters");
 const groupRouter = require("./routers/groupsRouters");
+const lectureRouter = require("./routers/lecturesRouters");
 const port = 8000;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/user", usersRouter);
-app.use("/user", groupRouter);
+app.use("/group", groupRouter);
+app.use("lecture", lectureRouter);
 
 app.listen(port, () => {
   console.log(`listening on port  ${port}`);

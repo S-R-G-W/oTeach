@@ -25,12 +25,12 @@ export default class CreateGroups extends Component {
   // }
   createGroup() {
     axios
-      .post("http://localhost:8000/user/group", {
+      .post("http://localhost:8000/group/group", {
         name: this.state.name,
         // this adminId should be brought from the user that is logged in
         adminId: this.state.adminId,
       })
-      .then((res) => console.log(res))
+      .then((res) =>alert('group created'))
       .catch((err) => console.log(err));
   }
 

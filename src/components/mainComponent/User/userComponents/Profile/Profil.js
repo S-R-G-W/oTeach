@@ -1,18 +1,18 @@
 import React from 'react'
 import './Profil.css'
+import { Link } from "react-router-dom";
 
 var Profil = (props) => {
   return (
     <div className="App">
       
-      <button onClick={()=>props.changeView('updateProfile')}>
+      <Link to="/UpdateProfile"><button >
         Update Profile
-      </button>
+      </button></Link>
 
-      <div>Welcome {props.user.username}</div>
-      <div >{props.user.username}</div>
-      <div >{props.user.email}</div>
-      <div >Joined Groups List</div>
+      <div><h1>Welcome {props.user.username}</h1></div>
+      <div > name : {props.user.username}</div>
+      <div > email :{props.user.email}</div>
     </div>
   );
 };
