@@ -97,7 +97,6 @@ export default class App extends Component {
 
   renderView() {
     const view = this.state.view;
-    console.log(view)
     if (view === "user") {
       return (<Switch>
 
