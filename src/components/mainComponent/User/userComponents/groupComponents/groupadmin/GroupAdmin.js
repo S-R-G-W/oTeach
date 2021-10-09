@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Lecture from "../groupadmin/createLecture/Lecture"
 
 export default class GroupAdmin extends Component {
@@ -13,9 +13,9 @@ export default class GroupAdmin extends Component {
 
         }
     }
-
-    deleteGroup() {
-
+     
+    componentDidMount(){
+        console.log(this.props.group)
     }
 
     getmembers() {
@@ -32,6 +32,7 @@ export default class GroupAdmin extends Component {
     getlectures() {
         var lecturearr = []
         this.props.group.lecturesId.map((lectureId) => {
+            console.log(lectureId)
             axios.get(`http://localhost:8000/lecture/${lectureId}`)
                 .then((data) => lecturearr.push(data.data))
 
@@ -55,13 +56,30 @@ export default class GroupAdmin extends Component {
 
     render() {
         return (
-            <div>
-                <Lecture group={this.props.group} />
-                <div className='App'>
+            <Router>
+                <Switch>
+
+                    <Route path="/create lecture">
+                    
+                        <Lecture group={this.props.group} />
+                        <Link to="/">back to group</Link>
+                    </Route>
+                    <Route path="/">
+                        <div className='App'>
                     <h1>{this.props.group.name}</h1>
-                    <button>Delete Group</button>
-                </div>
-            </div>
+                    <Link to="create lecture">create lecture</Link>
+                        <ul>
+                            {this.state.lectures.map((lecture)=>
+                        <li>{lecture.name}</li>    
+                            )}
+                        </ul>
+                       </div>
+                    </Route>
+
+                </Switch>
+                
+            </Router>
+
         )
     }
 }
