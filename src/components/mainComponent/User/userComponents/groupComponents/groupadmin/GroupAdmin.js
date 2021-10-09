@@ -59,6 +59,10 @@ export default class GroupAdmin extends Component {
             <Lecture group={this.props.group} />
             <Link to="/">back to group</Link>
           </Route>
+          <Route path="/see lecture">
+            <LectureDisplay group={this.props.group} />
+            <Link to="/">back to group</Link>
+          </Route>
           <Route path="/">
             <div className="App">
               <h1>{this.props.group.name}</h1>
