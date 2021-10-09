@@ -47,14 +47,15 @@ export default class User extends Component {
                 </div>
               </div>
             </div>
-
-            <div className="entry-col">
-              <div className="entry">
-                <div className="entry-body">
-                  <UserGroups user={this.state.user} />
-                  <JoinGroup user={this.state.user} />
-                </div>
-              </div>
+  
+          </div>
+  
+          <div className="entry-col">
+  
+            <div className="entry">
+            
+                  <UserGroups handleGroup={this.props.handleGroup} user={this.state.user}/>  
+                 
             </div>
           </div>
         </div>

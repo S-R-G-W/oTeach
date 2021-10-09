@@ -1,11 +1,11 @@
-const { response } = require("express");
+
 const Groups = require("../models/groupsModel");
 const user = require("../models/usersModel");
 
 exports.retrieve = function (req, res) {
-  Groups.find({})
-    .then((data) => res.status(200).send(data))
-    .catch((err) => res.status(400).send(err));
+  Groups.find()
+    .then((data) => res.send(data))
+    .catch((err) => res.send(err));
 };
 
 

@@ -24,7 +24,7 @@ var Nav2 = (props) => {
           <div className="header-btns">
 
             <div className="head-btn">
-              <Link to="/" className="btn btn-big btn-style-5">Home </Link>
+              <Link to="/" className="btn btn-big btn-style-5">Groups </Link>
             </div>
 
             <div className="head-btn">
@@ -32,7 +32,7 @@ var Nav2 = (props) => {
             </div>
 
             <div className="head-btn">
-            <a className="btn btn-big btn-style-5" >Log OUT </a>
+            <Link to="/login" className="btn btn-big btn-style-5" onClick={()=>props.logout()} >Log OUT </Link>
             </div>
 
 

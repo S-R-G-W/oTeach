@@ -33,7 +33,7 @@ export default class signup extends Component {
   render() {
     return (
       <div className="App">
-        <div>SIGNUP</div>
+        <div><h3>SIGNUP</h3></div>
         
         <input
           type="text"
@@ -53,7 +53,8 @@ export default class signup extends Component {
         
         <input type="password" placeholder="Password..." name="password" onChange={this.handleChange} />
         <br />
-        <button onClick={this.signupToDataBase}>Submit</button>
+        <br />
+        <button className="btn btn-big btn-style-5" onClick={this.signupToDataBase}>Submit</button>
       </div>
     );
   }
