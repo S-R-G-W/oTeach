@@ -6,7 +6,7 @@ import User from "./components/mainComponent/User/User"
 import Home from "./components/mainComponent/home/Home"
 import Nav from "./components/navbar/navbarsimple/Nav";
 import Nav2 from "./components/navbar/nav2/Nav2";
-
+import axios from "axios";
 export default class App extends Component {
   constructor() {
     super();
