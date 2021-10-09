@@ -17,7 +17,7 @@ export default class Lecture extends Component {
 
   createLecture() {
     axios
-      .post("http://localhost:8000/lecture/lecture", {
+      .post("http://localhost:8000/lecture", {
         name: this.state.name,
         description: this.state.description,
         videoUrl: this.state.videoUrl,
