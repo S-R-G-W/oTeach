@@ -14,9 +14,10 @@
 var mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
-const uri =process.env.URI;
+const uri = process.env.URI;
 
-var client=mongoose.connect(uri,() => {console.log(`database connected SRGW `);});
-
+var client = mongoose.connect(uri, () => {
+  console.log("database connected SRGW ");
+});
 
 module.exports = client;
