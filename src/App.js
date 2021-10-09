@@ -12,7 +12,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: "login",
+      view: "home",
       navView: "",
       user: {},
     };
@@ -24,7 +24,6 @@ export default class App extends Component {
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
   }
-
   signup(data) {
     this.setState({
       view: "user",
@@ -57,13 +56,15 @@ export default class App extends Component {
 
   renderView() {
     const view = this.state.view;
+    console.log(view);
     if (view === "signup") {
       return <SignUp signup={this.signup} />;
     } else if (view === "login") {
       return <Login changeView={this.changeView} login={this.login} />;
     } else if (view === "user") {
       return <User changeView={this.changeView} user={this.state.user} />;
-    } else {
+    }
+    else if(view==='home'){
       return <Home user={this.state.user} />;
     }
   }
