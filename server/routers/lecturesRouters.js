@@ -5,6 +5,6 @@ lectureRouter.route("/").get(lecturesController.retrieve);
 
 lectureRouter.route("/:id").get(lecturesController.retrieveOne);
 
-lectureRouter.route("/").post(lectureController.create);
+lectureRouter.route("/").post(lecturesController.create);
 
-module.exports = lecturesController;
+module.exports = lectureRouter;

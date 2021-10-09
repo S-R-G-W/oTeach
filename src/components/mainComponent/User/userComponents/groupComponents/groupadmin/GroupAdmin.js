@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default class GroupAdmin extends Component {
     constructor(props) {
@@ -12,8 +13,8 @@ export default class GroupAdmin extends Component {
         }
     }
 
-    deleteGroup(){
-        
+    deleteGroup() {
+
     }
 
     getmembers() {
@@ -49,12 +50,29 @@ export default class GroupAdmin extends Component {
             }))
     }
 
+
+
     render() {
         return (
-            <div className='App'>
-                <h1>{this.props.group.name}</h1>
-                <button>Delete Group</button>
-            </div>
+            <Router>
+                <Switch>
+
+                    <Route path="/create lecture">
+                        <div>
+                            create
+                        </div>
+                    </Route>
+                    <Route path="/">
+                        <div className='App'>
+                    <h1>{this.props.group.name}</h1>
+                    <button>Delete Group</button>
+                       </div>
+                    </Route>
+
+                </Switch>
+                
+            </Router>
+
         )
     }
 }

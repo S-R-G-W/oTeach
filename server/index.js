@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/user", usersRouter);
 app.use("/group", groupRouter);
-app.use("lecture", lectureRouter);
+app.use("/lecture", lectureRouter);
 
 app.listen(port, () => {
   console.log(`listening on port  ${port}`);
