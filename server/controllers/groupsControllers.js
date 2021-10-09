@@ -9,8 +9,7 @@ exports.retrieve = function (req, res) {
 };
 
 exports.retrieveOne = function (req, res) {
-  const id = req.params._id;
-  Groups.findOne({ id: id })
+  Groups.findOne({ _id: req.params.id })
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 };

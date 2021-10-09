@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import SignUp from "./components/mainComponent/signup/signup.js";
 import Login from "./components/mainComponent/login/Login.js";
-import User from "./components/mainComponent/User/User"
-import Home from "./components/mainComponent/home/Home"
+import User from "./components/mainComponent/User/User";
+import Home from "./components/mainComponent/home/Home";
 import Nav from "./components/navbar/navbarsimple/Nav";
 import Nav2 from "./components/navbar/nav2/Nav2";
 import Profil from './components/mainComponent/User/userComponents/Profile/Profil'
@@ -20,7 +20,6 @@ export default class App extends Component {
       view: "home",
       navView: "",
       user: {},
-
     };
 
     this.changeView = this.changeView.bind(this);
