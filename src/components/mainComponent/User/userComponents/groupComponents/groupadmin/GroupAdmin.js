@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Lecture from "../groupadmin/createLecture/Lecture"
 
 export default class GroupAdmin extends Component {
     constructor(props) {
@@ -54,25 +55,13 @@ export default class GroupAdmin extends Component {
 
     render() {
         return (
-            <Router>
-                <Switch>
-
-                    <Route path="/create lecture">
-                        <div>
-                            create
-                        </div>
-                    </Route>
-                    <Route path="/">
-                        <div className='App'>
+            <div>
+                <Lecture group={this.props.group} />
+                <div className='App'>
                     <h1>{this.props.group.name}</h1>
                     <button>Delete Group</button>
-                       </div>
-                    </Route>
-
-                </Switch>
-                
-            </Router>
-
+                </div>
+            </div>
         )
     }
 }

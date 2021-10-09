@@ -1,4 +1,3 @@
-import e from "cors";
 import React, { Component } from "react";
 import axios from "axios";
 
@@ -17,12 +16,7 @@ export default class Lecture extends Component {
 
   createLecture() {
     axios
-      .post("http://localhost:8000/lecture", {
-        name: this.state.name,
-        description: this.state.description,
-        videoUrl: this.state.videoUrl,
-        groupId: this.state.groupId,
-      })
+      .post("http://localhost:8000/lecture", this.state)
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
   }
@@ -36,28 +30,22 @@ export default class Lecture extends Component {
         <input
           type="text"
           name="name"
-          placeholder=""
+          placeholder="lecture name"
           onChange={this.handleChange}
         />
         <input
           type="text"
           name="description"
-          placeholder=""
+          placeholder="description"
           onChange={this.handleChange}
         />
         <input
           type="text"
           name="videoUrl"
-          placeholder=""
+          placeholder="videoUrl"
           onChange={this.handleChange}
         />
-        <button
-          onClick={() => {
-            this.createLecture;
-          }}
-        >
-          Create Lecture
-        </button>
+        <button onClick={() => this.createLecture}>Create Lecture</button>
       </div>
     );
   }
