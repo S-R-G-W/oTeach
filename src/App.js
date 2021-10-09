@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import SignUp from "./components/mainComponent/signup/signup.js";
 import Login from "./components/mainComponent/login/Login.js";
@@ -11,7 +11,6 @@ import Profil from './components/mainComponent/User/userComponents/Profile/Profi
 import UpdateProfile from './components/mainComponent/User/userComponents/Profile/update/UpdateProfile';
 import CreateGroups from './components/mainComponent/User/userComponents/createGroup/createGroups';
 
-import axios from 'axios'
 
 export default class App extends Component {
   constructor() {

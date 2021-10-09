@@ -12,7 +12,7 @@ var Nav2 = (props) => {
 
           <div className="logo-wrap">
 
-            <a href="index.html" className="logo"><img src="http://velikorodnov.com/html/churhius/images/logo.png" alt="" /></a>
+            <a href="index.html" className="logo"><img src="http://velikorodnov.com/html/churhius/images/logo.png"  /></a>
 
           </div>
 
@@ -24,11 +24,11 @@ var Nav2 = (props) => {
           <div className="header-btns">
 
             <div className="head-btn">
-              <Link to="/"><a className="btn btn-big btn-style-5" >Home </a></Link>
+              <Link to="/" className="btn btn-big btn-style-5">Home </Link>
             </div>
 
             <div className="head-btn">
-            <Link to="/Profile"> <a className="btn btn-big btn-style-5"  >Profil</a></Link>
+            <Link to="/Profile" className="btn btn-big btn-style-5"> Profil</Link>
             </div>
 
             <div className="head-btn">

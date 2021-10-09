@@ -40,7 +40,7 @@ export default class User extends Component {
               
               <div className="entry-body">
                     
-                <h5 className="entry-title"><a href="#">Join Group</a></h5>
+                <h5 className="entry-title">Join Group</h5>
                 <div className="entry-meta">
                   
                   
@@ -64,7 +64,7 @@ export default class User extends Component {
               
               <div className="entry-body">
                     
-                <h5 className="entry-title"><Link to="/CreateGroup"><a>Create Group</a></Link></h5>
+                <h5 className="entry-title"><Link to="/CreateGroup">Create Group</Link></h5>
                 <div className="entry-meta">
                   
                   
