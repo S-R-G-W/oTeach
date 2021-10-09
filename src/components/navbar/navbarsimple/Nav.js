@@ -2,37 +2,37 @@ import React from "react";
 var Nav = (props) => {
   return (
     <div>
-  <nav id="mobile-advanced" class="mobile-advanced"></nav>
+  <nav id="mobile-advanced" className="mobile-advanced"></nav>
 
 
-<header id="header" class="header sticky-header fixed-header">
+<header id="header" className="header sticky-header fixed-header">
   
  
 
-  <div class="searchform-wrap">
-    <div class="vc-child h-inherit">
+  <div className="searchform-wrap">
+    <div className="vc-child h-inherit">
 
-      <form class="search-form">
-        <button type="submit" class="search-button"></button>
-        <div class="wrapper">
+      <form className="search-form">
+        <button type="submit" className="search-button"></button>
+        <div className="wrapper">
           <input type="text" name="search" placeholder="Start typing..." />
         </div>
       </form>
 
-      <button class="close-search-form"></button>
+      <button className="close-search-form"></button>
 
     </div>
   </div>
 
  
 
-  <div class="top-header">
+  <div className="top-header">
 
    
 
-    <div class="logo-wrap">
+    <div className="logo-wrap">
 
-      <a href="index.html" class="logo"><img src="http://velikorodnov.com/html/churhius/images/logo.png" alt="" /></a>
+      <a href="index.html" className="logo"><img src="http://velikorodnov.com/html/churhius/images/logo.png" alt="" /></a>
 
     </div>
 
@@ -41,14 +41,17 @@ var Nav = (props) => {
   
    
     
-    <div class="header-btns">
+    <div className="header-btns">
       
-    <div class="head-btn">
-        <a  class="btn btn-big btn-style-5" onClick={()=>props.changeView('login')}>Login</a>
+    <div className="head-btn">
+        <a  className="btn btn-big btn-style-5" onClick={()=>props.changeView('login')}>Login</a>
       </div>
    
-      <div class="head-btn">
-        <a  class="btn btn-big btn-style-5" onClick={()=>props.changeView('signup')}>Register </a>
+      <div className="head-btn">
+        <a  className="btn btn-big btn-style-5" onClick={()=>props.changeView('signup')}>Register </a>
+      </div>
+      <div className="head-btn">
+        <a  className="btn btn-big btn-style-5" onClick={()=>props.changeView('home')}>Home </a>
       </div>
     
     </div>
