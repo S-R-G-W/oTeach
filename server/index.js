@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/user", usersRouter);
-app.use("/user", groupRouter);
+app.use("/group", groupRouter);
 
 app.listen(port, () => {
   console.log(`listening on port  ${port}`);

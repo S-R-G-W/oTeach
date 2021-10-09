@@ -10,14 +10,14 @@ export default class UserGroups extends Component {
   }
 
   getGroup(id) {
-    axios.get(`http://localhost:8000/user/group/${id}`).then((response) => {
-      console.log(response.data);
+    axios.get(`http://localhost:8000/group/group/${id}`).then((response) => {
+   
       var copy = [...this.state.groups];
       copy.push(response.data);
       this.setState({
         groups: copy,
       });
-      console.log(this.state.groups);
+    
     });
   }
 

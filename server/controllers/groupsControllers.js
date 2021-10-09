@@ -4,9 +4,10 @@ const user = require("../models/usersModel");
 
 exports.retrieve = function (req, res) {
   Groups.find({})
-    .then((data) => res.send(data))
-    .catch((err) => res.send(err));
+    .then((data) => res.status(200).send(data))
+    .catch((err) => res.status(400).send(err));
 };
+
 
 exports.retrieveOne = function (req, res) {
   Groups.findOne({ _id: req.params.id })
