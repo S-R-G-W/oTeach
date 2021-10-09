@@ -46,7 +46,7 @@ export default class Lecture extends Component {
           onChange={this.handleChange}
         />
         <button
-          onClick={()=>this.createLecture}
+          onClick={this.createLecture}
         >
           Create Lecture
         </button>
