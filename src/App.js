@@ -7,13 +7,12 @@ import User from "./components/mainComponent/User/User";
 import Home from "./components/mainComponent/home/Home";
 import Nav from "./components/navbar/navbarsimple/Nav";
 import Nav2 from "./components/navbar/nav2/Nav2";
-import Profil from './components/mainComponent/User/userComponents/Profile/Profil'
-import UpdateProfile from './components/mainComponent/User/userComponents/Profile/update/UpdateProfile';
-import CreateGroups from './components/mainComponent/User/userComponents/createGroup/createGroups';
+import Profil from "./components/mainComponent/User/userComponents/Profile/Profil";
+import UpdateProfile from "./components/mainComponent/User/userComponents/Profile/update/UpdateProfile";
+import CreateGroups from "./components/mainComponent/User/userComponents/createGroup/createGroups";
 import GroupAdmin from "./components/mainComponent/User/userComponents/groupComponents/groupadmin/GroupAdmin";
 import GroupUser from "./components/mainComponent/User/userComponents/groupComponents/groupUser/GroupUser";
-import axios from 'axios'
-
+import axios from "axios";
 
 export default class App extends Component {
   constructor() {
@@ -38,13 +37,10 @@ export default class App extends Component {
 
   }
 
-
-
-
   handleGroup(obj) {
     this.setState({
-      group:obj
-    })
+      group: obj,
+    });
   }
 
   renderGroup(){
@@ -65,18 +61,18 @@ export default class App extends Component {
   }
   signup(data) {
     this.setState({
-      view: 'user',
-      navView: 'user',
-      user: data
-    })
+      view: "user",
+      navView: "user",
+      user: data,
+    });
   }
 
   login(data) {
     this.setState({
-      view: 'user',
-      navView: 'user',
-      user: data
-    })
+      view: "user",
+      navView: "user",
+      user: data,
+    });
   }
 
   renderNavView() {
@@ -87,7 +83,6 @@ export default class App extends Component {
     else {
       return <Nav changeView={this.changeView} />;
     }
-
   }
   changeNavView(option) {
     this.setState({
@@ -97,41 +92,42 @@ export default class App extends Component {
 
   renderView() {
     const view = this.state.view;
-    console.log(view)
+    console.log(view);
     if (view === "user") {
-      return (<Switch>
-
-        <Route path="/CreateGroup">
-          <CreateGroups user={this.state.user} />
-        </Route>
-        <Route path="/Profile">
-          <Profil user={this.state.user} />
-        </Route>
-        <Route path="/UpdateProfile">
-          <UpdateProfile changeView={this.changeView} user={this.state.user} />
-        </Route>
-        <Route path="/group">
-          {this.renderGroup}
-        </Route>
-        <Route path="/">
-          <User handleGroup={this.handleGroup} user={this.state.user} />
-        </Route>
-      </Switch>)
-    }
-    else {
-      return (<Switch>
-
-        <Route path="/signup">
-          <SignUp signup={this.signup} />
-        </Route>
-        <Route path="/login">
-          <Login changeView={this.changeView} login={this.login} />
-        </Route>
-        <Route path="/">
-          <Home user={this.state.user} />
-        </Route>
-
-      </Switch>)
+      return (
+        <Switch>
+          <Route path="/CreateGroup">
+            <CreateGroups user={this.state.user} />
+          </Route>
+          <Route path="/Profile">
+            <Profil user={this.state.user} />
+          </Route>
+          <Route path="/UpdateProfile">
+            <UpdateProfile
+              changeView={this.changeView}
+              user={this.state.user}
+            />
+          </Route>
+          <Route path="/group">{this.renderGroup}</Route>
+          <Route path="/">
+            <User handleGroup={this.handleGroup} user={this.state.user} />
+          </Route>
+        </Switch>
+      );
+    } else {
+      return (
+        <Switch>
+          <Route path="/signup">
+            <SignUp signup={this.signup} />
+          </Route>
+          <Route path="/login">
+            <Login changeView={this.changeView} login={this.login} />
+          </Route>
+          <Route path="/">
+            <Home user={this.state.user} />
+          </Route>
+        </Switch>
+      );
     }
   }
 
@@ -145,9 +141,7 @@ export default class App extends Component {
     return (
       <Router>
         <div>
-          <nav>
-            {this.renderNavView()}
-          </nav>
+          <nav>{this.renderNavView()}</nav>
           <br></br>
           <br></br>
           <br></br>
