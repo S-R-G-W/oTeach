@@ -15,13 +15,7 @@ exports.retrieveOne = function (req, res) {
 };
 
 exports.create = function (req, res) {
- 
-  const newLecture = new Lectures({
-    name: req.body.name,
-    description: req.body.description,
-    videoUrl: req.body.videoUrl,
-    groupId: req.body.groupId,
-  });
+  const newLecture = new Lectures(req.body);
   newLecture.save()
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
