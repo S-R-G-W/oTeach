@@ -11,45 +11,51 @@ export default class GroupAdmin extends Component {
       members: [],
       requests: [],
       group: this.props.group,
+      lecture: {},
     };
     this.getlectures = this.getlectures.bind(this);
+    this.handleLecture = this.handleLecture.bind(this);
   }
 
   componentDidMount() {
-    this.getlectures();
+    this.state.group.lecturesId.map((id) => this.getlectures(id));
   }
 
-  getmembers() {
-    var memberarr = [];
-    this.state.group.membersId
-      .map((userId) =>
-        axios
-          .get(`http://localhost:8000/user/${userId}`)
-          .then((data) => memberarr.push(data.data))
-      )
-      .then(() =>
-        this.setState({
-          members: memberarr,
-        })
-      );
-  }
-  getlectures() {
-    var lecturearr = [...this.state.lectures];
-    this.state.group.lecturesId.map((lectureId) => {
-      axios
-        .get(`http://localhost:8000/lecture/${lectureId}`)
-        .then((data) => lecturearr.push(data.data));
-    });
-    return lecturearr;
-  }
-  getrequests() {
-    var requestsarr = [];
-    this.state.group.requestsId.map((requestId) => {
-      axios
-        .get(`http://localhost:8000/user/${requestId}`)
-        .then((data) => requestsarr.push(data.data));
+  handleLecture(obj) {
+    console.log(obj);
+    this.setState({
+      lecture: obj,
     });
   }
+
+  getmembers(id) {
+    axios.get(`http://localhost:8000/user/${id}`).then((data) => {
+      var memberscopy = [...this.state.members];
+      memberscopy.push(data.data);
+      this.setState({
+        members: memberscopy,
+      });
+    });
+  }
+  getlectures(id) {
+    axios.get(`http://localhost:8000/lecture/${id}`).then((data) => {
+      var lecturecopy = [...this.state.lectures];
+      lecturecopy.push(data.data);
+      this.setState({
+        lectures: lecturecopy,
+      });
+    });
+  }
+  // getrequests() {
+  //     var requestsarr = []
+  //     this.state.group.requestsId.map((requestId) => {
+  //         axios.get(`http://localhost:8000/user/${requestId}`)
+  //             .then((data) => requestsarr.push(data.data))
+  //     })
+  //         .then(() => this.setState({
+  //             requests: requestsarr
+  //         }))
+  // }
 
   render() {
     return (
@@ -59,15 +65,19 @@ export default class GroupAdmin extends Component {
             <Lecture group={this.props.group} />
             <Link to="/">back to group</Link>
           </Route>
-          <Route path="/see lecture">
-            <LectureDisplay group={this.props.group} />
-            <Link to="/">back to group</Link>
-          </Route>
           <Route path="/">
             <div className="App">
               <h1>{this.props.group.name}</h1>
               <Link to="create lecture">create lecture</Link>
-              <div></div>
+              <div>
+                <ul>
+                  {this.state.lectures.map((lec, key) => (
+                    <li onClick={() => this.handleLecture(lec)} key={key}>
+                      {lec.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </Route>
         </Switch>
