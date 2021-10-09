@@ -30,7 +30,7 @@ export default class CreateGroups extends Component {
         // this adminId should be brought from the user that is logged in
         adminId: this.state.adminId,
       })
-      .then((res) => console.log(res))
+      .then((res) =>alert('group created'))
       .catch((err) => console.log(err));
   }
 

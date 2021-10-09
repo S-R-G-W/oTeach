@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import SignUp from "./components/mainComponent/signup/signup.js";
 import Login from "./components/mainComponent/login/Login.js";
@@ -6,16 +7,20 @@ import User from "./components/mainComponent/User/User"
 import Home from "./components/mainComponent/home/Home"
 import Nav from "./components/navbar/navbarsimple/Nav";
 import Nav2 from "./components/navbar/nav2/Nav2";
+import Profil from './components/mainComponent/User/userComponents/Profile/Profil'
+import UpdateProfile from './components/mainComponent/User/userComponents/Profile/update/UpdateProfile';
+import CreateGroups from './components/mainComponent/User/userComponents/createGroup/createGroups';
+
 import axios from 'axios'
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: "login",
+      view: "home",
       navView: "",
       user: {},
-      
+
     };
 
     this.changeView = this.changeView.bind(this);
@@ -24,16 +29,20 @@ export default class App extends Component {
     this.changeNavView = this.changeNavView.bind(this);
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
-    
+    this.handleHome = this.handleHome.bind(this)
+
   }
- componentDidMount(){
-   axios.get('http://localhost:8000/user')
-   .then((data)=>console.log(data))
- }
+
+  handleHome() {
+
+  }
+
+
+
   signup(data) {
     this.setState({
       view: 'user',
-      navView:'user',
+      navView: 'user',
       user: data
     })
   }
@@ -41,20 +50,20 @@ export default class App extends Component {
   login(data) {
     this.setState({
       view: 'user',
-      navView:'user',
+      navView: 'user',
       user: data
     })
   }
 
   renderNavView() {
     const { navView } = this.state;
-    if(navView==="user"){
-      return <Nav2  />
+    if (navView === "user") {
+      return <Nav2 handleHome={this.handleHome} />
     }
-    else{
-      return <Nav changeView={this.changeView}/>;
+    else {
+      return <Nav changeView={this.changeView} />;
     }
-    
+
   }
   changeNavView(option) {
     this.setState({
@@ -64,16 +73,38 @@ export default class App extends Component {
 
   renderView() {
     const view = this.state.view;
-    if (view === "signup") {
-      return <SignUp signup={this.signup} />;
-    } else if (view === "login") {
-      return <Login changeView={this.changeView} login={this.login} />;
+    console.log(view)
+    if (view === "user") {
+      return (<Switch>
+
+        <Route path="/CreateGroup">
+          <CreateGroups user={this.state.user} />
+        </Route>
+        <Route path="/Profile">
+          <Profil user={this.state.user} />
+        </Route>
+        <Route path="/UpdateProfile">
+          <UpdateProfile changeView={this.changeView}  user={this.state.user} />
+        </Route>
+        <Route path="/">
+          <User user={this.state.user} />
+        </Route>
+      </Switch>)
     }
-    else if(view === 'user') {
-      return <User changeView={this.changeView} user={this.state.user} />;
-    }
-    else{
-      return <Home user={this.state.user} />
+    else {
+      return (<Switch>
+
+        <Route path="/signup">
+          <SignUp signup={this.signup} />
+        </Route>
+        <Route path="/login">
+          <Login changeView={this.changeView} login={this.login} />
+        </Route>
+        <Route path="/">
+          <Home user={this.state.user} />
+        </Route>
+
+      </Switch>)
     }
   }
 
@@ -85,15 +116,19 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        <div>{this.renderNavView()}</div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div>{this.renderView()}</div>
-      </div>
+      <Router>
+        <div>
+          <nav>
+            {this.renderNavView()}
+          </nav>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          {this.renderView()}
+        </div>
+      </Router>
     );
   }
 }

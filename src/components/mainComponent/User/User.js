@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import "./User.css";
-import CreateGroups from './userComponents/createGroup/createGroups';
 import UserGroups from './userComponents/groupComponents/userGroups/userGroups';
-import Profil from './userComponents/Profile/Profil'
-import UpdateProfile from './userComponents/Profile/update/UpdateProfile';
+import {Link } from "react-router-dom";
+
 
 
 
@@ -13,30 +12,15 @@ export default class User extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      view: 'user',
       user:this.props.user
     }
-    this.changeView = this.changeView.bind(this)
+    
   }
 
 
-  changeView(option) {
-    this.setState({
-      view: option,
-    });
-  }
-  renderView() {
-    const view = this.state.view;
-    if(view === 'createGroup'){
-      return <CreateGroups user={this.props.user}/>
-    }
-    else if(view === 'profile'){
-      return <Profil user={this.state.user} changeView={this.changeView} />
-    }
-    else if(view === 'updateProfile'){
-      return <UpdateProfile changeView={this.props.changeView} user={this.state.user}/>
-    }
-    else{
+ 
+
+  render() {
     return (
       <div className="page-section">
         
@@ -80,7 +64,7 @@ export default class User extends Component {
               
               <div className="entry-body">
                     
-                <h5 className="entry-title"><a onClick={()=>this.changeView('createGroup')}>Create Group</a></h5>
+                <h5 className="entry-title"><Link to="/CreateGroup"><a>Create Group</a></Link></h5>
                 <div className="entry-meta">
                   
                   
@@ -120,18 +104,7 @@ export default class User extends Component {
       </div>
   
     </div>
-    )
-
-  }
-}
-
-  render() {
-    return(
-      <div>
-        {this.renderView()}
-      </div>
-    )
-  }
+    )}
 }
 
 

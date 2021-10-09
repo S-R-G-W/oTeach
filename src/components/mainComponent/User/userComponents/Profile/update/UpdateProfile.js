@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from "react-router-dom";
 
 export default class UpdateProfile extends Component {
   constructor(props){
@@ -20,7 +21,15 @@ export default class UpdateProfile extends Component {
 
   hundleUpdate(){
   axios.put(`http://localhost:8000/user/update/${this.props.user._id}`,this.state)
-  .then((data)=>this.props.changeView('login'))
+  .then((data)=>  {
+    if(window.confirm('updated')){
+      this.props.changeView('home')
+    }
+    else{
+      this.props.changeView('home')
+    }
+
+})
   .catch((err)=>{alert(err)})
   }
 
@@ -43,7 +52,7 @@ export default class UpdateProfile extends Component {
           onChange={this.handleChange}
         />
         <br />
-        <button onClick={this.hundleUpdate} >update</button>
+        <Link to="/login"><button onClick={this.hundleUpdate} >update</button></Link>
       </div>
     )
   }
