@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import axios from "axios";
 
@@ -16,7 +15,8 @@ export default class Lecture extends Component {
   }
 
   createLecture() {
-    axios.post("http://localhost:8000/lecture",this.state )
+    axios
+      .post("http://localhost:8000/lecture", this.state)
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
   }

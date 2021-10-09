@@ -1,5 +1,5 @@
-
 const Lectures = require("../models/lecturesModel");
+const Group = require("../models/groupsModel");
 
 exports.retrieve = function (req, res) {
   Lectures.find({})
@@ -16,8 +16,20 @@ exports.retrieveOne = function (req, res) {
 
 exports.create = function (req, res) {
   const newLecture = new Lectures(req.body);
-  newLecture.save()
-    .then((data) => res.send(data))
+  let lectureData;
+  let groupArray;
+  newLecture
+    .save()
+    .then((data) => (lectureData = data))
+    .then(() => Group.findOne({ _id: lectureData.groupId }))
+    .then((res) => (groupArray = res.lecturesId))
+    .then(() => groupArray.push(lectureData._id))
+    .then(() =>
+      Group.findByIdAndUpdate(
+        { _id: lectureData.groupId },
+        { lecturesId: groupArray }
+      )
+    )
     .catch((err) => res.send(err));
 };
 
