@@ -32,7 +32,7 @@ var Nav2 = (props) => {
             </div>
 
             <div className="head-btn">
-            <a className="btn btn-big btn-style-5" >Log OUT </a>
+            <Link to="/login" className="btn btn-big btn-style-5" onClick={()=>props.logout()} >Log OUT </Link>
             </div>
 
 

@@ -31,6 +31,7 @@ export default class App extends Component {
     this.changeNavView = this.changeNavView.bind(this);
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
+    this.logout=this.logout.bind(this)
     this.handleGroup=this.handleGroup.bind(this)
     this.renderGroup=this.renderGroup.bind(this)
 
@@ -48,14 +49,20 @@ export default class App extends Component {
 
   renderGroup(){
     if(this.state.group.adminId === this.state.user._id) {
-      return <GroupAdmin />
+      return <GroupAdmin group={this.state.group} />
     }
     else{
-      return <GroupUser />
+      return <GroupUser group={this.state.group} />
     }
   }
 
-
+  logout() {
+    this.setState({
+      view: 'home',
+      navView: 'home',
+      user: {}
+    })
+  }
   signup(data) {
     this.setState({
       view: 'user',
@@ -75,7 +82,7 @@ export default class App extends Component {
   renderNavView() {
     const { navView } = this.state;
     if (navView === "user") {
-      return <Nav2 handleHome={this.handleHome} />
+      return <Nav2  logout={this.logout} />
     }
     else {
       return <Nav changeView={this.changeView} />;
