@@ -6,13 +6,12 @@ import User from "./components/mainComponent/User/User"
 import Home from "./components/mainComponent/home/Home"
 import Nav from "./components/navbar/navbarsimple/Nav";
 import Nav2 from "./components/navbar/nav2/Nav2";
-import axios from 'axios'
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: "login",
+      view: "home",
       navView: "",
       user: {},
       
@@ -26,10 +25,7 @@ export default class App extends Component {
     this.login = this.login.bind(this);
     
   }
- componentDidMount(){
-   axios.get('http://localhost:8000/user')
-   .then((data)=>console.log(data))
- }
+ 
   signup(data) {
     this.setState({
       view: 'user',
@@ -64,6 +60,7 @@ export default class App extends Component {
 
   renderView() {
     const view = this.state.view;
+    console.log(view);
     if (view === "signup") {
       return <SignUp signup={this.signup} />;
     } else if (view === "login") {
@@ -72,8 +69,8 @@ export default class App extends Component {
     else if(view === 'user') {
       return <User changeView={this.changeView} user={this.state.user} />;
     }
-    else{
-      return <Home user={this.state.user} />
+    else if(view==='home'){
+      return <Home user={this.state.user} />;
     }
   }
 
