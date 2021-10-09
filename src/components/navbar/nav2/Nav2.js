@@ -24,7 +24,7 @@ var Nav2 = (props) => {
           <div className="header-btns">
 
             <div className="head-btn">
-              <Link to="/" className="btn btn-big btn-style-5">Home </Link>
+              <Link to="/" className="btn btn-big btn-style-5">Groups </Link>
             </div>
 
             <div className="head-btn">

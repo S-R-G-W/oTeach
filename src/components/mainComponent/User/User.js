@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import "./User.css";
-import UserGroups from './userComponents/groupComponents/userGroups/userGroups';
+import UserGroups from './userComponents/userGroups/userGroups';
 import {Link } from "react-router-dom";
-
-
-
 
 
 
@@ -17,8 +14,6 @@ export default class User extends Component {
     
   }
 
-
- 
 
   render() {
     return (
@@ -83,16 +78,9 @@ export default class User extends Component {
           <div className="entry-col">
   
             <div className="entry">
-                  
-          
-              
-              <div className="entry-body">
-                  <UserGroups user={this.state.user}/>  
-                
-               
-        
-              </div>
-                    
+            
+                  <UserGroups handleGroup={this.props.handleGroup} user={this.state.user}/>  
+                 
             </div>
   
           </div>

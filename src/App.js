@@ -10,6 +10,9 @@ import Nav2 from "./components/navbar/nav2/Nav2";
 import Profil from './components/mainComponent/User/userComponents/Profile/Profil'
 import UpdateProfile from './components/mainComponent/User/userComponents/Profile/update/UpdateProfile';
 import CreateGroups from './components/mainComponent/User/userComponents/createGroup/createGroups';
+import GroupAdmin from "./components/mainComponent/User/userComponents/groupComponents/groupadmin/GroupAdmin";
+import GroupUser from "./components/mainComponent/User/userComponents/groupComponents/groupUser/GroupUser";
+import axios from 'axios'
 
 
 export default class App extends Component {
@@ -19,6 +22,7 @@ export default class App extends Component {
       view: "home",
       navView: "",
       user: {},
+      group: {},
     };
 
     this.changeView = this.changeView.bind(this);
@@ -27,14 +31,29 @@ export default class App extends Component {
     this.changeNavView = this.changeNavView.bind(this);
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
-    this.handleHome = this.handleHome.bind(this)
+    this.handleGroup=this.handleGroup.bind(this)
+    this.renderGroup=this.renderGroup.bind(this)
+
 
   }
 
-  handleHome() {
 
+
+
+  handleGroup(obj) {
+    this.setState({
+      group:obj
+    })
   }
 
+  renderGroup(){
+    if(this.state.group.adminId === this.state.user._id) {
+      return <GroupAdmin />
+    }
+    else{
+      return <GroupUser />
+    }
+  }
 
 
   signup(data) {
@@ -82,10 +101,13 @@ export default class App extends Component {
           <Profil user={this.state.user} />
         </Route>
         <Route path="/UpdateProfile">
-          <UpdateProfile changeView={this.changeView}  user={this.state.user} />
+          <UpdateProfile changeView={this.changeView} user={this.state.user} />
+        </Route>
+        <Route path="/group">
+          {this.renderGroup}
         </Route>
         <Route path="/">
-          <User user={this.state.user} />
+          <User handleGroup={this.handleGroup} user={this.state.user} />
         </Route>
       </Switch>)
     }
