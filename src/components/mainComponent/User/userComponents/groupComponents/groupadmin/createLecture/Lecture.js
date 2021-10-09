@@ -45,7 +45,11 @@ export default class Lecture extends Component {
           placeholder="videoUrl"
           onChange={this.handleChange}
         />
-        <button onClick={() => this.createLecture}>Create Lecture</button>
+        <button
+          onClick={this.createLecture}
+        >
+          Create Lecture
+        </button>
       </div>
     );
   }
