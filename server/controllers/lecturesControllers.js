@@ -1,4 +1,4 @@
-const { response } = require("express");
+
 const Lectures = require("../models/lecturesModel");
 
 exports.retrieve = function (req, res) {
@@ -15,15 +15,14 @@ exports.retrieveOne = function (req, res) {
 };
 
 exports.create = function (req, res) {
+ 
   const newLecture = new Lectures({
     name: req.body.name,
     description: req.body.description,
     videoUrl: req.body.videoUrl,
     groupId: req.body.groupId,
-    isShowen: req.body.isShowen,
   });
-  newLecture
-    .save()
+  newLecture.save()
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 };
