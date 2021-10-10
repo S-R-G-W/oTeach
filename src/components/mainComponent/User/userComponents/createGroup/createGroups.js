@@ -1,5 +1,5 @@
 import axios from "axios";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { Component } from "react";
 
 export default class CreateGroups extends Component {
@@ -20,36 +20,71 @@ export default class CreateGroups extends Component {
       [e.target.name]: e.target.value,
     });
   }
- 
+
   createGroup() {
-    if(this.state.name!==''){
-      axios.post("http://localhost:8000/group/group", this.state)
-      .then((data)=>this.props.fetch())
-      .catch((err) => alert('error creating the group'))
+    if (this.state.name !== "") {
+      axios
+        .post("http://localhost:8000/group/group", this.state)
+        .then((data) => this.props.fetch())
+        .catch((err) => alert("error creating the group"));
+    } else {
+      alert("empty field");
     }
-    else{
-      alert('empty field')
-    }
-    
   }
 
   render() {
     return (
-      <div className="App">
-        <input
-        value={this.state.name}
+     <div>
+<section>
+  <div id="lgx-teachers" class="lgx-teachers">
+    <div class="lgx-inner">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <div class="lgx-registration-area">
+              <div class="lgx-registration">
+                <div class="lgx-heading lgx-heading-white">
+                  <h2 class="question-text">Create your Group</h2>
+                </div>
+             
+                 
+
+                <div class="form-group">
+                 
+                   <input
+                     class="form-control"
+          value={this.state.name}
           type="text"
           name="name"
           placeholder="Group name here !"
           onChange={this.handleChange}
         />
-        <Link to="/">
-           <button
-          onClick={() => {this.createGroup()}}>
-          Create
-        </button>
-        </Link>
+                </div>
+
+                <Link to="/">
+                  <button
+                    class="lgx-btn lgx-btn-registration"
+                    onClick={() => {
+                      this.createGroup();
+                    }}
+                  >
+                    Create
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+  
+</section>
+
+     </div>
+      
+    
     );
   }
 }
+

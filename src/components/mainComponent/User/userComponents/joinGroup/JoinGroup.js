@@ -73,24 +73,44 @@ export default class JoinGroup extends Component {
   render() {
     return (
       <div>
-        <h3>Join A Group :</h3>
-        <ul>
-          <li>
-            {this.state.groupsToJoin.map((group, i) => (
-              <li key={i}>
+     <section>
+  <div id="lgx-teachers" class="lgx-teachers">
+    <div class="lgx-inner">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <div class="lgx-registration-area">
+              <div class="lgx-registration">
+              <h3>Join A Group </h3>
+                <div class="form-group">
+                 
+                 
+                </div>
+
+                {this.state.groupsToJoin.map((group, i) => (
+              <div  key={i}>
                 {group.name}
-                {"       "}
                 <button
+                class="lgx-btn lgx-btn-registration"
                  change={() => this.joinRequestId()}
                   onClick={() => this.joinRequest(group)}
                 >
-                  Join Request
+                  Join
                 </button>
-              </li>
+              </div>
             ))}
-          </li>
-        </ul>
+            
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  </div>
+  
+</section>
+ 
+</div>
+    )}
+     
+                }
