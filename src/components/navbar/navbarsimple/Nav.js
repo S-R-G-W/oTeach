@@ -55,9 +55,9 @@ var Nav = (props) => {
                                               </div>
                                               <div class="collapse navbar-collapse">
                                                   <ul class="nav navbar-nav lgx-nav">
-                                                      <li><a class="lgx-scroll" ><Link to="/login" >Login</Link></a></li>
-                                                      <li><a class="lgx-scroll" ><Link to="/signup" >Register </Link></a></li>
-                                                      <li><a class="lgx-scroll"><Link to="/">Home </Link></a></li>
+                                                      <li><Link class="lgx-scroll" to="/login" >Login</Link></li>
+                                                      <li><Link class="lgx-scroll" to="/signup" >Register </Link></li>
+                                                      <li><Link class="lgx-scroll" to="/">Home </Link></li>
                                                       <li class="hidden-xs"><a href="#toggle-search" class="search-animate"><span class="glyphicon glyphicon-search"></span></a></li>
                                                   </ul>
                                               </div>
@@ -82,6 +82,7 @@ var Nav = (props) => {
                   </div>
               </div>
           </div>
+     
       </header>
     
     </div>

@@ -2,55 +2,55 @@ import React from "react";
 import { Link } from "react-router-dom";
 var Nav2 = (props) => {
   return (
-    <div class="lgx-container ">
+    <div className="lgx-container ">
       <header>
-        <div id="lgx-header" class="lgx-header">
-          <div class="header-top">
-            <div class="header-top-inner">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="contact">
-                      <ul class="list-inline">
+        <div id="lgx-header" className="lgx-header">
+          <div className="header-top">
+            <div className="header-top-inner">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="contact">
+                      <ul className="list-inline">
                         <li>
-                          <span class="question-text">Questions?</span>{" "}
-                          <i class="fa fa-phone" aria-hidden="true"></i> +123
+                          <span className="question-text">Questions?</span>{" "}
+                          <i className="fa fa-phone" aria-hidden="true"></i> +123
                           125 145{" "}
                         </li>
                         <li>
-                          <i class="fa fa-envelope" aria-hidden="true"></i>{" "}
+                          <i className="fa fa-envelope" aria-hidden="true"></i>{" "}
                           username@domain.com
                         </li>
                       </ul>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="right-menu">
-                      <ul class="list-inline">
+                  <div className="col-md-6">
+                    <div className="right-menu">
+                      <ul className="list-inline">
                         <li>
                           <a href="#">
-                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                            <i className="fa fa-twitter" aria-hidden="true"></i>
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                            <i className="fa fa-facebook-f" aria-hidden="true"></i>
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                            <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                            <i className="fa fa-pinterest-p" aria-hidden="true"></i>
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                            <i class="fa fa-google" aria-hidden="true"></i>
+                            <i className="fa fa-google" aria-hidden="true"></i>
                           </a>
                         </li>
                         <li>
                           <a href="#">
                             <i
-                              class="fa fa-youtube-play"
+                              className="fa fa-youtube-play"
                               aria-hidden="true"
                             ></i>
                           </a>
@@ -62,42 +62,42 @@ var Nav2 = (props) => {
               </div>
             </div>
           </div>
-          <div class="lgx-header-bottom lgx-header-bottom-fixed-black lgx-header-bottom-fixed-transparent lgx-header-bottom-scrol-black">
-            <div class="container">
-              <div class="row">
-                <div class="col-xs-12">
-                  <nav class="navbar navbar-default lgx-navbar">
-                    <div class="container">
-                      <nav class="navbar navbar-default lgx-navbar lgx-navbar-search">
-                        <div class="lgxcontainer">
-                          <div class="navbar-header">
+          <div className="lgx-header-bottom lgx-header-bottom-fixed-black lgx-header-bottom-fixed-transparent lgx-header-bottom-scrol-black">
+            <div className="container">
+              <div className="row">
+                <div className="col-xs-12">
+                  <nav className="navbar navbar-default lgx-navbar">
+                    <div className="container">
+                      <nav className="navbar navbar-default lgx-navbar lgx-navbar-search">
+                        <div className="lgxcontainer">
+                          <div className="navbar-header">
                             <button
                               type="button"
-                              class="navbar-toggle"
+                              className="navbar-toggle"
                               data-toggle="collapse"
                               data-target=".navbar-collapse"
                             >
-                              <span class="sr-only">Toggle navigation</span>
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span>
+                              <span className="sr-only">Toggle navigation</span>
+                              <span className="icon-bar"></span>
+                              <span className="icon-bar"></span>
+                              <span className="icon-bar"></span>
                             </button>
                             <a
                               href="#toggle-search"
-                              class="hidden-lg hidden-md hidden-sm lgx-search-mobile search-animate"
+                              className="hidden-lg hidden-md hidden-sm lgx-search-mobile search-animate"
                             >
-                              <span class="glyphicon glyphicon-search"></span>
+                              <span className="glyphicon glyphicon-search"></span>
                             </a>
                           </div>
-                          <div class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav lgx-nav">
+                          <div className="collapse navbar-collapse">
+                            <ul className="nav navbar-nav lgx-nav">
                               <li>
-                                <a class="lgx-scroll">
+                                <a className="lgx-scroll">
                                   <Link to="/" className="btn btn-big btn-style-5"> Groups  </Link>                               
                                 </a>
                               </li>
                               <li>
-                                <a class="lgx-scroll">
+                                <a className="lgx-scroll">
                                   <Link
                                     to="/Profile"
                                     className="btn btn-big btn-style-5"
@@ -108,7 +108,7 @@ var Nav2 = (props) => {
                                 </a>
                               </li>
                               <li>
-                                <a class="lgx-scroll">
+                                <a className="lgx-scroll">
                                   <Link
                                     to="/login"
                                     className="btn btn-big btn-style-5"
@@ -119,27 +119,27 @@ var Nav2 = (props) => {
                                   </Link>
                                 </a>
                               </li>
-                              <li class="hidden-xs">
-                                <a href="#toggle-search" class="search-animate">
-                                  <span class="glyphicon glyphicon-search"></span>
+                              <li className="hidden-xs">
+                                <a href="#toggle-search" className="search-animate">
+                                  <span className="glyphicon glyphicon-search"></span>
                                 </a>
                               </li>
                             </ul>
                           </div>
                         </div>
-                        <div class="lgx-menu-search search-animate">
-                          <div class="container">
+                        <div className="lgx-menu-search search-animate">
+                          <div className="container">
                             <form action="#" method="GET" role="search">
-                              <div class="input-group">
+                              <div className="input-group">
                                 <input
                                   type="text"
-                                  class="form-control"
+                                  className="form-control"
                                   name="q"
                                   placeholder="Search for snippets and hit enter"
                                 />
-                                <span class="input-group-btn">
-                                  <button class="btn btn-danger" type="reset">
-                                    <span class="glyphicon glyphicon-remove"></span>
+                                <span className="input-group-btn">
+                                  <button className="btn btn-danger" type="reset">
+                                    <span className="glyphicon glyphicon-remove"></span>
                                   </button>
                                 </span>
                               </div>

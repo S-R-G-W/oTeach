@@ -60,7 +60,7 @@ export default class signup extends Component {
   
                       <div class="col-xs-12 col-md-8 col-md-offset-2">
                           <div class="lgx-registration-area">
-                              <form class="lgx-registration">
+                              <div class="lgx-registration">
                               <div class="lgx-heading lgx-heading-white">
                                       <h2 class="question-text">Create your account</h2>
                                   </div>
@@ -79,7 +79,7 @@ export default class signup extends Component {
                                   </div>
   
                                   <button   class="lgx-btn lgx-btn-registration" onClick={this.signupToDataBase}>Submit</button>
-                              </form>
+                              </div>
                           </div>
                       </div>
   

@@ -63,9 +63,9 @@ export default class Login extends Component {
       
                           <div class="col-xs-12 col-md-8 col-md-offset-2">
                               <div class="lgx-registration-area">
-                                  <form class="lgx-registration">
+                                  <div class="lgx-registration">
                                   <div class="lgx-heading lgx-heading-white">
-                                      <h2 class="question-text">Login</h2>
+                                      <h2 class="lgx-scroll">Login</h2>
                                   </div>
                                   
       
@@ -78,7 +78,7 @@ export default class Login extends Component {
                                       </div>
       
                                       <button   class="lgx-btn lgx-btn-registration" onClick={this.hundleLogin}>Login</button>
-                                  </form>
+                                  </div>
                               </div>
                           </div>
       
