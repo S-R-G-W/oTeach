@@ -33,24 +33,6 @@ export default class signup extends Component {
   render() {
     return (
          <div> 
-      <section>
-      <div class="lgx-banner lgx-banner-inner">
-          <div class="lgx-inner">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-xs-12">
-                          <div class="lgx-heading-area">
-                            
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-  
-  
-  
 
   <section>
       <div id="lgx-teachers" class="lgx-teachers">
@@ -185,3 +167,9 @@ export default class signup extends Component {
     );
   }
 }
+
+
+
+
+
+

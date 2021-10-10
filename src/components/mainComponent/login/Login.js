@@ -18,7 +18,8 @@ export default class Login extends Component {
 
   hundleLogin() {
     if (this.state.email !== "" && this.state.password !== "") {
-      axios.post("http://localhost:8000/user/login", this.state)
+      axios
+        .post("http://localhost:8000/user/login", this.state)
         .then((user) => {
           if (user.data) {
             this.props.login(user.data);
@@ -34,23 +35,7 @@ export default class Login extends Component {
     return (
       <div class="lgx-container ">
        
-            
-      <section>
-          <div class="lgx-banner lgx-banner-inner">
-              <div class="lgx-inner">
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-xs-12">
-                              <div class="lgx-heading-area">
-                             
-                                  
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
+
       
       
       

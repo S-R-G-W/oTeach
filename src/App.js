@@ -13,7 +13,7 @@ import CreateGroups from "./components/mainComponent/User/userComponents/createG
 import GroupAdmin from "./components/mainComponent/User/userComponents/groupComponents/groupadmin/GroupAdmin";
 import GroupUser from "./components/mainComponent/User/userComponents/groupComponents/groupUser/GroupUser";
 import axios from "axios";
-
+import JoinGroup from "./components/mainComponent/User/userComponents/joinGroup/JoinGroup"
 export default class App extends Component {
   constructor() {
     super();
@@ -157,6 +157,9 @@ export default class App extends Component {
         <Switch>
           <Route path="/CreateGroup">
             <CreateGroups fetch={this.fetch} user={this.state.user} />
+          </Route>
+          <Route path="/JoinGroup">
+          <JoinGroup  user={this.state.user}  />
           </Route>
           <Route path="/Profile">
             <Profil user={this.state.user} />

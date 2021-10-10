@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import "./User.css";
-import UserGroups from './userComponents/userGroups/userGroups';
+import UserCreatedGroups from './userComponents/userGroups/userCreatedGroups';
+import UserJoinedGroups from './userComponents/userGroups/userJoinedGroups';
 import { Link } from "react-router-dom";
 import axios from 'axios'
 
@@ -8,7 +9,7 @@ import axios from 'axios'
 
 export default class User extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       
     };
@@ -18,147 +19,110 @@ export default class User extends Component {
 
   render() {
     return (
-        <section>
-        <div id="lgx-blog" class="lgx-blog lgx-blog-normal">
-            <div class="lgx-inner">
-                <div class="container">
-                    <div class="row">
-    
-                       
-                        <div class="lgx-news-single">
-                           
-                            <div class="text-area">
-                                <h3 class="title"><a href="news-single.html">The 10 best educational websites apps to learn new stuff for free Education Issues</a></h3>
-                                <p class="text">Lorem ipsum dolor sit amet, consectetuer adir elit. Aenean commodo ligula eget ...</p>
-                                <div class="hits-area">
-                                    <span class="date"></span>
-                                </div>
-                                <div class="text-bottom">
-                                    <a class="date" href="#">25 July 2016</a>
-                                    <a class="link" href="news-single.html"><i class="fa  fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
+      <div>
+
+      
+      <section>
+      <div id="lgx-services" class="lgx-blog lgx-banner "> 
+          <div class="lgx-inner">
+              <div class="container">
+              <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <div class="lgx-single-service"> 
+                            <span class="icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></span>
+                            <UserCreatedGroups  Createdgroups={this.props.Createdgroups} handleGroup={this.props.handleGroup} user={this.props.user} /> 
                         </div>
-                        <div class="lgx-news-single">
-                            
-                            <div class="text-area">
-                                <h3 class="title"><a href="news-single.html">UX Education: Designing free Online Learning Curriculum</a></h3>
-                                <p class="text">Lorem ipsum dolor sit amet, consectetuer adir elit. Aenean commodo ligula eget ...</p>
-                                <div class="hits-area">
-                                    <span class="date"></span>
-                                </div>
-                                <div class="text-bottom">
-                                    <a class="date" href="#">25 July 2016</a>
-                                    <a class="link" href="news-single.html"><i class="fa  fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="lgx-news-single">
-                         
-                            <div class="text-area">
-                                <h3 class="title"><a href="news-single.html">The digital revolution in higher education has already happened</a></h3>
-                                <p class="text">Lorem ipsum dolor sit amet, consectetuer adir elit. Aenean commodo ligula eget ...</p>
-                                <div class="hits-area">
-                                    <span class="date"></span>
-                                </div>
-                                <div class="text-bottom">
-                                    <a class="date" href="#">25 July 2016</a>
-                                    <a class="link" href="news-single.html"><i class="fa  fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="lgx-news-single">
-                            
-                            <div class="text-area">
-                                <h3 class="title"><a href="news-single.html">I no longer understand my PhD dissertation on Education</a></h3>
-                                <p class="text">Lorem ipsum dolor amet, consectetuer adir elit. Aenean commodo ligula dolor ...</p>
-                                <div class="hits-area">
-                                    <span class="date"></span>
-                                </div>
-                                <div class="text-bottom">
-                                    <a class="date" href="#">25 July 2016</a>
-                                    <a class="link" href="news-single.html"><i class="fa  fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="lgx-news-single">
-                           
-                            <div class="text-area">
-                                <h3 class="title"><a href="news-single.html">I no longer understand my PhD dissertation on Education</a></h3>
-                                <p class="text">Lorem ipsum dolor amet, consectetuer adir elit. Aenean commodo ligula dolor ...</p>
-                                <div class="hits-area">
-                                    <span class="date"></span>
-                                </div>
-                                <div class="text-bottom">
-                                    <a class="date" href="#">25 July 2016</a>
-                                    <a class="link" href="news-single.html"><i class="fa  fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="lgx-news-single">
-                           
-                            <div class="text-area">
-                                <h3 class="title"><a href="news-single.html">I no longer understand my PhD dissertation on Education</a></h3>
-                                <p class="text">Lorem ipsum dolor amet, consectetuer adir elit. Aenean commodo ligula dolor ...</p>
-                                <div class="hits-area">
-                                    <span class="date"></span>
-                                </div>
-                                <div class="text-bottom">
-                                    <a class="date" href="#">25 July 2016</a>
-                                    <a class="link" href="news-single.html"><i class="fa  fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="lgx-news-single">
-                            
-                            <div class="text-area">
-                                <h3 class="title"><a href="news-single.html">UX Education: Designing free Online Learning Curriculum</a></h3>
-                                <p class="text">Lorem ipsum dolor sit amet, consectetuer adir elit. Aenean commodo ligula eget ...</p>
-                                <div class="hits-area">
-                                    <span class="date"></span>
-                                </div>
-                                <div class="text-bottom">
-                                    <a class="date" href="#">25 July 2016</a>
-                                    <a class="link" href="news-single.html"><i class="fa  fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="lgx-news-single">
-                            
-                            <div class="text-area">
-                                <h3 class="title"><a href="news-single.html">The digital revolution in higher education has already happened</a></h3>
-                                <p class="text">Lorem ipsum dolor sit amet, consectetuer adir elit. Aenean commodo ligula eget ...</p>
-                                <div class="hits-area">
-                                    <span class="date"></span>
-                                </div>
-                                <div class="text-bottom">
-                                    <a class="date" href="#">25 July 2016</a>
-                                    <a class="link" href="news-single.html"><i class="fa  fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="lgx-news-single">
-                       
-                            <div class="text-area">
-                                <h3 class="title"><a href="news-single.html">I no longer understand my PhD dissertation on Education</a></h3>
-                                <p class="text">Lorem ipsum dolor amet, consectetuer adir elit. Aenean commodo ligula dolor ...</p>
-                                <div class="hits-area">
-                                    <span class="date"></span>
-                                </div>
-                                <div class="text-bottom">
-                                    <a class="date" href="#">25 July 2016</a>
-                                    <a class="link" href="news-single.html"><i class="fa  fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div> 
-    
                     </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="lgx-single-service"> 
+                            <span class="icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></span>
+                            <UserJoinedGroups JoinedGroups={this.props.JoinedGroups}  handleGroup={this.props.handleGroup} user={this.props.user} /> 
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                          <div class="lgx-single-service lgx-single-service"> 
+                          <span class="icon"><i class="fa fa-address-book" aria-hidden="true"></i></span>
+                              <h2 class="title"><Link to="/CreateGroup">Create Group</Link></h2>
+                              <p>Etiam vel ante ac lacus vestibulum rutrum. Aliquam vehicula, massa in auctor dapibus commodo quis vehicula lacus metus sed justo. </p>
+                              
+                          </div>
+                      </div>
+                      <div class="col-sm-6 col-md-3">
+                          <div class="lgx-single-service lgx-single-service"> 
+                              <span class="icon"><i class="fa fa-address-book" aria-hidden="true"></i></span>
+                              <h2 class="title"><Link    to="/JoinGroup">Join Group</Link></h2>
+                              <p>Etiam vel ante ac lacus vestibulum rutrum. Aliquam vehicula, massa in auctor dapibus commodo quis vehicula lacus metus sed justo. </p>
+                              
+                          </div>
+                      </div>
+                    
                 </div>
+                  
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+
+  <footer>
+    <div id="lgx-footer" class="lgx-footer">
+      
+        <div class="lgx-footer-middle"> 
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="lgx-footer-single">
+                           
+                            <address>
+                                51 Francis Street, Darlinghurst <br></br>
+                                NSW 2010, United States
+                            </address>
+                            <ul class="list-unstyled lgx-address-info">
+                                <li><i class="fa fa-phone"></i>+61 1900 654 368</li>
+                                <li><i class="fa fa-envelope"></i>office@educationplus.com</li>
+                                <li><i class="fa fa-envelope"></i>office2@educationplus.com.au</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="lgx-footer-single">
+                            <h2 class="title">The Education</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Admision Area</a></li>
+                                <li><a href="#">Guidance Documents</a></li>
+                                <li><a href="#">Help Desk</a></li>
+                                <li><a href="#">FAQ Area</a></li>
+                                <li><a href="#">Professional Point</a></li>
+                                <li><a href="#">Courses in Education</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="lgx-footer-single">
+                            <h2 class="title">Cources</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Interactive Python</a></li>
+                                <li><a href="#">Advance Oracle</a></li>
+                                <li><a href="#">Basic PHP</a></li>
+                                <li><a href="#">Electronics</a></li>
+                                <li><a href="#">Java Resources</a></li>
+                                <li><a href="#">Courses Education</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                   
+                </div>
+              
+
             </div>
+            
         </div>
-    </section>
- )}
+     
+    </div>
+</footer>
+
+</div>
+  
+  )}
 }
-
-
-
