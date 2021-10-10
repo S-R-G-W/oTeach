@@ -12,15 +12,15 @@ export default class UserGroups extends Component {
     return (
       <div className="entry-body">
 
-        <h5 className="entry-title">Created Groups :</h5>
-        <ul>
+        <h5 class="title">Created Groups :</h5>
+        
           {this.props.Createdgroups.map((group, key) =>
-            <li  onClick={()=>this.props.handleGroup(group)} key={key}><Link to="/group"> {group.name}</Link> </li>)}
-        </ul>
+            <p   onClick={()=>this.props.handleGroup(group)} key={key}><Link  to="/group"> {group.name}</Link> </p>)}
+        
         <br />
 
 
-        <h5 className="entry-title">Joined Groups :</h5>
+        <h5 class="title">Joined Groups :</h5>
         <ul>
           {this.props.JoinedGroups.map((group, key) =>
             <li key={key}>{group.name}</li>)}
