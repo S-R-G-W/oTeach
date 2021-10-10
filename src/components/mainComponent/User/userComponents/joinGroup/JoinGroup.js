@@ -64,16 +64,7 @@ export default class JoinGroup extends Component {
     swal("Join Request Has Been Sent !");
   }
 
-  // getRequestId(id) {
-  //   axios.get(`http://localhost:8000/group/group/${id}`).then((response) => {
-  //     var copy = [...this.state.requestsId];
-  //     copy.push(response.data);
-  //     this.setState({
-  //       requestsId: copy,
-  //     });
-  //   });
-  //   console.log(this.state.requestsId);
-  // }
+ 
 
   componentDidMount() {
     this.getAllGroups();

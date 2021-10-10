@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Lecture from "../groupadmin/createLecture/Lecture"
 
 export default class GroupAdmin extends Component {
     constructor(props) {
@@ -8,47 +9,58 @@ export default class GroupAdmin extends Component {
         this.state = {
             lectures: [],
             members: [],
-            requests: []
-
+            requests: [],
+            group: this.props.group,
+            lecture:{}
         }
+        this.getlectures = this.getlectures.bind(this)
+        this.handleLecture=this.handleLecture.bind(this)
     }
 
-    deleteGroup() {
+    componentDidMount() {
+        this.state.group.lecturesId.map(id=>this.getlectures(id))
 
     }
 
-    getmembers() {
-        var memberarr = []
-        this.props.group.membersId.map((userId) => {
-            axios.get(`http://localhost:8000/user/${userId}`)
-                .then((data) => memberarr.push(data.data))
-
+    handleLecture(obj){
+        console.log(obj)
+        this.setState({
+            lecture:obj
         })
-            .then(() => this.setState({
-                members: memberarr
-            }))
     }
-    getlectures() {
-        var lecturearr = []
-        this.props.group.lecturesId.map((lectureId) => {
-            axios.get(`http://localhost:8000/lecture/${lectureId}`)
-                .then((data) => lecturearr.push(data.data))
 
-        })
-            .then(() => this.setState({
-                lectures: lecturearr
-            }))
+    getmembers(id) {
+        axios.get(`http://localhost:8000/user/${id}`)
+                .then((data) => {
+                   var memberscopy=[...this.state.members]
+                   memberscopy.push(data.data)
+                    this.setState({
+                        members:memberscopy
+                    })
+                })
+                
     }
-    getrequests() {
-        var requestsarr = []
-        this.props.group.requestsId.map((requestId) => {
-            axios.get(`http://localhost:8000/user/${requestId}`)
-                .then((data) => requestsarr.push(data.data))
-        })
-            .then(() => this.setState({
-                requests: requestsarr
-            }))
+    getlectures(id) {
+            axios.get(`http://localhost:8000/lecture/${id}`)
+                .then((data) => {
+                var lecturecopy=[...this.state.lectures]
+                lecturecopy.push(data.data)
+                this.setState({
+                    lectures:lecturecopy
+                })
+                })     
+        
     }
+    // getrequests() {
+    //     var requestsarr = []
+    //     this.state.group.requestsId.map((requestId) => {
+    //         axios.get(`http://localhost:8000/user/${requestId}`)
+    //             .then((data) => requestsarr.push(data.data))
+    //     })
+    //         .then(() => this.setState({
+    //             requests: requestsarr
+    //         }))
+    // }
 
 
 
@@ -58,20 +70,28 @@ export default class GroupAdmin extends Component {
                 <Switch>
 
                     <Route path="/create lecture">
-                        <div>
-                            create
-                        </div>
+
+                        <Lecture group={this.props.group} />
+                        <Link to="/">back to group</Link>
                     </Route>
                     <Route path="/">
                         <div className='App'>
-                    <h1>{this.props.group.name}</h1>
-                    <button>Delete Group</button>
-                       </div>
+                            <h1>{this.props.group.name}</h1>
+                            <Link to="create lecture">create lecture</Link>
+                            <div>
+                                <ul>
+                                    {this.state.lectures.map((lec,key)=>
+                                        <li onClick={()=>this.handleLecture(lec)} key={key}>{lec.name}</li>
+                                        )}
+                                </ul>
+                                   
+                            </div>
+                        </div>
                     </Route>
 
                 </Switch>
-                
-            </Router>
+
+            </Router >
 
         )
     }

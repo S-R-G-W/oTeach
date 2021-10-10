@@ -2,49 +2,39 @@ import React from "react";
 import { Link } from "react-router-dom";
 var Nav2 = (props) => {
   return (
-    <div>
+    <div class="lgx-container ">
 
-      <header id="header" className="header sticky-header fixed-header">
+      <header>
+        <div id="lgx-header" class="lgx-header">
+          <div class="lgx-header-bottom lgx-header-bottom-fixed-black lgx-header-bottom-fixed-transparent lgx-header-bottom-scrol-black">
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12">
+                  <nav class="navbar navbar-default lgx-navbar">
+                    <div class="container">
+                      <nav class="navbar navbar-default lgx-navbar lgx-navbar-search">
+                        <div class="lgxcontainer">
 
-
-        <div className="top-header">
-
-
-          <div className="logo-wrap">
-
-            <a href="index.html" className="logo"><img src="http://velikorodnov.com/html/churhius/images/logo.png"  /></a>
-
+                          <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav lgx-nav">
+                              <li><Link to="/" className="lgx-scroll"> Groups  </Link></li>
+                              <li><Link to="/Profile" className="lgx-scroll">Profil</Link></li>
+                              <li><Link className="lgx-scroll" to="/login" onClick={() => props.logout()}>Logout</Link></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </nav>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
           </div>
-
-
-
-
-
-
-          <div className="header-btns">
-
-            <div className="head-btn">
-              <Link to="/" className="btn btn-big btn-style-5">Groups </Link>
-            </div>
-
-            <div className="head-btn">
-            <Link to="/Profile" className="btn btn-big btn-style-5"> Profil</Link>
-            </div>
-
-            <div className="head-btn">
-            <Link to="/login" className="btn btn-big btn-style-5" onClick={()=>props.logout()} >Log OUT </Link>
-            </div>
-
-
-          </div>
-
-
         </div>
 
       </header>
 
-
     </div>
   );
 };
-export default Nav2
+export default Nav2;
