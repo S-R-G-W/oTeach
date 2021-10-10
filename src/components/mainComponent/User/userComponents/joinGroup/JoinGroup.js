@@ -74,7 +74,7 @@ export default class JoinGroup extends Component {
     return (
       <div>
      <section>
-  <div id="lgx-teachers" class="lgx-teachers">
+  <div class="lgx-blog lgx-banner ">
     <div class="lgx-inner">
       <div class="container">
         <div class="row">
@@ -111,6 +111,7 @@ export default class JoinGroup extends Component {
 </section>
  
 </div>
-    )}
+ 
+ )}
      
                 }
