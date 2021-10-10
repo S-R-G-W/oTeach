@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Link } from "react-router-dom";
 import React, { Component } from "react";
 
 export default class CreateGroups extends Component {
@@ -19,38 +20,35 @@ export default class CreateGroups extends Component {
       [e.target.name]: e.target.value,
     });
   }
-  // userIsAdmin() {
-  //   let array = this.state.userMembers;
-  //   array.push()
-  // }
+ 
   createGroup() {
-    axios
-      .post("http://localhost:8000/group/group", {
-        name: this.state.name,
-        // this adminId should be brought from the user that is logged in
-        adminId: this.state.adminId,
-      })
-      .then((res) =>alert('group created'))
-      .catch((err) => console.log(err));
+    if(this.state.name!==''){
+      axios.post("http://localhost:8000/group/group", this.state)
+      .then((data)=>this.props.fetch())
+      .catch((err) => alert('error creating the group'))
+    }
+    else{
+      alert('empty field')
+    }
+    
   }
 
   render() {
     return (
       <div className="App">
         <input
+        value={this.state.name}
           type="text"
           name="name"
           placeholder="Group name here !"
           onChange={this.handleChange}
         />
-        <button
-          onClick={() => {
-            // this.setAdminId();
-            this.createGroup();
-          }}
-        >
+        <Link to="/">
+           <button
+          onClick={() => {this.createGroup()}}>
           Create
         </button>
+        </Link>
       </div>
     );
   }

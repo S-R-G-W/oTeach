@@ -15,19 +15,10 @@ exports.retrieveOne = function (req, res) {
 };
 
 exports.create = function (req, res) {
-  const newGroup = new Groups({
-    name: req.body.name,
-    membersNumber: req.body.membersNumber,
-    lecturesNumber: req.body.lecturesNumber,
-    adminId: req.body.adminId,
-    membersId: req.body.membersId,
-    lecturesId: req.body.lecturesId,
-    requestsId: req.body.requestsId,
-  });
+  const newGroup = new Groups(req.body);
   let groupData;
   let userMembers;
-  newGroup
-    .save()
+  newGroup.save()
     .then((res) => (groupData = res))
     .then(() => user.findOne({ _id: groupData.adminId }))
     .then((res) => (userMembers = res.createdGroupsId))
