@@ -1,5 +1,7 @@
+import { SwipeableDrawer } from "@mui/material";
 import axios from "axios";
 import React, { Component } from "react";
+import swal from "sweetalert";
 
 export default class JoinGroup extends Component {
   constructor(props) {
@@ -9,6 +11,7 @@ export default class JoinGroup extends Component {
       groups: [],
       createdAlready: [],
       groupsToJoin: [],
+      requestsId: [],
     };
   }
 
@@ -16,7 +19,7 @@ export default class JoinGroup extends Component {
     var arr = this.state.user.createdGroupsId.concat(
       this.state.user.joinedGroupsId
     );
-    console.log(arr);
+    //  console.log(arr);
     axios
       .get("http://localhost:8000/group/group")
       .then((response) => {
@@ -38,12 +41,42 @@ export default class JoinGroup extends Component {
     });
   }
 
-  componentDidMount() {
-    this.getAllGroups();
+  joinRequestSent() {
+    var arr = [];
+    this.state.groups.map((el) => {
+      if (!this.state.user._id.includes(el.requestsId)) {
+        arr.push(el);
+      }
+    });
+    this.setState({
+      requestsId: arr,
+    });
   }
 
-  joinRequest(obj) {
-    console.log(obj);
+  joinRequest(group) {
+    var copy = [...group.requestsId];
+    copy.push(this.state.user._id);
+    var id = group._id;
+    axios.put(`http://localhost:8000/group/group/${id}`, {
+      arr: copy,
+    });
+
+    swal("Join Request Has Been Sent !");
+  }
+
+  // getRequestId(id) {
+  //   axios.get(`http://localhost:8000/group/group/${id}`).then((response) => {
+  //     var copy = [...this.state.requestsId];
+  //     copy.push(response.data);
+  //     this.setState({
+  //       requestsId: copy,
+  //     });
+  //   });
+  //   console.log(this.state.requestsId);
+  // }
+
+  componentDidMount() {
+    this.getAllGroups();
   }
 
   render() {
@@ -56,7 +89,10 @@ export default class JoinGroup extends Component {
               <li key={i}>
                 {group.name}
                 {"       "}
-                <button onClick={() => this.joinRequest(group)}>
+                <button
+                 change={() => this.joinRequestId()}
+                  onClick={() => this.joinRequest(group)}
+                >
                   Join Request
                 </button>
               </li>

@@ -18,7 +18,8 @@ export default class Login extends Component {
 
   hundleLogin() {
     if (this.state.email !== "" && this.state.password !== "") {
-      axios.post("http://localhost:8000/user/login", this.state)
+      axios
+        .post("http://localhost:8000/user/login", this.state)
         .then((user) => {
           if (user.data) {
             this.props.login(user.data);
@@ -33,7 +34,9 @@ export default class Login extends Component {
   render() {
     return (
       <div className="App">
-        <div><h3>LOGIN</h3></div>
+        <div>
+          <h3>LOGIN</h3>
+        </div>
         <input
           type="text"
           placeholder="Email"
@@ -41,7 +44,8 @@ export default class Login extends Component {
           onChange={this.handleChange}
         />
         <br />
-        
+        <br />
+
         <input
           type="password"
           placeholder="Password"
@@ -50,7 +54,9 @@ export default class Login extends Component {
         />
         <br />
         <br />
-        <button className="btn btn-big btn-style-5" onClick={this.hundleLogin}>Login</button>
+        <button className="btn btn-big btn-style-5" onClick={this.hundleLogin}>
+          Login
+        </button>
       </div>
     );
   }

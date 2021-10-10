@@ -1,4 +1,3 @@
-
 const Groups = require("../models/groupsModel");
 const user = require("../models/usersModel");
 
@@ -7,7 +6,6 @@ exports.retrieve = function (req, res) {
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 };
-
 
 exports.retrieveOne = function (req, res) {
   Groups.findOne({ _id: req.params.id })
@@ -45,8 +43,9 @@ exports.create = function (req, res) {
 };
 
 exports.update = function (req, res) {
-  const id = req.params._id;
-  Groups.updateOne({ _id: id }, req.body)
+  console.log(req.params, req.body);
+  const id = req.params.id;
+  Groups.findByIdAndUpdate(id, { requestsId: req.body.arr })
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 };

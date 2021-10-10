@@ -42,7 +42,7 @@ export default class signup extends Component {
           onChange={this.handleChange}
         />
         <br />
-        
+        <br />
         <input
           type="text"
           placeholder="Email..."
@@ -50,7 +50,7 @@ export default class signup extends Component {
           onChange={this.handleChange}
         />
         <br />
-        
+        <br />
         <input type="password" placeholder="Password..." name="password" onChange={this.handleChange} />
         <br />
         <br />
@@ -59,3 +59,9 @@ export default class signup extends Component {
     );
   }
 }
+
+
+
+
+
+
