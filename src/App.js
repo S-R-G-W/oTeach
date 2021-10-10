@@ -141,11 +141,7 @@ export default class App extends Component {
       <Router>
         <div>
           <nav>{this.renderNavView()}</nav>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
+       
           {this.renderView()}
         </div>
       </Router>

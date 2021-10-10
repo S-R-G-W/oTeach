@@ -17,82 +17,40 @@ export default class User extends Component {
 
   render() {
     return (
-      <div className="page-section">
-        
-      <div className="container wide">
-        
-        {/* <h2 className="section-title align-center">Be with US</h2> */}
-        
-        
-        <div className="entry-box flex-row item-col-3">
-          
-         
-          <div className="entry-col">
-  
-            <div className="entry">
-                  
-          
-              
-              <div className="entry-body">
-                    
-                <h5 className="entry-title">Join Group</h5>
-                <div className="entry-meta">
-                  
-                  
-                    
-                </div>
-                <p>Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget.</p>
-  
-               
-                    
+      <section>
+      <div id="lgx-services" class="lgx-services lgx-services-black"> 
+          <div class="lgx-inner">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-sm-6 col-md-4">
+                          <div class="lgx-single-service lgx-single-service-white"> 
+                              <span class="icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></span>
+                              <h2 class="title"><Link to="/CreateGroup">Create Group</Link></h2>
+                              <p>Etiam vel ante ac lacus vestibulum rutrum. Aliquam vehicula, massa in auctor dapibus commodo quis vehicula lacus metus sed justo. </p>
+                              <a class="lgx-btn-simple" href="#">Read More</a>
+                          </div>
+                      </div>
+                      <div class="col-sm-6 col-md-4">
+                          <div class="lgx-single-service lgx-single-service-white"> 
+                              <span class="icon"><i class="fa fa-address-book" aria-hidden="true"></i></span>
+                              <h2 class="title"><a href="#">Join Group</a></h2>
+                              <p>Etiam vel ante ac lacus vestibulum rutrum. Aliquam vehicula, massa in auctor dapibus commodo quis vehicula lacus metus sed justo. </p>
+                              <a class="lgx-btn-simple" href="#">Read More</a>
+                          </div>
+                      </div>
+                      <div class="col-sm-6 col-md-4">
+                          <div class="lgx-single-service lgx-single-service-white"> 
+                              <span class="icon"><i class="fa fa-address-book" aria-hidden="true"></i></span>
+                              <UserGroups handleGroup={this.props.handleGroup} user={this.state.user}/>  
+                          </div>
+                      </div>
+                     
+                  </div>
               </div>
-                    
-            </div>
-  
           </div>
-          
-  
-          <div className="entry-col">
-  
-            <div className="entry">
-                  
-              
-              <div className="entry-body">
-                    
-                <h5 className="entry-title"><Link to="/CreateGroup">Create Group</Link></h5>
-                <div className="entry-meta">
-                  
-                  
-                    
-                </div>
-                <p>Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget.</p>
-  
-               
-                    
-              </div>
-                    
-            </div>
-  
-          </div>
-  
-          <div className="entry-col">
-  
-            <div className="entry">
-            
-                  <UserGroups handleGroup={this.props.handleGroup} user={this.state.user}/>  
-                 
-            </div>
-  
-          </div>
-  
-        </div>
-  
-        
-       
       </div>
-  
-    </div>
-    )}
+  </section>
+  )}
 }
 
 
