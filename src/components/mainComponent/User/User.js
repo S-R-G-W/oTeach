@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./User.css";
 import UserCreatedGroups from './userComponents/userGroups/userCreatedGroups';
 import UserJoinedGroups from './userComponents/userGroups/userJoinedGroups';
+
 import { Link } from "react-router-dom";
 import axios from 'axios'
 
