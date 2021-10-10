@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./User.css";
 import UserCreatedGroups from './userComponents/userGroups/userCreatedGroups';
 import UserJoinedGroups from './userComponents/userGroups/userJoinedGroups';
+
 import { Link } from "react-router-dom";
 import axios from 'axios'
 
@@ -41,7 +42,7 @@ export default class User extends Component {
                     </div>
                     <div class="col-sm-6 col-md-3">
                           <div class="lgx-single-service lgx-single-service"> 
-                          <span class="icon"><i class="fa fa-address-book" aria-hidden="true"></i></span>
+                          <span class="icon"><i class="fa fa-address-book" aria-hidden="true"></i></span>+
                               <h2 class="title"><Link to="/CreateGroup">Create Group</Link></h2>
                               <p>Etiam vel ante ac lacus vestibulum rutrum. Aliquam vehicula, massa in auctor dapibus commodo quis vehicula lacus metus sed justo. </p>
                               
