@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import "./User.css";
 import UserGroups from './userComponents/userGroups/userGroups';
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from 'axios'
 
 
 
@@ -9,10 +10,10 @@ export default class User extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user:this.props.user
-    }
-    
+      
+    };
   }
+
 
 
   render() {
@@ -41,7 +42,7 @@ export default class User extends Component {
                       <div class="col-sm-6 col-md-4">
                           <div class="lgx-single-service lgx-single-service-white"> 
                               <span class="icon"><i class="fa fa-address-book" aria-hidden="true"></i></span>
-                              <UserGroups handleGroup={this.props.handleGroup} user={this.state.user}/>  
+                              <UserGroups JoinedGroups={this.props.JoinedGroups}  Createdgroups={this.props.Createdgroups}  handleGroup={this.props.handleGroup} user={this.props.user} /> 
                           </div>
                       </div>
                      
