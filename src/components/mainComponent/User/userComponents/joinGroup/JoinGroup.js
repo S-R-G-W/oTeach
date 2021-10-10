@@ -41,18 +41,6 @@ export default class JoinGroup extends Component {
     });
   }
 
-  joinRequestSent() {
-    var arr = [];
-    this.state.groups.map((el) => {
-      if (!this.state.user._id.includes(el.requestsId)) {
-        arr.push(el);
-      }
-    });
-    this.setState({
-      requestsId: arr,
-    });
-  }
-
   joinRequest(group) {
     var copy = [...group.requestsId];
     copy.push(this.state.user._id);
@@ -60,11 +48,18 @@ export default class JoinGroup extends Component {
     axios.put(`http://localhost:8000/group/group/${id}`, {
       arr: copy,
     });
-
     swal("Join Request Has Been Sent !");
-  }
+    var array = [];
+    this.state.groups.map((el) => {
+      if (!this.state.user._id.includes(el.requestsId)) {
+        array.push(el);
+      }
+    });
 
- 
+    this.setState({
+      groupsToJoin: array,
+    });
+  }
 
   componentDidMount() {
     this.getAllGroups();
@@ -90,9 +85,11 @@ export default class JoinGroup extends Component {
                 {this.state.groupsToJoin.map((group, i) => (
               <div  key={i}>
                 {group.name}
+                {"       "}
+              
                 <button
                 class="lgx-btn lgx-btn-registration"
-                 change={() => this.joinRequestId()}
+                
                   onClick={() => this.joinRequest(group)}
                 >
                   Join

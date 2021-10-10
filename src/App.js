@@ -160,7 +160,7 @@ export default class App extends Component {
             <CreateGroups fetch={this.fetch} user={this.state.user} />
           </Route>
           <Route path="/JoinGroup">
-          <JoinGroup  user={this.state.user}  />
+          <JoinGroup   user={this.state.user}    />
           </Route>
           <Route path="/Profile">
             <Profil user={this.state.user} />
