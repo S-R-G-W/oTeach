@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Lecture from "../groupadmin/createLecture/Lecture";
 import LectureView from "../Lectures/LectureView";
+import Lecture from "./createLecture/Lecture"
 
 export default class GroupAdmin extends Component {
   constructor(props) {
@@ -153,3 +153,5 @@ export default class GroupAdmin extends Component {
     );
   }
 }
+  
+
