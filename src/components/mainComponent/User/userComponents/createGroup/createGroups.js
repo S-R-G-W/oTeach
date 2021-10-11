@@ -43,8 +43,8 @@ export default class CreateGroups extends Component {
           <div class="col-xs-12 col-md-8 col-md-offset-2">
             <div class="lgx-registration-area">
               <div class="lgx-registration">
-                <div class="lgx-heading lgx-heading-white">
-                  <h2 class="question-text">Create your Group</h2>
+              <div  class="lgx-single-service lgx-single-service"> 
+                  <h2 class="title">Create your Group</h2>
                 </div>
              
                  
