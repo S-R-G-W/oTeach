@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default class UserGroups extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +11,8 @@ export default class UserGroups extends Component {
     };
   }
 
+
+
   getCreatedGroup(id) {
     axios.get(`http://localhost:8000/group/group/${id}`).then((response) => {
       var copy = [...this.state.Createdgroups];
@@ -18,6 +20,7 @@ export default class UserGroups extends Component {
       this.setState({
         Createdgroups: copy,
       });
+     
     });
   }
 
@@ -30,6 +33,7 @@ export default class UserGroups extends Component {
       });
     });
   }
+
 
   componentDidMount() {
     this.state.user.createdGroupsId.map((el) => {
@@ -44,21 +48,22 @@ export default class UserGroups extends Component {
   render() {
     return (
       <div className="entry-body">
-
         <h5 className="entry-title">Created Groups :</h5>
         <ul>
-          {this.state.Createdgroups.map((group, key) =>
-            <li  onClick={()=>this.props.handleGroup(group)} key={key}><Link to="/group"> {group.name}</Link> </li>)}
+          {this.state.Createdgroups.map((group, key) => (
+            <li onClick={() => this.props.handleGroup(group)} key={key}>
+              <Link to="/group"> {group.name}</Link>{" "}
+            </li>
+          ))}
         </ul>
         <br />
 
-
         <h5 className="entry-title">Joined Groups :</h5>
         <ul>
-          {this.state.JoinedGroups.map((group, key) =>
-            <li key={key}>{group.name}</li>)}
+          {this.state.JoinedGroups.map((group, key) => (
+            <li key={key}>{group.name}</li>
+          ))}
         </ul>
-
       </div>
     );
   }

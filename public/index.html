@@ -4,39 +4,107 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico"/>
+    <!-- this icon shows in browser toolbar -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
+    <!-- this icon shows in browser toolbar -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicon/manifest.json">
 
-    <title>React App</title>
-    <link rel="stylesheet" href="http://velikorodnov.com/html/churhius/font/demo-files/demo.css">
-    <link rel="stylesheet" href="http://velikorodnov.com/html/churhius/plugins/fancybox/jquery.fancybox.css">
-    <link rel="stylesheet" href="http://velikorodnov.com/html/churhius/plugins/revolution/css/settings.css">
-    <link rel="stylesheet" href="http://velikorodnov.com/html/churhius/plugins/revolution/css/layers.css">
-    <link rel="stylesheet" href="http://velikorodnov.com/html/churhius/plugins/revolution/css/navigation.css">
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css" media="all"/>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/font-awesome.min.css" media="all"/>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="assets/libs/maginificpopup/magnific-popup.css" media="all"/>
+
+    <!-- OWL CAROUSEL CSS -->
+    <link rel="stylesheet" href="assets/libs/owlcarousel/owl.carousel.min.css" media="all" />
+    <link rel="stylesheet" href="assets/libs/owlcarousel/owl.theme.default.min.css" media="all" />
+
+    <!-- GOOGLE FONT -->
+    <!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700,900%7cLato:400,700,900"/>-->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,900%7cUbuntu:300,300i,400,500,700"/>
+
+    <link rel="stylesheet" href="assets/libs/animate/animate.css" media="all" />
+
+    <!-- MASTER  STYLESHEET  -->
+    <link id="lgx-master-style" rel="stylesheet" href="assets/css/style-default.min.css" media="all"/>
+
+    <!-- MODERNIZER CSS  -->
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <title>O-TEACH</title>
   
-    <link rel="stylesheet" href="http://velikorodnov.com/html/churhius/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="http://velikorodnov.com/html/churhius/css/fontello.css">
-    <link rel="stylesheet" href="http://velikorodnov.com/html/churhius/css/owl.carousel.css">
-    <link rel="stylesheet" href="http://velikorodnov.com/html/churhius/css/style.css">
-    <link rel="stylesheet" href="http://velikorodnov.com/html/churhius/css/responsive.css">
   </head>
   <body>
     <div id="root"></div>
-    <script src="http://velikorodnov.com/html/churhius/js/libs/jquery.modernizr.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/js/libs/jquery-2.2.4.min.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/js/libs/jquery-ui.min.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/js/libs/retina.min.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/plugins/jquery.localScroll.min.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/plugins/jquery.scrollTo.min.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/plugins/jquery.countdown.min.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/plugins/fancybox/jquery.fancybox.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/plugins/mad.customselect.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/plugins/instafeed.min.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/plugins/revolution/js/jquery.themepunch.tools.min.js?ver=5.0"></script>
-    <script src="http://velikorodnov.com/html/churhius/plugins/revolution/js/jquery.themepunch.revolution.min.js?ver=5.0"></script>
-    <script src="http://velikorodnov.com/html/churhius/plugins/jquery.queryloader2.min.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/plugins/owl.carousel.min.js"></script>
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+
+    <!-- BOOTSTRAP JS  -->
+    <script src="assets/libs/bootstrap/js/bootstrap.min.js"></script>
+    
+    
+    <script src="assets/libs/jquery.smooth-scroll.js"></script>
+    
+    <!-- SKILLS SCRIPT  -->
+    <script src="assets/libs/jquery.validate.js"></script>
+    
+    <!-- if load google maps then load this api, change api key as it may expire for limit cross as this is provided with any theme -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQvRGGtL6OrpP5xVMxq_0NgiMiRhm3ycI"></script>
+    
+    <!-- CUSTOM GOOGLE MAP -->
+    <script type="text/javascript" src="assets/libs/gmap/jquery.googlemap.js"></script>
+    
+    <!-- adding magnific popup js library -->
+    <script type="text/javascript" src="assets/libs/maginificpopup/jquery.magnific-popup.min.js"></script>
+    
+    <!-- Owl Carousel  -->
+    <script src="assets/libs/owlcarousel/owl.carousel.min.js"></script>
+    
+    
+    <!-- COUNTDOWN   -->
+    <script src="assets/libs/countdown.js"></script>
+    
+    <!-- Counter JS -->
+    <script src="assets/libs/waypoints.min.js"></script>
+    <script src="assets/libs/counterup/jquery.counterup.min.js"></script>
+    
+    <!-- PORTFOLIO FILTER   -->
+    <script src="assets/libs/isotope/isotope.pkgd.min.js"></script>
+    
+    <!-- SMOTH SCROLL -->
+    <script src="assets/libs/jquery.smooth-scroll.min.js"></script>
+    <script src="assets/libs/jquery.easing.min.js"></script>
+    
+    <!-- type js -->
+    <script src="assets/libs/typed/typed.min.js"></script>
+    
+    <!-- instafeed js -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/instafeed.js/1.4.1/instafeed.min.js"></script>-->
+    <script src="assets/libs/instafeed.min.js"></script>
+    
+    <!-- CUSTOM SCRIPT  -->
+    <script src="assets/js/custom.script.js"></script>
+    
+  
+    <!-- For Demo Purpose Only// Remove From Live -->
+    <script src="switcher/js/switcherd41d.js?"></script>
+    <!-- For Demo Purpose Only //Remove From Live-->
   
    
-    <script src="http://velikorodnov.com/html/churhius/js/plugins.js"></script>
-    <script src="http://velikorodnov.com/html/churhius/js/script.js"></script>
   </body>
 </html>

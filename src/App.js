@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import SignUp from "./components/mainComponent/signup/signup.js";
 import Login from "./components/mainComponent/login/Login.js";
@@ -13,6 +13,8 @@ import CreateGroups from "./components/mainComponent/User/userComponents/createG
 import GroupAdmin from "./components/mainComponent/User/userComponents/groupComponents/groupadmin/GroupAdmin";
 import GroupUser from "./components/mainComponent/User/userComponents/groupComponents/groupUser/GroupUser";
 import axios from "axios";
+import JoinGroup from "./components/mainComponent/User/userComponents/joinGroup/JoinGroup"
+import Footer from "./components/footer/Footer";
 
 export default class App extends Component {
   constructor() {
@@ -22,20 +24,25 @@ export default class App extends Component {
       navView: "",
       user: {},
       group: {},
+      Createdgroups: [],
+      JoinedGroups: [],
     };
 
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
     this.renderNavView = this.renderNavView.bind(this);
-    this.changeNavView = this.changeNavView.bind(this);
     this.signup = this.signup.bind(this);
-    this.login = this.login.bind(this);
-    this.logout=this.logout.bind(this)
-    this.handleGroup=this.handleGroup.bind(this)
-    this.renderGroup=this.renderGroup.bind(this)
-
+    this.logout = this.logout.bind(this)
+    this.handleGroup = this.handleGroup.bind(this)
+    this.renderGroup = this.renderGroup.bind(this)
+    this.fetch = this.fetch.bind(this)
+    this.fetchGroups = this.fetchGroups.bind(this)
+    this.getCreatedGroup = this.getCreatedGroup.bind(this)
+    this.getJoinedGroup = this.getJoinedGroup.bind(this)
 
   }
+
+
 
   handleGroup(obj) {
     this.setState({
@@ -43,20 +50,66 @@ export default class App extends Component {
     });
   }
 
-  renderGroup(){
-    if(this.state.group.adminId === this.state.user._id) {
-      return <GroupAdmin group={this.state.group} />
-    }
-    else{
-      return <GroupUser group={this.state.group} />
-    }
+
+  getCreatedGroup(id) {
+
+    axios.get(`http://localhost:8000/group/group/${id}`).then((response) => {
+      var copy = [...this.state.Createdgroups];
+      copy.push(response.data);
+      this.setState({
+        Createdgroups: copy,
+      })
+    });
   }
+
+  getJoinedGroup(id) {
+    axios.get(`http://localhost:8000/group/group/${id}`).then((response) => {
+      var copy1 = [...this.state.JoinedGroups];
+      copy1.push(response.data);
+      this.setState({
+        JoinedGroups: copy1,
+      });
+    });
+  }
+
+
+  fetchGroups() {
+    this.state.user.createdGroupsId.map((el) => {
+      this.getCreatedGroup(el);
+    });
+
+    this.state.user.joinedGroupsId.map((el) => {
+      this.getJoinedGroup(el);
+    });
+  }
+
+
+
+  fetch() {
+
+    axios.get(`http://localhost:8000/user/${this.state.user._id}`)
+      .then((data) => {
+        this.setState({
+          user: data.data,
+          view: "user",
+          navView: "user",
+          Createdgroups: [],
+        JoinedGroups: [],
+        })})
+      .then(() => this.fetchGroups())
+  }
+
+
+
+
 
   logout() {
     this.setState({
       view: 'home',
       navView: 'home',
-      user: {}
+      user: {},
+      Createdgroups: [],
+      JoinedGroups: [],
     })
   }
   signup(data) {
@@ -64,31 +117,40 @@ export default class App extends Component {
       view: "user",
       navView: "user",
       user: data,
-    });
+    })
+    
+    this.fetchGroups()
+
   }
 
-  login(data) {
-    this.setState({
-      view: "user",
-      navView: "user",
-      user: data,
-    });
+
+
+
+
+
+
+
+
+
+  renderGroup() {
+    if (this.state.group.adminId === this.state.user._id) {
+      return <GroupAdmin group={this.state.group} />
+    }
+    else {
+      return <GroupUser group={this.state.group} />
+    }
   }
 
   renderNavView() {
     const { navView } = this.state;
     if (navView === "user") {
-      return <Nav2  logout={this.logout} />
+      return <Nav2 logout={this.logout} />
     }
     else {
       return <Nav changeView={this.changeView} />;
     }
   }
-  changeNavView(option) {
-    this.setState({
-      navView: option,
-    });
-  }
+
 
   renderView() {
     const view = this.state.view;
@@ -96,7 +158,10 @@ export default class App extends Component {
       return (
         <Switch>
           <Route path="/CreateGroup">
-            <CreateGroups user={this.state.user} />
+            <CreateGroups fetch={this.fetch} user={this.state.user} />
+          </Route>
+          <Route path="/JoinGroup">
+          <JoinGroup   user={this.state.user}    />
           </Route>
           <Route path="/Profile">
             <Profil user={this.state.user} />
@@ -104,12 +169,11 @@ export default class App extends Component {
           <Route path="/UpdateProfile">
             <UpdateProfile
               changeView={this.changeView}
-              user={this.state.user}
-            />
+              user={this.state.user} />
           </Route>
           <Route path="/group">{this.renderGroup}</Route>
           <Route path="/">
-            <User handleGroup={this.handleGroup} user={this.state.user} />
+            <User JoinedGroups={this.state.JoinedGroups} Createdgroups={this.state.Createdgroups} handleGroup={this.handleGroup} user={this.state.user} />
           </Route>
         </Switch>
       );
@@ -120,7 +184,7 @@ export default class App extends Component {
             <SignUp signup={this.signup} />
           </Route>
           <Route path="/login">
-            <Login changeView={this.changeView} login={this.login} />
+            <Login changeView={this.changeView} login={this.signup} />
           </Route>
           <Route path="/">
             <Home user={this.state.user} />
@@ -141,12 +205,9 @@ export default class App extends Component {
       <Router>
         <div>
           <nav>{this.renderNavView()}</nav>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
+       
           {this.renderView()}
+          <Footer />
         </div>
       </Router>
     );

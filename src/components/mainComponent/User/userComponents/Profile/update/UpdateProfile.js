@@ -35,25 +35,58 @@ export default class UpdateProfile extends Component {
 
   render() {
     return (
-      <div className="App">
-        <input
-        value={this.state.username}
-          type="text"
-          placeholder="Username..."
-          name="username"
-          onChange={this.handleChange}
-        />
-        <br />
-        <input
-        value={this.state.email}
-          type="text"
-          placeholder="Email..."
-          name="email"
-          onChange={this.handleChange}
-        />
-        <br />
-        <Link to="/login"><button onClick={this.hundleUpdate} >update</button></Link>
-      </div>
+      <div  class="lgx-blog lgx-banner ">
+      <section>
+<div id="lgx-teachers" class="lgx-teachers">
+   <div class="lgx-inner">
+       <div class="container">
+           <div class="row">
+
+               <div class="col-xs-12 col-md-8 col-md-offset-2">
+                   <div class="lgx-registration-area">
+                       <div class="lgx-registration">
+                       <div  class="lgx-single-service lgx-single-service"> 
+                               <h2 class="title" >Update Your Profil</h2>
+                           </div>
+                           <div class="form-group">
+                           <input
+                           class="form-control lgxname" 
+       value={this.state.username}
+         type="text"
+         placeholder="username..."
+         name="username"
+         onChange={this.handleChange}
+       />
+                            
+                           </div>
+
+                           <div class="form-group">
+                           <input
+                            class="form-control"
+       value={this.state.email}
+         type="text"
+         placeholder="Email..."
+         name="email"
+         onChange={this.handleChange}
+       />
+                               
+                           </div>
+
+                           <Link to="/login"><button class="lgx-btn lgx-btn-registration" onClick={this.hundleUpdate} >update</button></Link>
+
+                          
+                       </div>
+                   </div>
+               </div>
+
+           </div>
+       </div>
+   </div>
+</div>
+</section>
+
+     </div>
+ 
     )
   }
 }

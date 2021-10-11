@@ -18,7 +18,8 @@ export default class Login extends Component {
 
   hundleLogin() {
     if (this.state.email !== "" && this.state.password !== "") {
-      axios.post("http://localhost:8000/user/login", this.state)
+      axios
+        .post("http://localhost:8000/user/login", this.state)
         .then((user) => {
           if (user.data) {
             this.props.login(user.data);
@@ -32,26 +33,51 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div><h3>LOGIN</h3></div>
-        <input
-          type="text"
-          placeholder="Email"
-          name="email"
-          onChange={this.handleChange}
-        />
-        <br />
-        
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          onChange={this.handleChange}
-        />
-        <br />
-        <br />
-        <button className="btn btn-big btn-style-5" onClick={this.hundleLogin}>Login</button>
+      <div class="lgx-container ">
+       
+
+      
+      
+      
+  
+      <section>
+          <div id="lgx-teachers" class="lgx-teachers">
+              <div class="lgx-inner">
+                  <div class="container">
+                      <div class="row">
+      
+                          <div class="col-xs-12 col-md-8 col-md-offset-2">
+                              <div class="lgx-registration-area">
+                                  <div class="lgx-registration">
+                                  <div class="lgx-heading lgx-heading-white">
+                                      <h2 class="lgx-scroll">Login</h2>
+                                  </div>
+                                  
+      
+                                      <div class="form-group">
+                                          <input type="email" name="email" class="form-control"  placeholder="Enter email"  onChange={this.handleChange}/>
+                                      </div>
+      
+                                      <div class="form-group">
+                                          <input type="password" name="password" class="form-control"  placeholder="password"  onChange={this.handleChange}/>
+                                      </div>
+      
+                                      <button   class="lgx-btn lgx-btn-registration" onClick={this.hundleLogin}>Login</button>
+                                  </div>
+                              </div>
+                          </div>
+      
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+    
+    
+      
+      
       </div>
+ 
     );
   }
 }
