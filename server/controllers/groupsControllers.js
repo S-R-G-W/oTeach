@@ -18,9 +18,10 @@ exports.create = function (req, res) {
   let groupData;
   let userMembers;
   newGroup.save()
-    .then((res) => (groupData = res))
+  .then((data)=>{console.log(data)})
+    .then((data) => (groupData = data))
     .then(() => user.findOne({ _id: groupData.adminId }))
-    .then((res) => (userMembers = res.createdGroupsId))
+    .then((user) => (userMembers = user.createdGroupsId))
     .then(() => {
       userMembers.push(groupData._id);
     })
@@ -36,7 +37,7 @@ exports.create = function (req, res) {
 exports.update = function (req, res) {
   console.log(req.params, req.body);
   const id = req.params.id;
-  Groups.findByIdAndUpdate(id, { requestsId: req.body.arr })
+  Groups.findByIdAndUpdate(id, { requestsId: req.body.arr ,membersId:req.body.arr1 })
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 };

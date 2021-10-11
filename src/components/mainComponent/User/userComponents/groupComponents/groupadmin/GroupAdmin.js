@@ -27,8 +27,23 @@ export default class GroupAdmin extends Component {
 
     }
 
-    handleRequest(id) {
+    handleRequest(req) {
+        var id=req._id
+        var reqarr=[...this.state.group.requestsId]
+        var memarr=[...this.state.group.membersId]
+        var index=reqarr.indexOf(id)
+        reqarr.splice(index)
+        memarr.push(id)
+        console.log(reqarr,memarr)
+        var jarr= [...req.joinedGroupsId]
+        jarr.push(this.state.group._id)
 
+
+
+        axios.put(`http://localhost:8000/group/group/${this.state.group._id}`,{arr:reqarr,arr1:memarr})
+        .then((data)=>axios.put(`http://localhost:8000/user/${id}`,{jarr:jarr}))
+        .then((data)=>console.log(data))
+        .catch((err)=>console.log(err))
 
     }
 
@@ -119,11 +134,11 @@ export default class GroupAdmin extends Component {
                                                                 ))}
                                                             </div>
                                                             <div>
-                                                                <ul>
-                                                                    {this.state.requests.map((req, key) =>
-                                                                        <li >{req.username}</li>
-                                                                    )}
-                                                                </ul>
+
+                                                                {this.state.requests.map((req, key) =>
+                                                                    <div >{req.username} want to join your group <div onClick={()=>this.handleRequest(req)} >accept</div></div>
+                                                                )}
+
                                                             </div>
                                                         </div>
                                                     </div>

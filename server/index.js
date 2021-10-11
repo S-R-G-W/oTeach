@@ -5,8 +5,10 @@ const cors = require("cors");
 const usersRouter = require("./routers/usersRouters");
 const groupRouter = require("./routers/groupsRouters");
 const lectureRouter = require("./routers/lecturesRouters");
+const morgan=require("morgan")
 const port = 8000;
 
+app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
