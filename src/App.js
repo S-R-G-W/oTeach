@@ -138,10 +138,10 @@ var id = this.state.user._id
 
   renderGroup() {
     if (this.state.group.adminId === this.state.user._id) {
-      return <GroupAdmin group={this.state.group} />
+      return <GroupAdmin fetch={this.fetch}  group={this.state.group} />
     }
     else {
-      return <GroupUser group={this.state.group} />
+      return <GroupUser   group={this.state.group} />
     }
   }
 
@@ -175,7 +175,9 @@ var id = this.state.user._id
               changeView={this.changeView}
               user={this.state.user} />
           </Route>
-          <Route path="/group">{this.renderGroup}</Route>
+          <Route path="/group">
+            {this.renderGroup}
+            </Route>
           <Route path="/">
             <User JoinedGroups={this.state.JoinedGroups} Createdgroups={this.state.Createdgroups} handleGroup={this.handleGroup} user={this.state.user} />
           </Route>
