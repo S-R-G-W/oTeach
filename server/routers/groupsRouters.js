@@ -10,4 +10,10 @@ groupRouter
   .route("/group/:id")
   .get(groupController.retrieveOne)
   .put(groupController.update);
+
+groupRouter.route("/group/accept/:id")
+.put(groupController.updateAccept)
+
 module.exports = groupRouter;
+
+
