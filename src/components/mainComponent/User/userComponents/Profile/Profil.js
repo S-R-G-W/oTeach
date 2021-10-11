@@ -1,84 +1,39 @@
 import React from "react";
 import "./Profil.css";
 import { Link } from "react-router-dom";
-import {Image} from 'cloudinary-react';
+import { Image, CloudinaryContext } from "cloudinary-react";
 var Profil = (props) => {
   return (
     <div class="lgx-blog lgx-banner ">
       <section>
-        <div id="lgx-news" class="lgx-news lgx-teacher-single">
+        <div id="lgx-services" class="lgx-blog lgx-banner ">
           <div class="lgx-inner">
             <div class="container">
               <div class="row">
                 <div class="col-sm-12">
-                  <article>
-                    <header>
-                      <div class="lgx-single-service">
-                      <Image cloudName="demo" publicId="sample" width="300" crop="scale"/>
-                        <h1 class="title">{props.user.username}</h1>
-                        <h3 class="subtitle"> email :{props.user.email}</h3>
-                        <div class="lgx-share">
-                          <ul class="list-inline lgx-social">
-                            <Link to="/UpdateProfile">
-                              <button>Update Profile</button>
-                            </Link>
-                          </ul>
-                        </div>
-                      </div>
-                    </header>
-                    <section></section>
-                    <footer>
-                      <div class="row">
-                        <div class="col-xs-12">
-                          <h4 class="title">Share</h4>
-                          <div class="lgx-share">
-                            <ul class="list-inline lgx-social">
-                              <li>
-                                <a href="#">
-                                  <i
-                                    class="fa fa-twitter"
-                                    aria-hidden="true"
-                                  ></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i
-                                    class="fa fa-facebook-f"
-                                    aria-hidden="true"
-                                  ></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i
-                                    class="fa fa-linkedin"
-                                    aria-hidden="true"
-                                  ></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i
-                                    class="fa fa-youtube-play"
-                                    aria-hidden="true"
-                                  ></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i
-                                    class="fa fa-instagram"
-                                    aria-hidden="true"
-                                  ></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </footer>
-                  </article>
+                  <div class="lgx-single-service lgx-single-service">
+                    <span class="icon">
+                      <i aria-hidden="true"></i>
+                    </span>
+                     {/* <CloudinaryContext  cloudName={props.user.username} />
+                    <Image
+                      // style={{ borderRadius: "50%" }}
+                      publicId="https://image.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg"
+                      
+                      fetch-format="auto"
+                      quality="auto"
+                    /> */}
+                      {/* <Transformation /> */}
+                    {/* </Image> */}
+                    <h2 class="title">{props.user.username}</h2>
+                    <p>{props.user.email}</p>
+
+                    <Link to="/UpdateProfile">
+                      <button class="lgx-btn lgx-btn-registration">
+                        Update Profile
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -86,7 +41,6 @@ var Profil = (props) => {
         </div>
       </section>
     </div>
-
-);
+  );
 };
 export default Profil;

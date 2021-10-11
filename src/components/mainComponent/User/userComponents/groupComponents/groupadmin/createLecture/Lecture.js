@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class Lecture extends Component {
   constructor(props) {
@@ -35,8 +36,8 @@ export default class Lecture extends Component {
                   <div class="col-xs-12 col-md-8 col-md-offset-2">
                     <div class="lgx-registration-area">
                       <div class="lgx-registration">
-                        <div class="lgx-heading lgx-heading-white">
-                          <h2 class="question-text">Create your Lecture</h2>
+                      <div  class="lgx-single-service lgx-single-service"> 
+                      <h2 class="title" >Create your Lecture</h2>
                         </div>
 
                         <div class="form-group">
@@ -75,6 +76,10 @@ export default class Lecture extends Component {
                         >
                           Create Lecture
                         </button>
+                        
+
+                        <Link class='title' to="/"><button  class="lgx-btn lgx-btn-registration" >back to group</button></Link>
+                        
                       </div>
                     </div>
                   </div>
