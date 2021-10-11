@@ -41,7 +41,11 @@ export default class App extends Component {
     this.getJoinedGroup = this.getJoinedGroup.bind(this)
 
   }
-
+//  componentDidMount(){
+//    if(Object.keys(this.state.user).length!==0){
+//      this.fetch()
+//    }
+//  }
 
 
   handleGroup(obj) {

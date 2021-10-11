@@ -15,16 +15,7 @@ var Profil = (props) => {
                     <span class="icon">
                       <i aria-hidden="true"></i>
                     </span>
-                     {/* <CloudinaryContext  cloudName={props.user.username} />
-                    <Image
-                      // style={{ borderRadius: "50%" }}
-                      publicId="https://image.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg"
-                      
-                      fetch-format="auto"
-                      quality="auto"
-                    /> */}
-                      {/* <Transformation /> */}
-                    {/* </Image> */}
+                     
                     <h2 class="title">{props.user.username}</h2>
                     <p>{props.user.email}</p>
 

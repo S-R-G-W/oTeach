@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
-
+import swal from "sweetalert";
 export default class CreateGroups extends Component {
   constructor(props) {
     super(props);
@@ -23,12 +23,12 @@ export default class CreateGroups extends Component {
 
   createGroup() {
     if (this.state.name !== "") {
-      axios
-        .post("http://localhost:8000/group/group", this.state)
+      axios.post("http://localhost:8000/group/group", this.state)
+      
         .then((data) => this.props.fetch())
-        .catch((err) => alert("error creating the group"));
+        .catch((err) => swal("error creating the group"));
     } else {
-      alert("empty field");
+      swal("empty field");
     }
   }
 
@@ -61,29 +61,28 @@ export default class CreateGroups extends Component {
         />
                 </div>
 
-                <Link to="/">
-                  <button
-                    class="lgx-btn lgx-btn-registration"
-                    onClick={() => {
-                      this.createGroup();
-                    }}
-                  >
-                    Create
-                  </button>
-                </Link>
+                        <button
+                          class="lgx-btn lgx-btn-registration"
+                          onClick={() => {
+                            this.createGroup();
+                          }}
+                        >
+                          Create
+                        </button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-</section>
 
-     </div>
-      
-    
+        </section>
+
+      </div>
+
+
     );
   }
 }
