@@ -9,7 +9,8 @@ export default class UpdateProfile extends Component {
     this.state = {
       username: this.props.user.username,
       email: this.props.user.email,
-
+      password : this.props.user.password
+      
     };
     this.handleChange = this.handleChange.bind(this);
     this.hundleUpdate = this.hundleUpdate.bind(this);
@@ -63,30 +64,41 @@ export default class UpdateProfile extends Component {
                         <div class="form-group">
                           <input
                             class="form-control"
-                            value={this.state.email}
-                            type="text"
-                            placeholder="Email..."
-                            name="email"
-                            onChange={this.handleChange}
-                          />
+       value={this.state.email}
+         type="text"
+         placeholder="Email..."
+         name="email"
+         onChange={this.handleChange}
+       />
+                               
+                           </div>
+                           <div class="form-group">
+                           <input
+                            class="form-control"
+         type="password"
+         placeholder="Password..."
+         name="password"
+         onChange={this.handleChange}
+       />
+                               
+                           </div>
+                           
 
-                        </div>
+                           <Link to="/login"><button class="lgx-btn lgx-btn-registration" onClick={this.hundleUpdate} >update</button></Link>
 
-                        <Link to="/login"><button class="lgx-btn lgx-btn-registration" onClick={this.hundleUpdate} >update</button></Link>
+                          
+                       </div>
+                   </div>
+               </div>
 
+           </div>
+       </div>
+   </div>
+</div>
+</section>
 
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </div>
-
+     </div>
+ 
     )
   }
 }

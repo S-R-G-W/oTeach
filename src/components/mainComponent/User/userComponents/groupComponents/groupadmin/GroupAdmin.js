@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Lecture from "../groupadmin/createLecture/Lecture";
 import LectureView from "../Lectures/LectureView";
+import Lecture from "./createLecture/Lecture"
 
 export default class GroupAdmin extends Component {
     constructor(props) {
@@ -26,6 +26,16 @@ export default class GroupAdmin extends Component {
 
 
     }
+
+
+
+  handleLecture(obj) {
+    console.log(obj);
+    this.setState({
+      lecture: obj,
+    });
+  }
+
 
     handleRequest(req) {
         axios.put(`http://localhost:8000/group/group/accept/${this.state.group._id}`,{uid:req._id})
@@ -63,7 +73,7 @@ export default class GroupAdmin extends Component {
 
     }
     getrequests(id) {
-
+    
 
         axios.get(`http://localhost:8000/user/${id}`)
             .then((data) => {
@@ -149,16 +159,8 @@ export default class GroupAdmin extends Component {
         )
     }
 
+
 }
-
-
-
-
-
-
-
-
-
 
 
 
