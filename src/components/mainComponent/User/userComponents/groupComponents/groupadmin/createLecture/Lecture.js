@@ -16,9 +16,8 @@ export default class Lecture extends Component {
   }
 
   createLecture() {
-    axios
-      .post("http://localhost:8000/lecture", this.state)
-      .then((data) => console.log(data))
+    axios.post("http://localhost:8000/lecture", this.state)
+      .then((data) => {this.props.fetch()})
       .catch((err) => console.log(err));
   }
 
