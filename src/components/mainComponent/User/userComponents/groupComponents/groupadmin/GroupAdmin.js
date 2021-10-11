@@ -39,7 +39,7 @@ export default class GroupAdmin extends Component {
 
     handleRequest(req) {
         axios.put(`http://localhost:8000/group/group/accept/${this.state.group._id}`,{uid:req._id})
-        .then((data)=>console.log(data))
+        .then((data)=>this.props.fetch())
         .catch((err)=>console.log(err))
     }
 
@@ -97,7 +97,7 @@ export default class GroupAdmin extends Component {
 
                     <Route path="/createLecture">
               
-                        <Lecture group={this.props.group} />
+                        <Lecture fetch={this.props.fetch} group={this.props.group} />
                         
                     </Route>
                     <Route path="/viewLecture">
@@ -139,7 +139,7 @@ export default class GroupAdmin extends Component {
                                                             <div>
 
                                                                 {this.state.requests.map((req, key) =>
-                                                                    <div >{req.username} want to join your group <div onClick={()=>this.handleRequest(req)} >accept</div></div>
+                                                                    <div >{req.username} want to join your group <Link to="/"> <button onClick={()=>this.handleRequest(req)} >accept</button></Link></div>
                                                                 )}
 
                                                             </div>

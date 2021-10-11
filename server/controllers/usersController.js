@@ -36,8 +36,9 @@ exports.create = function (req, res) {
 };
 
 exports.update = function (req, res) {
-  
-  Users.findByIdAndUpdate(req.params.userId , {username:req.body.username,email:req.body.email})
+  var salt = crypt.createRandom32String();
+  var hashed = crypt.createHash(req.body.password, salt);
+  Users.findByIdAndUpdate(req.params.userId , {username:req.body.username,email:req.body.email, password:hashed , salt:salt})
     .then((response) => {
       res.status(202).send(response);
     })

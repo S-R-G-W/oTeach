@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Link } from "react-router-dom";
 
 export default class UpdateProfile extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       username: this.props.user.username,
@@ -20,49 +20,49 @@ export default class UpdateProfile extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  hundleUpdate(){
-  axios.put(`http://localhost:8000/user/update/${this.props.user._id}`,this.state)
-  .then((data)=>  {
-    if(window.confirm('updated')){
-      this.props.changeView('home')
-    }
-    else{
-      this.props.changeView('home')
-    }
+  hundleUpdate() {
+    axios.put(`http://localhost:8000/user/update/${this.props.user._id}`, this.state)
+      .then((data) => {
+        if (window.confirm('updated')) {
+          this.props.changeView('home')
+        }
+        else {
+          this.props.changeView('home')
+        }
 
-})
-  .catch((err)=>{alert(err)})
+      })
+      .catch((err) => { alert(err) })
   }
 
   render() {
     return (
-      <div  class="lgx-blog lgx-banner ">
-      <section>
-<div id="lgx-teachers" class="lgx-teachers">
-   <div class="lgx-inner">
-       <div class="container">
-           <div class="row">
+      <div class="lgx-blog lgx-banner ">
+        <section>
+          <div id="lgx-teachers" class="lgx-teachers">
+            <div class="lgx-inner">
+              <div class="container">
+                <div class="row">
 
-               <div class="col-xs-12 col-md-8 col-md-offset-2">
-                   <div class="lgx-registration-area">
-                       <div class="lgx-registration">
-                       <div  class="lgx-single-service lgx-single-service"> 
-                               <h2 class="title" >Update Your Profil</h2>
-                           </div>
-                           <div class="form-group">
-                           <input
-                           class="form-control lgxname" 
-       value={this.state.username}
-         type="text"
-         placeholder="username..."
-         name="username"
-         onChange={this.handleChange}
-       />
-                            
-                           </div>
+                  <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <div class="lgx-registration-area">
+                      <div class="lgx-registration">
+                        <div class="lgx-single-service lgx-single-service">
+                          <h2 class="title" >Update Your Profil</h2>
+                        </div>
+                        <div class="form-group">
+                          <input
+                            class="form-control lgxname"
+                            value={this.state.username}
+                            type="text"
+                            placeholder="username..."
+                            name="username"
+                            onChange={this.handleChange}
+                          />
 
-                           <div class="form-group">
-                           <input
+                        </div>
+
+                        <div class="form-group">
+                          <input
                             class="form-control"
        value={this.state.email}
          type="text"
@@ -75,8 +75,7 @@ export default class UpdateProfile extends Component {
                            <div class="form-group">
                            <input
                             class="form-control"
-       value={this.state.password}
-         type="text"
+         type="password"
          placeholder="Password..."
          name="password"
          onChange={this.handleChange}
