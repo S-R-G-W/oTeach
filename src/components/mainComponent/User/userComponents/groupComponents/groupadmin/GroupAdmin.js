@@ -28,23 +28,9 @@ export default class GroupAdmin extends Component {
     }
 
     handleRequest(req) {
-        var id=req._id
-        var reqarr=[...this.state.group.requestsId]
-        var memarr=[...this.state.group.membersId]
-        var index=reqarr.indexOf(id)
-        reqarr.splice(index)
-        memarr.push(id)
-        console.log(reqarr,memarr)
-        var jarr= [...req.joinedGroupsId]
-        jarr.push(this.state.group._id)
-
-
-
-        axios.put(`http://localhost:8000/group/group/${this.state.group._id}`,{arr:reqarr,arr1:memarr})
-        .then((data)=>axios.put(`http://localhost:8000/user/${id}`,{jarr:jarr}))
+        axios.put(`http://localhost:8000/group/group/accept/${this.state.group._id}`,{uid:req._id})
         .then((data)=>console.log(data))
         .catch((err)=>console.log(err))
-
     }
 
     handleLecture(obj) {
