@@ -1,28 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Lecture from "../groupadmin/createLecture/Lecture";
-<<<<<<< HEAD
-
-export default class GroupAdmin extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lectures: [],
-      members: [],
-      requests: [],
-      group: this.props.group,
-      lecture: {},
-    };
-    this.getlectures = this.getlectures.bind(this);
-    this.handleLecture = this.handleLecture.bind(this);
-  }
-
-  componentDidMount() {
-    this.state.group.lecturesId.map((id) => this.getlectures(id));
-  }
-=======
 import LectureView from "../Lectures/LectureView";
+import Lecture from "./createLecture/Lecture"
 
 export default class GroupAdmin extends Component {
     constructor(props) {
@@ -47,9 +27,7 @@ export default class GroupAdmin extends Component {
 
     }
 
-    handleRequest(id) {
 
->>>>>>> 83657c988429c49ecd901d70e5c032bbc68315f4
 
   handleLecture(obj) {
     console.log(obj);
@@ -58,64 +36,13 @@ export default class GroupAdmin extends Component {
     });
   }
 
-<<<<<<< HEAD
-  getmembers(id) {
-    axios.get(`http://localhost:8000/user/${id}`).then((data) => {
-      var memberscopy = [...this.state.members];
-      memberscopy.push(data.data);
-      this.setState({
-        members: memberscopy,
-      });
-    });
-  }
-  getlectures(id) {
-    axios.get(`http://localhost:8000/lecture/${id}`).then((data) => {
-      var lecturecopy = [...this.state.lectures];
-      lecturecopy.push(data.data);
-      this.setState({
-        lectures: lecturecopy,
-      });
-    });
-  }
-  // getrequests() {
-  //     var requestsarr = []
-  //     this.state.group.requestsId.map((requestId) => {
-  //         axios.get(`http://localhost:8000/user/${requestId}`)
-  //             .then((data) => requestsarr.push(data.data))
-  //     })
-  //         .then(() => this.setState({
-  //             requests: requestsarr
-  //         }))
-  // }
 
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Route path="/create lecture">
-            <Lecture group={this.props.group} />
-            <Link to="/">back to group</Link>
-          </Route>
-          <Route path="/">
-            <div className="App">
-              <h1>{this.props.group.name}</h1>
-              <Link to="create lecture">create lecture</Link>
-              <div>
-                <ul>
-                  {this.state.lectures.map((lec, key) => (
-                    <li onClick={() => this.handleLecture(lec)} key={key}>
-                      {lec.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </Route>
-        </Switch>
-      </Router>
-    );
-  }
-=======
+    handleRequest(req) {
+        axios.put(`http://localhost:8000/group/group/accept/${this.state.group._id}`,{uid:req._id})
+        .then((data)=>console.log(data))
+        .catch((err)=>console.log(err))
+    }
+
     handleLecture(obj) {
         this.setState({
             lecture: obj
@@ -146,7 +73,7 @@ export default class GroupAdmin extends Component {
 
     }
     getrequests(id) {
-
+    
 
         axios.get(`http://localhost:8000/user/${id}`)
             .then((data) => {
@@ -210,11 +137,11 @@ export default class GroupAdmin extends Component {
                                                                 ))}
                                                             </div>
                                                             <div>
-                                                                <ul>
-                                                                    {this.state.requests.map((req, key) =>
-                                                                        <li >{req.username}</li>
-                                                                    )}
-                                                                </ul>
+
+                                                                {this.state.requests.map((req, key) =>
+                                                                    <div >{req.username} want to join your group <div onClick={()=>this.handleRequest(req)} >accept</div></div>
+                                                                )}
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -232,17 +159,8 @@ export default class GroupAdmin extends Component {
         )
     }
 
->>>>>>> 83657c988429c49ecd901d70e5c032bbc68315f4
+
 }
-
-
-
-
-
-
-
-
-
 
 
 

@@ -84,7 +84,7 @@ export default class JoinGroup extends Component {
                  
                  
                 </div>
-
+                <div  class="lgx-single-service lgx-single-service">
                 {this.state.groupsToJoin.map((group, i) => (
               <div  key={i}>
                 {group.name}
@@ -99,7 +99,7 @@ export default class JoinGroup extends Component {
                 </button>
               </div>
             ))}
-            
+            </div>
               </div>
             </div>
           </div>

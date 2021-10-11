@@ -9,6 +9,7 @@ export default class UpdateProfile extends Component {
     this.state = {
       username: this.props.user.username,
       email: this.props.user.email,
+      password : this.props.user.password
       
     };
     this.handleChange = this.handleChange.bind(this);
@@ -71,6 +72,18 @@ export default class UpdateProfile extends Component {
        />
                                
                            </div>
+                           <div class="form-group">
+                           <input
+                            class="form-control"
+       value={this.state.password}
+         type="text"
+         placeholder="Password..."
+         name="password"
+         onChange={this.handleChange}
+       />
+                               
+                           </div>
+                           
 
                            <Link to="/login"><button class="lgx-btn lgx-btn-registration" onClick={this.hundleUpdate} >update</button></Link>
 

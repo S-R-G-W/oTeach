@@ -27,28 +27,6 @@ export default class Lecture extends Component {
   }
   render() {
     return (
-<<<<<<< HEAD
-      <div>
-        <input
-          type="text"
-          name="name"
-          placeholder="lecture name"
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          name="description"
-          placeholder="description"
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          name="videoUrl"
-          placeholder="videoUrl"
-          onChange={this.handleChange}
-        />
-        <button onClick={this.createLecture}>Create Lecture</button>
-=======
       <div class="lgx-blog lgx-banner ">
         <section>
           <div id="lgx-teachers" class="lgx-teachers">
@@ -110,7 +88,6 @@ export default class Lecture extends Component {
             </div>
           </div>
         </section>
->>>>>>> 83657c988429c49ecd901d70e5c032bbc68315f4
       </div>
     );
   }
