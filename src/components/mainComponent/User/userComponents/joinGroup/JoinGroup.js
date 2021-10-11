@@ -76,7 +76,10 @@ export default class JoinGroup extends Component {
           <div class="col-xs-12 col-md-8 col-md-offset-2">
             <div class="lgx-registration-area">
               <div class="lgx-registration">
-              <h3>Join A Group </h3>
+              <div  class="lgx-single-service lgx-single-service"> 
+
+              <h2 class='title'>Join A Group </h2>
+              </div>
                 <div class="form-group">
                  
                  

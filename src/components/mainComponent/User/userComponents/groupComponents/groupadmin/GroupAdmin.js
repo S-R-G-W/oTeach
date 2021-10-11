@@ -100,13 +100,13 @@ export default class GroupAdmin extends Component {
                 <Switch>
 
                     <Route path="/createLecture">
-
+              
                         <Lecture group={this.props.group} />
-                        <Link to="/">back to group</Link>
+                        
                     </Route>
                     <Route path="/viewLecture">
                         <LectureView lecture={this.state.lecture} />
-                        <Link to="/">back to group</Link>
+                        
                     </Route>
                     <Route path="/">
                         <div>
@@ -118,19 +118,26 @@ export default class GroupAdmin extends Component {
                                                 <div class="col-xs-12 col-md-8 col-md-offset-2">
                                                     <div class="lgx-registration-area">
                                                         <div class="lgx-registration">
-                                                            <h1>{this.props.group.name}</h1>
-                                                            <Link to="/createLecture">create lecture</Link>
+                                                        <div  class="lgx-single-service lgx-single-service"> 
+
+                                                            <h1 class='title'>{this.props.group.name}</h1>
+                                                           </div>
+                                                           
+                                                            <Link to="/createLecture"><button   class="lgx-btn lgx-btn-registration">create lecture</button></Link>
+                                                            
                                                             <div class="form-group"></div>
 
                                                             <div>
                                                                 {this.state.lectures.map((lec, key) => (
+                                                                    
                                                                     <Link
                                                                         to="/viewLecture"
                                                                         onClick={() => this.handleLecture(lec)}
                                                                         key={key}
                                                                     >
-                                                                        {lec.name} <br></br>
+                                                                     <button   class="lgx-btn lgx-btn-registration">   {lec.name}</button> <br></br>
                                                                     </Link>
+                                                                   
                                                                 ))}
                                                             </div>
                                                             <div>

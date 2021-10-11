@@ -7,9 +7,9 @@ const groupsSchema = mongoose.Schema({
   membersNumber: { type: Number, default: 0 },
   lecturesNumber: { type: Number, default: 0 },
   adminId: String,
-  membersId: [String], 
-  lecturesId: [String],
-  requestsId:[String],
+  membersId: {type:[String],default:[]}, 
+  lecturesId: {type:[String],default:[]}, 
+  requestsId:{type:[String],default:[]}, 
 });
 
 const Groups = mongoose.model("Groups", groupsSchema);
