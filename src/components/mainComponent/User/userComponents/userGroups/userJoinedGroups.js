@@ -16,7 +16,7 @@ export default class UserJoinedGroups extends Component {
         <h5 class="title">Joined Groups </h5>
         
           {this.props.JoinedGroups.map((group, key) =>
-            <p key={key}>{group.name}</p>)}
+          <p   onClick={()=>this.props.handleGroup(group)} key={key}><Link  to="/group"> {group.name}</Link> </p>)}
         
 
       </div>
