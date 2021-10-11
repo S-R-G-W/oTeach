@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import swal from "sweetalert";
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +26,7 @@ export default class Login extends Component {
           }
         })
         .catch((err) => {
-          alert(err);
+          swal(err);
         });
     }
   }

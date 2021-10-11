@@ -90,8 +90,8 @@ export default class App extends Component {
 
 
   fetch() {
-
-    axios.get(`http://localhost:8000/user/${this.state.user._id}`)
+var id = this.state.user._id
+    axios.get(`http://localhost:8000/user/${id}`)
       .then((data) => {
         this.setState({
           user: data.data,
