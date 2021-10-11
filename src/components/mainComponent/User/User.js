@@ -44,7 +44,7 @@ export default class User extends Component {
                           <div class="lgx-single-service lgx-single-service"> 
                           <span class="icon"><i class="fa fa-address-book" aria-hidden="true"></i></span>
                               <h2 class="title"><Link to="/CreateGroup">Create Group</Link></h2>
-                              <p>Etiam vel ante ac lacus vestibulum rutrum. Aliquam vehicula, massa in auctor dapibus commodo quis vehicula lacus metus sed justo. </p>
+                              <p>You can create a group , inside this group you can add lectures and choose members that want to join your group </p>
                               
                           </div>
                       </div>
@@ -52,7 +52,7 @@ export default class User extends Component {
                           <div class="lgx-single-service lgx-single-service"> 
                               <span class="icon"><i class="fa fa-address-book" aria-hidden="true"></i></span>
                               <h2 class="title"><Link    to="/JoinGroup">Join Group</Link></h2>
-                              <p>Etiam vel ante ac lacus vestibulum rutrum. Aliquam vehicula, massa in auctor dapibus commodo quis vehicula lacus metus sed justo. </p>
+                              <p>you can see a list of all groups and choose wich group to join by sending a request </p>
                               
                           </div>
                       </div>
