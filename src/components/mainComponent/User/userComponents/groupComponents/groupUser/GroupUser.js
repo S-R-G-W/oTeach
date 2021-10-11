@@ -52,50 +52,52 @@ export default class GroupUser extends Component {
                         
                     </Route>
                     <Route path="/">
-                        <div>
-                            <section>
-                                <div class="lgx-blog lgx-banner ">
-                                    <div class="lgx-inner">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-xs-12 col-md-8 col-md-offset-2">
-                                                    <div class="lgx-registration-area">
-                                                        <div class="lgx-registration">
-                                                        <div  class="lgx-single-service lgx-single-service"> 
-
-                                                            <h1 class='title'>{this.props.group.name}</h1>
-                                                           </div>
-                                                        
-                                                            
-                                                            <div class="form-group"></div>
-
-                                                            <div>
-                                                                {this.state.lectures.map((lec, key) => (
-                                                                    
-                                                                    <Link
-                                                                        to="/viewLecture"
-                                                                        onClick={() => this.handleLecture(lec)}
-                                                                        key={key}
-                                                                    >
-                                                                     <button   class="lgx-btn lgx-btn-registration">   {lec.name}</button> <br></br>
-                                                                    </Link>
-                                                                   
-                                                                ))}
-                                                            </div>
-                                                            <div>
-
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-
+                    <div id="lgx-services" class="lgx-blog lgx-banner ">
+          <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
+            <div class="row">
+              <div class="col-sm-6 col-md-3">
+                <div class="lgx-single-service">
+                 
+                  <h1 class="title">{this.props.group.name}</h1>
+                  
+                 
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="lgx-single-service">
+                
+                  <div>
+                 <h1 class='title'>Lectures</h1> 
+                  <br></br>
+                  <br></br>
+                    {this.state.lectures.map((lec, key) => (
+                      <Link
+                        to="/viewLecture"
+                        onClick={() => this.handleLecture(lec)}
+                        key={key}
+                      >
+                         <p >{lec.name}</p>
+                     
+                        <br></br>
+                         
+                      </Link>
+                      
+                    ))}
+                  </div>{" "}
+                </div>
+              </div>
+             
+              
+            </div>
+            </div>
+                        
                     </Route>
                 </Switch>
             </Router>
