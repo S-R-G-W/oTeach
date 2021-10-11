@@ -16,10 +16,10 @@ export default class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  hundleLogin() {
+  hundleLogin(e) {
     if (this.state.email !== "" && this.state.password !== "") {
-      axios
-        .post("http://localhost:8000/user/login", this.state)
+      e.target.disabled = true
+      axios.post("http://localhost:8000/user/login", this.state)
         .then((user) => {
           if (user.data) {
             this.props.login(user.data);
@@ -62,7 +62,7 @@ export default class Login extends Component {
                                           <input type="password" name="password" class="form-control"  placeholder="password"  onChange={this.handleChange}/>
                                       </div>
       
-                                      <button   class="lgx-btn lgx-btn-registration" onClick={this.hundleLogin}>Login</button>
+                                      <button id="login"  class="lgx-btn lgx-btn-registration" onClick={this.hundleLogin}>Login</button>
                                   </div>
                               </div>
                           </div>

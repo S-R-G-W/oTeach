@@ -23,8 +23,8 @@ export default class CreateGroups extends Component {
 
   createGroup() {
     if (this.state.name !== "") {
-      axios
-        .post("http://localhost:8000/group/group", this.state)
+      axios.post("http://localhost:8000/group/group", this.state)
+      
         .then((data) => this.props.fetch())
         .catch((err) => alert("error creating the group"));
     } else {
@@ -61,29 +61,28 @@ export default class CreateGroups extends Component {
         />
                 </div>
 
-                <Link to="/">
-                  <button
-                    class="lgx-btn lgx-btn-registration"
-                    onClick={() => {
-                      this.createGroup();
-                    }}
-                  >
-                    Create
-                  </button>
-                </Link>
+                        <button
+                          class="lgx-btn lgx-btn-registration"
+                          onClick={() => {
+                            this.createGroup();
+                          }}
+                        >
+                          Create
+                        </button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-</section>
 
-     </div>
-      
-    
+        </section>
+
+      </div>
+
+
     );
   }
 }

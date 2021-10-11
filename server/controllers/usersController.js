@@ -20,7 +20,6 @@ exports.retrieveOne = function (req, res) {
 exports.create = function (req, res) {
   var salt = crypt.createRandom32String();
   var hashed = crypt.createHash(req.body.password, salt);
-  console.log(req.body, hashed);
   const us = new Users({
     username: req.body.username,
     email: req.body.email,
@@ -63,4 +62,14 @@ exports.authentication = function (req, res) {
       }
     })
     .catch((err) => res.status(500).send("no such user"));
+};
+
+
+exports.updategroup = function (req, res) {
+  
+  Users.findByIdAndUpdate(req.params.id , {joinedGroupsId:req.body.jarr  })
+    .then((response) => {
+      res.status(202).send(response);
+    })
+    .catch((err) => res.status(400).send(err));
 };
