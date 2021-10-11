@@ -115,15 +115,12 @@ export default class GroupAdmin extends Component {
 
                                                             <div>
                                                                 {this.state.lectures.map((lec, key) => (
-                                                                    
-                                                                    <Link
-                                                                        to="/viewLecture"
-                                                                        onClick={() => this.handleLecture(lec)}
-                                                                        key={key}
-                                                                    >
+                                                                    <div>
+                                                                    <Link to="/viewLecture" onClick={() => this.handleLecture(lec)} key={key} >
                                                                      <button   class="lgx-btn lgx-btn-registration">   {lec.name}</button> <br></br>
                                                                     </Link>
-                                                                   
+                                                                    
+                                                                   </div>
                                                                 ))}
                                                             </div>
                                                             <div>
