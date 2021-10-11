@@ -18,7 +18,7 @@ var Nav2 = (props) => {
                           <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav lgx-nav">
                               <li><Link to="/" className="lgx-scroll"> Groups  </Link></li>
-                              <li><Link to="/Profile" className="lgx-scroll">Profil</Link></li>
+                              <li><Link to="/Profile" className="lgx-scroll">Profile</Link></li>
                               <li><Link className="lgx-scroll" to="/login" onClick={() => props.logout()}>Logout</Link></li>
                             </ul>
                           </div>

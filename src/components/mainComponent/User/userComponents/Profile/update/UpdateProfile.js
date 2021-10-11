@@ -45,8 +45,8 @@ export default class UpdateProfile extends Component {
                <div class="col-xs-12 col-md-8 col-md-offset-2">
                    <div class="lgx-registration-area">
                        <div class="lgx-registration">
-                       <div class="lgx-heading lgx-heading-white">
-                               <h2 class="lgx-scroll" >Update Your Profil</h2>
+                       <div  class="lgx-single-service lgx-single-service"> 
+                               <h2 class="title" >Update Your Profil</h2>
                            </div>
                            <div class="form-group">
                            <input

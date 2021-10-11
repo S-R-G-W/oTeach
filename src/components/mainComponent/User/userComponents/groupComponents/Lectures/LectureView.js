@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function LectureView({ lecture }) {
   return (
@@ -12,8 +13,12 @@ function LectureView({ lecture }) {
             <article>
               <header>
                 <div class="lgx-single-service">
-                <h1>{lecture.name}</h1>
-                  <h3 class="subtitle"> {lecture.description}</h3>
+                <div  class="lgx-single-service lgx-single-service"> 
+
+                <h2 class='title'>{lecture.name}</h2>
+                <p> {lecture.description}</p>
+                </div>
+                  
                   <div class="lgx-share">
                     <ul class="list-inline lgx-social">
                     <iframe
@@ -24,6 +29,10 @@ function LectureView({ lecture }) {
           allowFullScreen
         ></iframe>
                     </ul>
+                    
+
+                        <Link to="/"><button   class="lgx-btn lgx-btn-registration">back to group</button></Link>
+                        
                   </div>
                 </div>
             
