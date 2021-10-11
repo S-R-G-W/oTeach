@@ -10,7 +10,7 @@ exports.retrieve = function (req, res) {
 };
 
 exports.retrieveOne = function (req, res) {
-  Users.findById({ _id: req.params.id })
+  Users.findById( req.params.id )
     .then((response) => {
       res.status(201).send(response);
     })
