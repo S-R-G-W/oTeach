@@ -14,6 +14,7 @@ import GroupAdmin from "./components/mainComponent/User/userComponents/groupComp
 import GroupUser from "./components/mainComponent/User/userComponents/groupComponents/groupUser/GroupUser";
 import axios from "axios";
 import JoinGroup from "./components/mainComponent/User/userComponents/joinGroup/JoinGroup"
+import Footer from "./components/footer/Footer";
 
 export default class App extends Component {
   constructor() {
@@ -206,6 +207,7 @@ export default class App extends Component {
           <nav>{this.renderNavView()}</nav>
        
           {this.renderView()}
+          <Footer />
         </div>
       </Router>
     );

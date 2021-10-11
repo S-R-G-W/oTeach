@@ -34,7 +34,7 @@ export default class CreateGroups extends Component {
 
   render() {
     return (
-     <div>
+      <div class="lgx-blog lgx-banner ">
 <section>
   <div id="lgx-teachers" class="lgx-teachers">
     <div class="lgx-inner">

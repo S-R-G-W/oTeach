@@ -85,6 +85,7 @@ var Profil = (props) => {
         </div>
       </section>
     </div>
-  );
+
+);
 };
 export default Profil;
